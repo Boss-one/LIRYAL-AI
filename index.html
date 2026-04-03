@@ -485,59 +485,104 @@
         </section>
 
         <!-- 7. CTA / CONTACTO -->
-        <section id="contacto" class="py-32 relative overflow-hidden bg-panel/75 backdrop-blur-xl z-10">
-            <div class="absolute inset-0 z-0">
-                <div class="absolute bottom-0 left-0 w-full h-[500px] bg-gradient-to-t from-accent/10 to-transparent pointer-events-none"></div>
+        <section id="contacto" class="py-32 relative overflow-hidden bg-dark/80 backdrop-blur-2xl z-10">
+            <!-- Advanced Background Shapes -->
+            <div class="absolute inset-0 z-0 pointer-events-none overflow-hidden">
+                <div class="absolute bottom-0 left-0 w-full h-[600px] bg-gradient-to-t from-accent/10 to-transparent"></div>
+                <div class="absolute -right-64 top-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-accent/5 blur-[120px] rounded-full"></div>
             </div>
 
-            <div class="max-w-4xl mx-auto px-6 relative z-10">
-                <div class="glass-panel border-accent/20 rounded-3xl p-8 md:p-14 shadow-2xl accent-glow flex flex-col md:flex-row gap-12 items-center">
+            <div class="max-w-6xl mx-auto px-6 relative z-10">
+                <div class="glass-panel border-surface-border hover:border-accent/30 transition-colors duration-700 rounded-[2.5rem] p-8 md:p-14 lg:p-16 shadow-[0_20px_60px_-15px_rgba(0,229,160,0.15)] flex flex-col lg:flex-row gap-12 lg:gap-16 items-center relative overflow-hidden">
                     
-                    <div class="w-full md:w-1/2">
-                        <h2 class="font-display text-4xl font-bold text-white mb-4 leading-tight">Trabajemos juntos.</h2>
-                        <p class="text-gray-300 mb-6 drop-shadow-md">Actualizamos continuamente nuestro análisis con base en registros hospitalarios de Ayacucho. Si representa a un establecimiento o red de salud, lo invitamos a evaluar el proyecto.</p>
-                        <ul class="space-y-3 mb-8">
-                            <li class="flex items-center gap-3 text-sm text-gray-300"><span class="material-symbols-outlined text-accent text-[18px]">verified</span> Privacidad e información anonimizada</li>
-                            <li class="flex items-center gap-3 text-sm text-gray-300"><span class="material-symbols-outlined text-accent text-[18px]">verified</span> Sistema enfocado en geografía andina</li>
-                            <li class="flex items-center gap-3 text-sm text-gray-300"><span class="material-symbols-outlined text-accent text-[18px]">verified</span> Complemento al trabajo médico profesional</li>
+                    <!-- Decorative line inside the card -->
+                    <div class="absolute top-0 left-0 w-1/3 h-1 bg-gradient-to-r from-accent to-transparent"></div>
+
+                    <!-- Text Content -->
+                    <div class="w-full lg:w-1/2 flex flex-col z-10">
+                        <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-accent/20 bg-accent/5 text-accent text-xs font-bold uppercase tracking-widest w-fit mb-6">
+                            <span class="material-symbols-outlined text-[16px]">handshake</span> Piloto Clínico
+                        </div>
+                        
+                        <h2 class="font-display text-4xl md:text-5xl lg:text-6xl font-extrabold text-white mb-6 leading-tight">
+                            Trabajemos <span class="text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-500">juntos.</span>
+                        </h2>
+                        
+                        <p class="text-gray-300 md:text-lg mb-10 leading-relaxed font-medium drop-shadow-md">
+                            Actualizamos continuamente nuestro análisis con base en registros hospitalarios de Ayacucho. Si representa a un establecimiento o red de salud, lo invitamos a evaluar el proyecto.
+                        </p>
+                        
+                        <ul class="space-y-6">
+                            <li class="flex items-start gap-4 p-4 rounded-2xl bg-surface border border-surface-border hover:border-accent/20 transition-colors">
+                                <div class="p-2.5 bg-accent/10 rounded-xl shrink-0"><span class="material-symbols-outlined text-accent text-[22px]">verified_user</span></div>
+                                <div>
+                                    <h5 class="text-white font-bold text-sm tracking-wide">Privacidad por diseño</h5>
+                                    <p class="text-xs text-gray-400 mt-1.5 leading-relaxed">Información cifrada y estrictamente anonimizada.</p>
+                                </div>
+                            </li>
+                            <li class="flex items-start gap-4 p-4 rounded-2xl bg-surface border border-surface-border hover:border-accent/20 transition-colors">
+                                <div class="p-2.5 bg-accent/10 rounded-xl shrink-0"><span class="material-symbols-outlined text-accent text-[22px]">terrain</span></div>
+                                <div>
+                                    <h5 class="text-white font-bold text-sm tracking-wide">Validación regional</h5>
+                                    <p class="text-xs text-gray-400 mt-1.5 leading-relaxed">Sistema calibrado estadísticamente para la geografía andina.</p>
+                                </div>
+                            </li>
+                            <li class="flex items-start gap-4 p-4 rounded-2xl bg-surface border border-surface-border hover:border-accent/20 transition-colors">
+                                <div class="p-2.5 bg-accent/10 rounded-xl shrink-0"><span class="material-symbols-outlined text-accent text-[22px]">medical_services</span></div>
+                                <div>
+                                    <h5 class="text-white font-bold text-sm tracking-wide">Herramienta de soporte</h5>
+                                    <p class="text-xs text-gray-400 mt-1.5 leading-relaxed">Refuerza y complementa el criterio médico profesional, sin reemplazarlo.</p>
+                                </div>
+                            </li>
                         </ul>
                     </div>
 
-                    <div class="w-full md:w-1/2 bg-dark rounded-2xl p-6 border border-surface-border relative">
-                        <form action="https://formsubmit.co/royerdelacruz13@gmail.com" method="POST" class="flex flex-col gap-4 flex-grow relative z-10">
-                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                                <div>
-                                    <label class="block text-xs font-bold text-gray-400 uppercase tracking-wide mb-1.5 ml-1">Nombre Completo</label>
-                                    <input type="text" name="nombre" placeholder="Dr. / Lic." class="w-full bg-panel border-surface-border border rounded-lg px-4 py-3 text-sm text-white focus:outline-none focus:border-accent transition-colors" required>
-                                </div>
-                                <div>
-                                    <label class="block text-xs font-bold text-gray-400 uppercase tracking-wide mb-1.5 ml-1">Celular / WhatsApp</label>
-                                    <input type="tel" name="celular" placeholder="+51 9..." class="w-full bg-panel border-surface-border border rounded-lg px-4 py-3 text-sm text-white focus:outline-none focus:border-accent transition-colors" required>
-                                </div>
-                            </div>
-                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                                <div>
-                                    <label class="block text-xs font-bold text-gray-400 uppercase tracking-wide mb-1.5 ml-1">Institución / Clínica</label>
-                                    <input type="text" name="institucion" placeholder="Ej. Red de Huamanga..." class="w-full bg-panel border-surface-border border rounded-lg px-4 py-3 text-sm text-white focus:outline-none focus:border-accent transition-colors" required>
-                                </div>
-                                <div>
-                                    <label class="block text-xs font-bold text-gray-400 uppercase tracking-wide mb-1.5 ml-1">Email</label>
-                                    <input type="email" name="email" placeholder="correo@institucion.pe" class="w-full bg-panel border-surface-border border rounded-lg px-4 py-3 text-sm text-white focus:outline-none focus:border-accent transition-colors" required>
-                                </div>
-                            </div>
-                            <div>
-                                <label class="block text-xs font-bold text-gray-400 uppercase tracking-wide mb-1.5 ml-1">Propuesta / Recomendaciones</label>
-                                <textarea name="mensaje" rows="3" placeholder="Nos gustaría implementar un modelo piloto en nuestra clínica..." class="w-full bg-panel border-surface-border border rounded-lg px-4 py-3 text-sm text-white focus:outline-none focus:border-accent transition-colors resize-none"></textarea>
-                            </div>
-                            <!-- Redirigir de regreso a la página -->
-                            <input type="hidden" name="_next" value="https://boss-one.github.io/LIRYAL-AI/">
-                            <!-- Desactiva el captcha de FormSubmit (opcional) -->
-                            <input type="hidden" name="_captcha" value="false">
+                    <!-- Contact Form -->
+                    <div class="w-full lg:w-1/2 relative z-10 mt-8 lg:mt-0">
+                        <div class="bg-dark/80 backdrop-blur-xl rounded-3xl p-8 md:p-10 border border-surface-border relative shadow-2xl">
+                            <h3 class="text-2xl font-display font-bold text-white mb-2">Solicitar Evaluación</h3>
+                            <p class="text-sm text-gray-400 mb-8 pb-4 border-b border-surface-border">Nuestra herramienta está lista para pilotaje real.</p>
                             
-                            <button type="submit" class="w-full bg-accent text-dark font-bold text-sm py-4 rounded-lg hover:bg-accent-hover transition-colors shadow-lg mt-2">
-                                Enviar mensaje
-                            </button>
-                        </form>
+                            <form action="https://formsubmit.co/royerdelacruz13@gmail.com" method="POST" class="flex flex-col gap-5 flex-grow">
+                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                                    <div class="space-y-1.5">
+                                        <label class="block text-[11px] font-bold text-gray-400 uppercase tracking-widest pl-1">Nombre Completo</label>
+                                        <input type="text" name="nombre" placeholder="Dr. / Lic." class="w-full bg-panel/50 border border-surface-border rounded-xl px-4 py-3.5 text-sm text-white focus:outline-none focus:ring-2 focus:ring-accent/50 focus:border-transparent transition-all placeholder:text-gray-600" required>
+                                    </div>
+                                    <div class="space-y-1.5">
+                                        <label class="block text-[11px] font-bold text-gray-400 uppercase tracking-widest pl-1">Celular / WhatsApp</label>
+                                        <input type="tel" name="celular" placeholder="+51 9..." class="w-full bg-panel/50 border border-surface-border rounded-xl px-4 py-3.5 text-sm text-white focus:outline-none focus:ring-2 focus:ring-accent/50 focus:border-transparent transition-all placeholder:text-gray-600" required>
+                                    </div>
+                                </div>
+                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                                    <div class="space-y-1.5">
+                                        <label class="block text-[11px] font-bold text-gray-400 uppercase tracking-widest pl-1">Institución / Clínica</label>
+                                        <input type="text" name="institucion" placeholder="Ej. Red de Huamanga" class="w-full bg-panel/50 border border-surface-border rounded-xl px-4 py-3.5 text-sm text-white focus:outline-none focus:ring-2 focus:ring-accent/50 focus:border-transparent transition-all placeholder:text-gray-600" required>
+                                    </div>
+                                    <div class="space-y-1.5">
+                                        <label class="block text-[11px] font-bold text-gray-400 uppercase tracking-widest pl-1">Email Corporativo</label>
+                                        <input type="email" name="email" placeholder="correo@institucion.pe" class="w-full bg-panel/50 border border-surface-border rounded-xl px-4 py-3.5 text-sm text-white focus:outline-none focus:ring-2 focus:ring-accent/50 focus:border-transparent transition-all placeholder:text-gray-600" required>
+                                    </div>
+                                </div>
+                                <div class="space-y-1.5">
+                                    <label class="block text-[11px] font-bold text-gray-400 uppercase tracking-widest pl-1">Propuesta / Consulta</label>
+                                    <textarea name="mensaje" rows="3" placeholder="Nos gustaría implementar un modelo piloto en nuestra clínica..." class="w-full bg-panel/50 border border-surface-border rounded-xl px-4 py-3.5 text-sm text-white focus:outline-none focus:ring-2 focus:ring-accent/50 focus:border-transparent transition-all placeholder:text-gray-600 resize-none"></textarea>
+                                </div>
+                                
+                                <!-- Redirigir de regreso a la página -->
+                                <input type="hidden" name="_next" value="https://boss-one.github.io/LIRYAL-AI/">
+                                <!-- Desactiva el captcha de FormSubmit (opcional) -->
+                                <input type="hidden" name="_captcha" value="false">
+                                
+                                <button type="submit" class="group relative w-full overflow-hidden rounded-xl p-[1px] mt-4 shadow-xl">
+                                    <span class="absolute inset-0 bg-gradient-to-r from-accent via-[#00c58a] to-accent rounded-xl opacity-70 group-hover:opacity-100 transition-opacity" style="background-size: 200% auto; animation: textShine 3s linear infinite;"></span>
+                                    <div class="relative flex items-center justify-center gap-2 bg-dark text-white px-8 py-4 rounded-xl group-hover:bg-opacity-0 transition-all duration-300 font-bold text-sm tracking-wide">
+                                        Enviar Propuesta
+                                        <span class="material-symbols-outlined text-[18px] group-hover:translate-x-1 transition-transform">send</span>
+                                    </div>
+                                </button>
+                            </form>
+                        </div>
                     </div>
 
                 </div>
