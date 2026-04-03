@@ -133,7 +133,7 @@
     <!-- Ambient Background with Spline 3D -->
     <div class="fixed inset-0 z-[-1] bg-dark overflow-hidden">
         <!-- Spline 3D Scene -->
-        <spline-viewer url="https://prod.spline.design/Y2D4DZ4eIgOHDgyp/scene.splinecode" class="absolute inset-0 w-full h-full object-cover"></spline-viewer>
+        <spline-viewer url="https://prod.spline.design/Y2D4DZ4eIgOHDgyp/scene.splinecode" class="absolute inset-0 w-full h-full object-cover pointer-events-none"></spline-viewer>
         
         <!-- Overlays for Contrast and Aesthetic Grid -->
         <div class="absolute inset-0 bg-dark/75 pointer-events-none"></div>
@@ -196,10 +196,10 @@
                 <a href="#analisis-tecnico" class="text-sm text-gray-400 hover:text-white transition-colors">Análisis IA</a>
             </nav>
 
-            <div class="flex items-center gap-4">
+            <div class="flex items-center gap-3 sm:gap-4">
                 <a href="#contacto" class="hidden sm:block text-sm font-medium text-gray-300 hover:text-white transition-colors">Contacto</a>
-                <a href="#contacto" class="bg-accent text-dark border border-accent text-sm font-semibold px-5 py-2.5 rounded-lg hover:bg-accent-hover transition-all shadow-[0_0_15px_rgba(0,229,160,0.3)]">
-                    Agendar demostración
+                <a href="#contacto" class="bg-accent text-dark border border-accent text-xs sm:text-sm font-semibold px-4 py-2 sm:px-5 sm:py-2.5 rounded-lg hover:bg-accent-hover transition-all shadow-[0_0_15px_rgba(0,229,160,0.3)] text-center">
+                    Agendar demo
                 </a>
             </div>
         </div>
@@ -504,18 +504,30 @@
                     </div>
 
                     <div class="w-full md:w-1/2 bg-dark rounded-2xl p-6 border border-surface-border relative">
-                        <form action="https://formsubmit.co/royerdelacruz13@gmail.com" method="POST" class="flex flex-col gap-4 relative z-10">
-                            <div>
-                                <label class="block text-xs font-bold text-gray-400 uppercase tracking-wide mb-1.5 ml-1">Nombre Completo</label>
-                                <input type="text" name="nombre" placeholder="Dr. / Lic." class="w-full bg-panel border-surface-border border rounded-lg px-4 py-3 text-sm text-white focus:outline-none focus:border-accent transition-colors" required>
+                        <form action="https://formsubmit.co/royerdelacruz13@gmail.com" method="POST" class="flex flex-col gap-4 flex-grow relative z-10">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div>
+                                    <label class="block text-xs font-bold text-gray-400 uppercase tracking-wide mb-1.5 ml-1">Nombre Completo</label>
+                                    <input type="text" name="nombre" placeholder="Dr. / Lic." class="w-full bg-panel border-surface-border border rounded-lg px-4 py-3 text-sm text-white focus:outline-none focus:border-accent transition-colors" required>
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-bold text-gray-400 uppercase tracking-wide mb-1.5 ml-1">Celular / WhatsApp</label>
+                                    <input type="tel" name="celular" placeholder="+51 9..." class="w-full bg-panel border-surface-border border rounded-lg px-4 py-3 text-sm text-white focus:outline-none focus:border-accent transition-colors" required>
+                                </div>
+                            </div>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div>
+                                    <label class="block text-xs font-bold text-gray-400 uppercase tracking-wide mb-1.5 ml-1">Institución / Clínica</label>
+                                    <input type="text" name="institucion" placeholder="Ej. Red de Huamanga..." class="w-full bg-panel border-surface-border border rounded-lg px-4 py-3 text-sm text-white focus:outline-none focus:border-accent transition-colors" required>
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-bold text-gray-400 uppercase tracking-wide mb-1.5 ml-1">Email</label>
+                                    <input type="email" name="email" placeholder="correo@institucion.pe" class="w-full bg-panel border-surface-border border rounded-lg px-4 py-3 text-sm text-white focus:outline-none focus:border-accent transition-colors" required>
+                                </div>
                             </div>
                             <div>
-                                <label class="block text-xs font-bold text-gray-400 uppercase tracking-wide mb-1.5 ml-1">Institución / Clínica</label>
-                                <input type="text" name="institucion" placeholder="Ej. Red de Huamanga..." class="w-full bg-panel border-surface-border border rounded-lg px-4 py-3 text-sm text-white focus:outline-none focus:border-accent transition-colors" required>
-                            </div>
-                            <div>
-                                <label class="block text-xs font-bold text-gray-400 uppercase tracking-wide mb-1.5 ml-1">Email</label>
-                                <input type="email" name="email" placeholder="correo@institucion.pe" class="w-full bg-panel border-surface-border border rounded-lg px-4 py-3 text-sm text-white focus:outline-none focus:border-accent transition-colors" required>
+                                <label class="block text-xs font-bold text-gray-400 uppercase tracking-wide mb-1.5 ml-1">Propuesta / Recomendaciones</label>
+                                <textarea name="mensaje" rows="3" placeholder="Nos gustaría implementar un modelo piloto en nuestra clínica..." class="w-full bg-panel border-surface-border border rounded-lg px-4 py-3 text-sm text-white focus:outline-none focus:border-accent transition-colors resize-none"></textarea>
                             </div>
                             <!-- Redirigir de regreso a la página -->
                             <input type="hidden" name="_next" value="https://boss-one.github.io/LIRYAL-AI/">
