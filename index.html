@@ -517,10 +517,11 @@
                                 <label class="block text-xs font-bold text-gray-400 uppercase tracking-wide mb-1.5 ml-1">Email</label>
                                 <input type="email" name="email" placeholder="correo@institucion.pe" class="w-full bg-panel border-surface-border border rounded-lg px-4 py-3 text-sm text-white focus:outline-none focus:border-accent transition-colors" required>
                             </div>
+                            <!-- Redirigir de regreso a la página -->
+                            <input type="hidden" name="_next" value="https://boss-one.github.io/LIRYAL-AI/">
                             <!-- Desactiva el captcha de FormSubmit (opcional) -->
                             <input type="hidden" name="_captcha" value="false">
-                            <!-- Puedes agregar una URL de redirección aquí si deseas que al enviar vuelva a tu página -->
-                            <!-- <input type="hidden" name="_next" value="http://tupagina.com/gracias.html"> -->
+                            
                             <button type="submit" class="w-full bg-accent text-dark font-bold text-sm py-4 rounded-lg hover:bg-accent-hover transition-colors shadow-lg mt-2">
                                 Enviar mensaje
                             </button>
