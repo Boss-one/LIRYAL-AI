@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>LIRYAL AI | Prevención de Anemia en Ayacucho</title>
+    <meta name="description" content="Prevención temprana de anemia infantil en Ayacucho, Perú, mediante análisis de datos locales y aprendizaje automático.">
+    
+    <!-- Tailwind CSS (CDN) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts: Syne (Display) & DM Sans (Body) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;500;600;700&family=Syne:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Material Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@300,0&display=swap" rel="stylesheet"/>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        dark: '#0A0F1E',
+                        panel: '#111827',
+                        accent: '#00E5A0',
+                        'accent-hover': '#00c58a',
+                        surface: 'rgba(255, 255, 255, 0.03)',
+                        'surface-border': 'rgba(255, 255, 255, 0.08)'
+                    },
+                    fontFamily: {
+                        sans: ['"DM Sans"', 'sans-serif'],
+                        display: ['"Syne"', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background-color: #0A0F1E;
+            color: #ffffff;
+        }
+
+        /* Glassmorphism Classes */
+        .glass {
+            background: rgba(17, 24, 39, 0.6);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        
+        .glass-panel {
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.01) 100%);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .accent-glow {
+            box-shadow: 0 0 50px -15px rgba(0, 229, 160, 0.25);
+        }
+
+        .text-gradient {
+            background: linear-gradient(90deg, #ffffff 0%, #a1a1aa 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .subtle-grid {
+            background-size: 40px 40px;
+            background-image: linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+                              linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+        }
+
+        .status-dot {
+            height: 8px;
+            width: 8px;
+            border-radius: 50%;
+            display: inline-block;
+        }
+
+        @keyframes textShine {
+            to {
+                background-position: 200% center;
+            }
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-accent selection:text-dark">
+
+    <!-- Ambient Background -->
+    <div class="fixed inset-0 z-[-1] subtle-grid">
+        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-accent/5 blur-[120px] rounded-full pointer-events-none"></div>
+    </div>
+
+    <!-- 1. NAV -->
+    <header class="fixed top-0 w-full z-50 glass border-b-0 border-surface-border transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex flex-wrap md:flex-nowrap items-center justify-between gap-4 md:gap-0">
+            <div class="flex items-center gap-3 cursor-pointer group min-w-max" title="Volver al inicio">
+                <!-- Logo Recreado en Código SVG Premium -->
+                <svg class="h-10 w-10 md:h-12 md:w-12 drop-shadow-[0_0_15px_rgba(37,99,235,0.4)] transition-transform duration-500 group-hover:scale-105 group-hover:drop-shadow-[0_0_20px_rgba(0,229,160,0.5)]" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <!-- Media Luna Exterior -->
+                    <path d="M 50 5 A 45 45 0 0 0 50 95 A 55 55 0 0 1 50 5 Z" fill="white" opacity="0.9"/>
+                    
+                    <!-- Globo Azul -->
+                    <circle cx="55" cy="50" r="28" fill="url(#globeGrad)"/>
+                    
+                    <!-- Red de Nodos Animada en Hover -->
+                    <g opacity="0.8" class="transition-all duration-700 group-hover:opacity-100">
+                        <path d="M40 48 L48 35 L62 40 L68 53 L55 65 Z" stroke="white" stroke-width="0.5" fill="none"/>
+                        <path d="M48 35 L55 52 L62 40 M55 52 L68 53 M55 52 L55 65 M40 48 L55 52" stroke="white" stroke-width="0.5" fill="none"/>
+                        <!-- Puntos Base -->
+                        <circle cx="40" cy="48" r="1.5" fill="white"/>
+                        <circle cx="48" cy="35" r="1.5" fill="white"/>
+                        <circle cx="62" cy="40" r="1.5" fill="white"/>
+                        <circle cx="68" cy="53" r="1.5" fill="white"/>
+                        <circle cx="55" cy="65" r="1.5" fill="white"/>
+                        <!-- Nodo Central Pulsante -->
+                        <circle cx="55" cy="52" r="2" fill="white" class="animate-pulse"/>
+                        <!-- Nodos Extra Inferiores -->
+                        <circle cx="45" cy="60" r="1.5" fill="white"/>
+                        <circle cx="62" cy="60" r="1.5" fill="white"/>
+                        <path d="M40 48 L45 60 L55 65 M55 52 L45 60 M68 53 L62 60 L55 65 M55 52 L62 60" stroke="white" stroke-width="0.5" fill="none"/>
+                    </g>
+                    
+                    <!-- Anillo Orbital -->
+                    <path d="M 12 58 A 46 14 -20 0 0 98 42" stroke="white" stroke-width="1.5" fill="none" stroke-linecap="round" opacity="0.2"/>
+                    <path d="M 12 58 A 46 14 -20 0 1 98 42" stroke="white" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+                    
+                    <defs>
+                        <radialGradient id="globeGrad" cx="35%" cy="30%" r="65%">
+                            <stop offset="0%" stop-color="#3b82f6"/>
+                            <stop offset="50%" stop-color="#2563eb"/>
+                            <stop offset="100%" stop-color="#1e3a8a"/>
+                        </radialGradient>
+                    </defs>
+                </svg>
+
+                <div class="text-[1.6rem] md:text-3xl font-display tracking-tight flex items-center text-white">
+                    <span class="font-normal">Liryal</span>
+                    <span class="font-bold ml-1.5 text-transparent bg-clip-text" style="background-image: linear-gradient(90deg, #00E5A0, #3b82f6, #00E5A0); background-size: 200% auto; animation: textShine 3s linear infinite;">AI</span>
+                </div>
+            </div>
+            
+            <nav class="hidden md:flex items-center gap-8">
+                <a href="#enfoque" class="text-sm text-gray-400 hover:text-white transition-colors">Nuestro Enfoque</a>
+                <a href="#datos" class="text-sm text-gray-400 hover:text-white transition-colors">Modelo de Datos</a>
+                <a href="#analisis-tecnico" class="text-sm text-gray-400 hover:text-white transition-colors">Análisis IA</a>
+            </nav>
+
+            <div class="flex items-center gap-4">
+                <a href="#contacto" class="hidden sm:block text-sm font-medium text-gray-300 hover:text-white transition-colors">Contacto</a>
+                <a href="#contacto" class="bg-accent text-dark border border-accent text-sm font-semibold px-5 py-2.5 rounded-lg hover:bg-accent-hover transition-all shadow-[0_0_15px_rgba(0,229,160,0.3)]">
+                    Agendar demostración
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main class="pt-32">
+        <!-- 2. HERO -->
+        <section class="relative pt-10 pb-20 md:pt-20 md:pb-32 overflow-hidden">
+            <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center flex-col-reverse lg:flex-row">
+                
+                <div class="z-10 flex flex-col gap-6">
+                    <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-accent/30 bg-accent/10 text-accent text-xs font-bold uppercase tracking-wider w-fit">
+                        <span class="relative flex h-2 w-2">
+                            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent opacity-75"></span>
+                            <span class="relative inline-flex rounded-full h-2 w-2 bg-accent"></span>
+                        </span>
+                        Prevención temprana en Ayacucho
+                    </div>
+                    
+                    <h1 class="font-display text-4xl md:text-5xl lg:text-6xl font-bold leading-[1.15] tracking-tight">
+                        Prevención oportuna de la anemia infantil adaptada a <span class="text-gradient">gran altitud</span>.
+                    </h1>
+                    
+                    <p class="text-lg md:text-xl text-gray-400 leading-relaxed max-w-lg">
+                        LIRYAL analiza más de <strong class="text-white font-medium">100,000 registros clínicos</strong> de Ayacucho para identificar factores de riesgo antes de que se desarrolle anemia severa.
+                    </p>
+                    
+                    <div class="flex flex-col sm:flex-row gap-4 mt-4">
+                        <a href="#datos" class="bg-accent text-dark text-center px-8 py-4 rounded-xl font-bold hover:bg-accent-hover transition-all shadow-[0_0_20px_rgba(0,229,160,0.2)]">
+                            Ver características
+                        </a>
+                        <a href="#analisis-tecnico" class="glass text-white text-center px-8 py-4 rounded-xl font-medium hover:bg-white/5 transition-all">
+                            ¿Cómo funciona?
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Visual: Mockup de alerta predictiva -->
+                <div class="relative w-full max-w-md mx-auto lg:ml-auto perspective-1000">
+                    <div class="glass glass-panel p-6 rounded-2xl accent-glow border-surface-border transform lg:-rotate-y-6 lg:rotate-x-2 transition-transform duration-500 hover:rotate-0">
+                        <div class="flex items-center justify-between mb-6">
+                            <div class="flex items-center gap-3">
+                                <div class="size-10 rounded-lg bg-surface flex items-center justify-center border border-surface-border">
+                                    <span class="material-symbols-outlined text-accent">map</span>
+                                </div>
+                                <div>
+                                    <div class="text-accent font-mono text-xs uppercase tracking-widest font-semibold flex items-center gap-2">
+                                        <span class="size-1.5 bg-accent rounded-full animate-pulse"></span>
+                                        Evaluación de Riesgo | Ayacucho
+                                    </div>
+                                    <div class="text-xs text-gray-500 mt-0.5">Altitud: 2,761 m.s.n.m.</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mb-5">
+                            <h3 class="font-display text-2xl font-bold text-white mb-1">Reporte de Evaluación</h3>
+                            <p class="text-gray-400 text-sm">Masculino • Rango: 6m - 5 años • C.S. Carmen Alto</p>
+                        </div>
+
+                        <div class="bg-dark/50 p-4 rounded-xl border border-surface-border mb-5">
+                            <div class="flex items-center justify-between mb-3">
+                                <span class="text-sm font-medium text-gray-300">Nivel de Riesgo (Modelo Ayacucho)</span>
+                                <span class="text-sm font-mono text-amber-400 bg-amber-400/10 px-2 py-0.5 rounded border border-amber-400/20">MODERADO/ALTO</span>
+                            </div>
+                            
+                            <div class="space-y-2 mt-4">
+                                <div class="flex justify-between items-center text-xs">
+                                    <span class="text-gray-400 flex items-center gap-1.5"><span class="material-symbols-outlined text-[14px]">monitor_weight</span> Proporción Talla/Peso</span>
+                                    <span class="text-white">Bajo percentil para la región</span>
+                                </div>
+                                <div class="flex justify-between items-center text-xs">
+                                    <span class="text-gray-400 flex items-center gap-1.5"><span class="material-symbols-outlined text-[14px]">local_hospital</span> Historial CIE-10</span>
+                                    <span class="text-white">J06.9 (Infección respiratoria aguda)</span>
+                                </div>
+                                <div class="flex justify-between items-center text-xs opacity-70">
+                                    <span class="text-gray-400 flex items-center gap-1.5"><span class="material-symbols-outlined text-[14px]">bloodtype</span> Última Hemoglobina</span>
+                                    <span class="text-white">12.1 g/dL (Ajustado por altitud: 2761m)</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="absolute -right-8 -bottom-8 rounded-xl bg-panel border border-surface-border p-4 shadow-xl hidden sm:block">
+                        <div class="flex items-center gap-3">
+                            <div class="p-2 bg-accent/10 rounded-md">
+                                <span class="material-symbols-outlined text-accent text-xl">database</span>
+                            </div>
+                            <div>
+                                <p class="text-xs text-gray-400">Dataset Actual</p>
+                                <p class="text-sm font-mono font-bold text-white">100k+ registros unificados</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. ENFOQUE (Contexto y Problema) -->
+        <section id="enfoque" class="py-24 border-t border-surface-border bg-dark">
+            <div class="max-w-7xl mx-auto px-6">
+                <div class="text-center max-w-3xl mx-auto mb-16">
+                    <h2 class="text-sm font-bold text-accent tracking-[0.2em] uppercase mb-4">El Desafío Local</h2>
+                    <h3 class="font-display text-3xl md:text-4xl font-bold text-white mb-4">Estrategias basadas en la realidad de la altitud.</h3>
+                    <p class="text-gray-400 text-lg">
+                        La fisiología en zonas de gran altitud presenta particularidades. LIRYAL <strong>analiza patrones de salud locales</strong> para identificar el riesgo de anemia basándose en la realidad clínica y demográfica de la región.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="glass-panel p-8 rounded-2xl flex flex-col">
+                        <span class="material-symbols-outlined text-accent text-3xl mb-4">neurology</span>
+                        <h4 class="text-lg font-bold text-white mb-3">Modelos Adaptados</h4>
+                        <p class="text-sm text-gray-400 leading-relaxed">
+                            El sistema se calibra utilizando datos históricos locales, reconociendo las características particulares de la población infantil de Ayacucho y evitando métricas genéricas.
+                        </p>
+                    </div>
+                    
+                    <div class="glass-panel border-accent/20 p-8 rounded-2xl flex flex-col relative overflow-hidden">
+                        <div class="absolute top-0 left-0 w-full h-1 bg-accent"></div>
+                        <span class="material-symbols-outlined text-accent text-3xl mb-4">diversity_3</span>
+                        <h4 class="text-lg font-bold text-white mb-3">Muestra Representativa</h4>
+                        <p class="text-sm text-gray-400 leading-relaxed">
+                            Analizamos información proveniente de establecimientos públicos y privados, lo que permite una visión más equitativa, completa y sin sesgos de atención exclusiva.
+                        </p>
+                    </div>
+
+                    <div class="glass-panel p-8 rounded-2xl flex flex-col">
+                        <span class="material-symbols-outlined text-accent text-3xl mb-4">database</span>
+                        <h4 class="text-lg font-bold text-white mb-3">Amplia Base de Referencia</h4>
+                        <p class="text-sm text-gray-400 leading-relaxed">
+                            Nos apoyamos en un registro validado de más de 100,000 atenciones pediátricas para encontrar correlaciones clave entre antecedentes clínicos y el desarrollo de anemia.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. DATOS Y CARACTERÍSTICAS -->
+        <section id="datos" class="py-24 border-t border-surface-border">
+            <div class="max-w-7xl mx-auto px-6">
+                <div class="mb-16 md:flex justify-between items-end">
+                    <div class="max-w-2xl">
+                        <h2 class="text-sm font-bold text-accent tracking-[0.2em] uppercase mb-4">Variables Integradas</h2>
+                        <h3 class="font-display text-3xl md:text-4xl font-bold text-white">Información clínica clave para el análisis de riesgo.</h3>
+                    </div>
+                    <div class="mt-6 md:mt-0">
+                        <span class="inline-flex py-1 px-3 rounded-full bg-surface border border-surface-border text-sm text-gray-400">Protección total de la identidad del paciente</span>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                    <!-- Feature Items -->
+                    <div class="bg-dark border border-surface-border p-5 rounded-xl flex items-start gap-4 hover:border-accent/50 transition-colors">
+                        <span class="material-symbols-outlined text-gray-500">fingerprint</span>
+                        <div>
+                            <h5 class="text-white font-bold text-sm">ID Correlativo</h5>
+                            <p class="text-xs text-gray-500 mt-1">Protección estricta de datos.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-dark border border-surface-border p-5 rounded-xl flex items-start gap-4 hover:border-accent/50 transition-colors">
+                        <span class="material-symbols-outlined text-gray-500">cake</span>
+                        <div>
+                            <h5 class="text-white font-bold text-sm">Rango de Edad</h5>
+                            <p class="text-xs text-gray-500 mt-1">1: 6m-5a / 2: 5-11a.</p>
+                        </div>
+                    </div>
+
+                    <div class="bg-dark border border-surface-border p-5 rounded-xl flex items-start gap-4 hover:border-accent/50 transition-colors">
+                        <span class="material-symbols-outlined text-gray-500">scale</span>
+                        <div>
+                            <h5 class="text-white font-bold text-sm">Antropometría</h5>
+                            <p class="text-xs text-gray-500 mt-1">Peso y Talla registrados.</p>
+                        </div>
+                    </div>
+
+                    <div class="bg-dark border border-surface-border p-5 rounded-xl flex items-start gap-4 hover:border-accent/50 transition-colors">
+                        <span class="material-symbols-outlined text-gray-500">calendar_month</span>
+                        <div>
+                            <h5 class="text-white font-bold text-sm">Temporalidad</h5>
+                            <p class="text-xs text-gray-500 mt-1">Mes y año de atención.</p>
+                        </div>
+                    </div>
+
+                    <div class="bg-dark border border-surface-border p-5 rounded-xl flex items-start gap-4 hover:border-accent/50 transition-colors">
+                        <span class="material-symbols-outlined text-gray-500">location_city</span>
+                        <div>
+                            <h5 class="text-white font-bold text-sm">Establecimiento</h5>
+                            <p class="text-xs text-gray-500 mt-1">Nombre y Altitud (msnm).</p>
+                        </div>
+                    </div>
+
+                    <div class="bg-dark border border-surface-border p-5 rounded-xl flex items-start gap-4 hover:border-accent/50 transition-colors">
+                        <span class="material-symbols-outlined text-gray-500">map</span>
+                        <div>
+                            <h5 class="text-white font-bold text-sm">Geolocalización</h5>
+                            <p class="text-xs text-gray-500 mt-1">Dpto, Provincia, Distrito.</p>
+                        </div>
+                    </div>
+
+                    <div class="bg-dark border border-surface-border p-5 rounded-xl flex items-start gap-4 hover:border-accent/50 transition-colors border-accent/20">
+                        <span class="material-symbols-outlined text-accent">bloodtype</span>
+                        <div>
+                            <h5 class="text-white font-bold text-sm">Hemoglobina</h5>
+                            <p class="text-xs text-gray-500 mt-1">Medición adaptada a altitud local.</p>
+                        </div>
+                    </div>
+
+                    <div class="bg-dark border border-surface-border p-5 rounded-xl flex items-start gap-4 hover:border-accent/50 transition-colors">
+                        <span class="material-symbols-outlined text-gray-500">medical_information</span>
+                        <div>
+                            <h5 class="text-white font-bold text-sm">Diagnóstico</h5>
+                            <p class="text-xs text-gray-500 mt-1">Antecedentes médicos relevantes.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. ARQUITECTURA TÉCNICA -->
+        <section id="analisis-tecnico" class="py-24 border-t border-surface-border bg-panel relative overflow-hidden">
+            <!-- Ambient light -->
+            <div class="absolute top-0 right-0 w-[500px] h-[500px] bg-accent/5 blur-[100px] rounded-full pointer-events-none"></div>
+
+            <div class="max-w-7xl mx-auto px-6 relative z-10">
+                <div class="mb-12">
+                    <h2 class="text-sm font-bold text-accent tracking-[0.2em] uppercase mb-4">Transparencia y Explicabilidad</h2>
+                    <h3 class="font-display text-3xl font-bold text-white mb-4">Herramientas de apoyo clínico justificadas</h3>
+                    <p class="text-gray-400 max-w-3xl">Nuestro objetivo es que cada resultado sea comprensible para el profesional de salud. La herramienta no toma decisiones, sino que visibiliza los factores de riesgo subyacentes de manera clara y auditable.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
+                    <div class="bg-dark border border-accent/40 rounded-xl p-8 shadow-[0_0_15px_rgba(0,229,160,0.1)] relative">
+                        <span class="material-symbols-outlined text-accent text-3xl mb-4">account_tree</span>
+                        <h4 class="font-bold text-white text-lg mb-2">Reconocimiento de Patrones Complejos</h4>
+                        <p class="text-sm text-gray-400 leading-relaxed">Sistemas que analizan grandes volúmenes de historias clínicas (HIS) para encontrar cómo la altitud y la antropometría influyen conjuntamente en el riesgo del paciente.</p>
+                    </div>
+
+                    <div class="bg-dark border border-surface-border rounded-xl p-8 transition-colors hover:border-accent/40">
+                        <span class="material-symbols-outlined text-gray-300 text-3xl mb-4">analytics</span>
+                        <h4 class="font-bold text-white text-lg mb-2">Validación Estadística Rigurosa</h4>
+                        <p class="text-sm text-gray-400 leading-relaxed">Todos los resultados se fundamentan en métodos estadísticos comprobados, asegurando que las inconsistencias comunes en los registros públicos no afecten la precisión final.</p>
+                    </div>
+
+                    <div class="bg-dark border border-surface-border rounded-xl p-8 transition-colors hover:border-accent/40">
+                        <span class="material-symbols-outlined text-gray-300 text-3xl mb-4">visibility</span>
+                        <h4 class="font-bold text-white text-lg mb-2">Apoyo a la Decisión Médica</h4>
+                        <p class="text-sm text-gray-400 leading-relaxed">El sistema siempre muestra qué factores contribuyeron más al riesgo calculado. Esto empodera al equipo médico para evaluar, confirmar o descartar el análisis según su criterio profesional.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 6. PÚBLICO OBJETIVO / CASOS DE USO -->
+        <section class="py-24 border-t border-surface-border bg-dark">
+            <div class="max-w-7xl mx-auto px-6">
+                <div class="text-center md:text-left mb-16">
+                    <h3 class="font-display text-3xl font-bold text-white mb-4">Adaptable a la realidad del ecosistema de Ayacucho</h3>
+                    <p class="text-gray-400 max-w-2xl">Diseñado para operar en distintos niveles de conectividad y gestión.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="glass p-8 rounded-2xl border-surface-border hover:border-gray-500 transition-colors">
+                        <span class="material-symbols-outlined text-white text-3xl mb-6">home_work</span>
+                        <h4 class="text-xl font-bold text-white mb-2">Centros de Salud MINSA</h4>
+                        <p class="text-sm text-gray-400 mb-6 leading-relaxed">Apoyamos labores preventivas incluso en zonas con baja conectividad, generando padrones priorizados para enfocar los recursos hacia niños que requieren tamizaje oportuno.</p>
+                    </div>
+
+                    <div class="glass p-8 rounded-2xl border-accent/40 bg-accent/5 hover:border-accent transition-colors relative">
+                        <span class="material-symbols-outlined text-accent text-3xl mb-6">public</span>
+                        <h4 class="text-xl font-bold text-white mb-2">Gestión DIRESA Ayacucho</h4>
+                        <p class="text-sm text-gray-400 mb-6 leading-relaxed">Visibilidad panorámica de las tendencias por provincia o distrito. Una herramienta extra para planificar intervenciones y presupuestos con base en la información territorial.</p>
+                    </div>
+
+                    <div class="glass p-8 rounded-2xl border-surface-border hover:border-gray-500 transition-colors">
+                        <span class="material-symbols-outlined text-white text-3xl mb-6">domain</span>
+                        <h4 class="text-xl font-bold text-white mb-2">Consultorios Privados</h4>
+                        <p class="text-sm text-gray-400 mb-6 leading-relaxed">Potenciando los programas de atención infantil, permitiendo advertir a las familias sobre posibles riesgos en la progresión nutricional del menor, facilitando consultas tempranas.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 7. CTA / CONTACTO -->
+        <section id="contacto" class="py-32 relative overflow-hidden bg-panel">
+            <div class="absolute inset-0 z-0">
+                <div class="absolute bottom-0 left-0 w-full h-[500px] bg-gradient-to-t from-accent/10 to-transparent pointer-events-none"></div>
+            </div>
+
+            <div class="max-w-4xl mx-auto px-6 relative z-10">
+                <div class="glass-panel border-accent/20 rounded-3xl p-8 md:p-14 shadow-2xl accent-glow flex flex-col md:flex-row gap-12 items-center">
+                    
+                    <div class="w-full md:w-1/2">
+                        <h2 class="font-display text-4xl font-bold text-white mb-4 leading-tight">Trabajemos juntos.</h2>
+                        <p class="text-gray-400 mb-6">Actualizamos continuamente nuestro análisis con base en registros hospitalarios de Ayacucho. Si representa a un establecimiento o red de salud, lo invitamos a evaluar el proyecto.</p>
+                        <ul class="space-y-3 mb-8">
+                            <li class="flex items-center gap-3 text-sm text-gray-300"><span class="material-symbols-outlined text-accent text-[18px]">verified</span> Privacidad e información anonimizada</li>
+                            <li class="flex items-center gap-3 text-sm text-gray-300"><span class="material-symbols-outlined text-accent text-[18px]">verified</span> Sistema enfocado en geografía andina</li>
+                            <li class="flex items-center gap-3 text-sm text-gray-300"><span class="material-symbols-outlined text-accent text-[18px]">verified</span> Complemento al trabajo médico profesional</li>
+                        </ul>
+                    </div>
+
+                    <div class="w-full md:w-1/2 bg-dark rounded-2xl p-6 border border-surface-border relative">
+                        <form onsubmit="event.preventDefault();" class="flex flex-col gap-4 relative z-10">
+                            <div>
+                                <label class="block text-xs font-bold text-gray-400 uppercase tracking-wide mb-1.5 ml-1">Nombre Completo</label>
+                                <input type="text" placeholder="Dr. / Lic." class="w-full bg-panel border-surface-border border rounded-lg px-4 py-3 text-sm text-white focus:outline-none focus:border-accent transition-colors" required>
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold text-gray-400 uppercase tracking-wide mb-1.5 ml-1">Institución / Clínica</label>
+                                <input type="text" placeholder="Ej. Red de Huamanga..." class="w-full bg-panel border-surface-border border rounded-lg px-4 py-3 text-sm text-white focus:outline-none focus:border-accent transition-colors" required>
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold text-gray-400 uppercase tracking-wide mb-1.5 ml-1">Email</label>
+                                <input type="email" placeholder="correo@institucion.pe" class="w-full bg-panel border-surface-border border rounded-lg px-4 py-3 text-sm text-white focus:outline-none focus:border-accent transition-colors" required>
+                            </div>
+                            <button class="w-full bg-accent text-dark font-bold text-sm py-4 rounded-lg hover:bg-accent-hover transition-colors shadow-lg mt-2">
+                                Enviar mensaje
+                            </button>
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- 8. FOOTER -->
+    <footer class="border-t border-surface-border bg-dark py-12 pb-24 md:pb-12 text-sm text-gray-500">
+        <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-8">
+            <div class="col-span-1 md:col-span-2">
+                <div class="flex items-center gap-2 mb-6 cursor-pointer group w-fit">
+                    <svg class="h-8 md:h-10 w-auto opacity-90 group-hover:opacity-100 transition-opacity" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M 50 5 A 45 45 0 0 0 50 95 A 55 55 0 0 1 50 5 Z" fill="white" opacity="0.9"/>
+                        <circle cx="55" cy="50" r="28" fill="url(#globeGradFoot)"/>
+                        <g opacity="0.8">
+                            <path d="M40 48 L48 35 L62 40 L68 53 L55 65 Z" stroke="white" stroke-width="0.5" fill="none"/>
+                            <path d="M48 35 L55 52 L62 40 M55 52 L68 53 M55 52 L55 65 M40 48 L55 52" stroke="white" stroke-width="0.5" fill="none"/>
+                            <circle cx="40" cy="48" r="1.5" fill="white"/>
+                            <circle cx="48" cy="35" r="1.5" fill="white"/>
+                            <circle cx="62" cy="40" r="1.5" fill="white"/>
+                            <circle cx="68" cy="53" r="1.5" fill="white"/>
+                            <circle cx="55" cy="65" r="1.5" fill="white"/>
+                            <circle cx="55" cy="52" r="2" fill="white"/>
+                        </g>
+                        <path d="M 12 58 A 46 14 -20 0 0 98 42" stroke="white" stroke-width="1.5" fill="none" stroke-linecap="round" opacity="0.2"/>
+                        <path d="M 12 58 A 46 14 -20 0 1 98 42" stroke="white" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+                        <defs>
+                            <radialGradient id="globeGradFoot" cx="35%" cy="30%" r="65%">
+                                <stop offset="0%" stop-color="#3b82f6"/>
+                                <stop offset="50%" stop-color="#2563eb"/>
+                                <stop offset="100%" stop-color="#1e3a8a"/>
+                            </radialGradient>
+                        </defs>
+                    </svg>
+                    <div class="text-xl md:text-2xl font-display tracking-tight flex items-center text-white">
+                        <span class="font-normal">Liryal</span><span class="font-bold ml-1 text-accent">AI</span>
+                    </div>
+                </div>
+                <p class="max-w-xs text-gray-400 leading-relaxed">
+                    Precisión predictiva adaptada al contexto peruano de alta altitud. Optimizando la salud integral con datos reales de Ayacucho.
+                </p>
+            </div>
+            <div>
+                <h5 class="font-bold text-white mb-4">Proyecto</h5>
+                <ul class="space-y-2">
+                    <li><a href="#datos" class="hover:text-accent transition-colors">Estructura Dataset</a></li>
+                    <li><a href="#analisis-tecnico" class="hover:text-accent transition-colors">Evaluación de Modelos</a></li>
+                    <li><a href="#" class="hover:text-accent transition-colors">Ética de Datos</a></li>
+                </ul>
+            </div>
+            <div>
+                <h5 class="font-bold text-white mb-4">Institucional</h5>
+                <ul class="space-y-2">
+                    <li><a href="#contacto" class="hover:text-accent transition-colors">Solicitar Piloto</a></li>
+                    <li><a href="#" class="hover:text-accent transition-colors">Investigación</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="max-w-7xl mx-auto px-6 mt-12 pt-8 border-t border-surface-border flex flex-col md:flex-row justify-between gap-4">
+            <p>© 2026 Liryal AI - Proyecto Ayacucho.</p>
+            <div class="flex gap-4">
+                <span class="text-gray-600">Confidencialidad Minsa / Ley 29733</span>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
