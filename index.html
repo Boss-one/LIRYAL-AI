@@ -278,7 +278,7 @@
                     </p>
 
                     <p class="text-sm text-muted mb-8">
-                        Hoy estamos en plena validación retrospectiva sobre +100,000 registros clínicos. Buscamos los
+                        Hoy estamos en plena validación retrospectiva sobre +300,000 registros clínicos. Buscamos los
                         primeros 5 hospitales y laboratorios para la fase beta.
                     </p>
 
@@ -294,47 +294,86 @@
                     </div>
                 </div>
 
-                <!-- Panel de datos clínico -->
-                <div class="bg-surface border border-border rounded-lg p-5 sm:p-6 space-y-5">
+                <!-- Panel: Modelo de predicción de riesgo -->
+                <div class="bg-surface border border-border rounded-lg p-5 sm:p-6 space-y-4">
+
+                    <!-- Header -->
                     <div class="text-xs font-bold text-muted uppercase tracking-widest rule-accent">
-                        Vista previa — Reporte de triaje
+                        Reporte de predicción de riesgo
                     </div>
 
-                    <div class="space-y-2">
-                        <div class="flex justify-between text-sm gap-3">
-                            <span class="text-muted shrink-0">Paciente</span>
-                            <span class="font-medium text-navy text-right">Masculino, 3 años · C.S. Carmen Alto</span>
-                        </div>
-                        <div class="flex justify-between text-sm">
-                            <span class="text-muted">Altitud</span>
-                            <span class="font-medium text-navy">2,761 m.s.n.m.</span>
-                        </div>
-                        <div class="flex justify-between text-sm">
-                            <span class="text-muted">Hb registrada</span>
-                            <span class="font-medium text-navy">12.1 g/dL</span>
-                        </div>
-                        <div class="flex justify-between text-sm border-t border-border pt-3 mt-1">
-                            <span class="text-muted">Hb corregida (altitud)</span>
-                            <span class="font-semibold text-navy">10.8 g/dL</span>
+                    <!-- Datos del paciente -->
+                    <div class="flex justify-between text-xs text-muted border-b border-border pb-3">
+                        <span>Masculino · 36 meses · C.S. Carmen Alto, Huamanga</span>
+                        <span class="font-medium text-navy">2,761 m.s.n.m.</span>
+                    </div>
+
+                    <!-- Variables de entrada -->
+                    <div>
+                        <p class="text-[10px] font-bold text-muted uppercase tracking-widest mb-2">Variables de entrada (8 features)</p>
+                        <div class="flex flex-wrap gap-1.5">
+                            <!-- Teal: variables continuas antr. -->
+                            <span class="text-[10px] font-medium px-2 py-1 rounded border" style="background:#E6FFFA;border-color:#81E6D9;color:#234E52">Z-score talla/edad: −1.8</span>
+                            <span class="text-[10px] font-medium px-2 py-1 rounded border" style="background:#E6FFFA;border-color:#81E6D9;color:#234E52">Z-score peso/edad: −2.1</span>
+                            <span class="text-[10px] font-medium px-2 py-1 rounded border" style="background:#E6FFFA;border-color:#81E6D9;color:#234E52">Z-score IMC/edad: −1.2</span>
+                            <span class="text-[10px] font-medium px-2 py-1 rounded border" style="background:#E6FFFA;border-color:#81E6D9;color:#234E52">Edad: 36 meses</span>
+                            <!-- Verde: variables binarias -->
+                            <span class="text-[10px] font-medium px-2 py-1 rounded border" style="background:#F0FFF4;border-color:#9AE6B4;color:#1C4532">Sexo: Masculino</span>
+                            <!-- Gris: variables categóricas -->
+                            <span class="text-[10px] font-medium px-2 py-1 rounded border" style="background:#F7FAFC;border-color:#CBD5E0;color:#4A5568">Distrito: Huamanga</span>
+                            <span class="text-[10px] font-medium px-2 py-1 rounded border" style="background:#F7FAFC;border-color:#CBD5E0;color:#4A5568">Estab.: C.S. Carmen Alto</span>
+                            <!-- Amarillo: estacionalidad -->
+                            <span class="text-[10px] font-medium px-2 py-1 rounded border" style="background:#FFFFF0;border-color:#F6E05E;color:#744210">Estacionalidad: Q1</span>
                         </div>
                     </div>
 
-                    <div class="bg-orange-50 border border-orange-200 rounded p-4 flex items-start gap-3">
-                        <svg class="mt-0.5 shrink-0" width="17" height="17" viewBox="0 0 18 18" fill="none">
-                            <path d="M9 2L1.5 15.5h15L9 2z" stroke="#EA580C" stroke-width="1.5"
-                                stroke-linejoin="round" />
-                            <path d="M9 7v4M9 12.5v.5" stroke="#EA580C" stroke-width="1.5" stroke-linecap="round" />
+                    <!-- Correción Hb -->
+                    <div class="flex gap-4 text-xs border-t border-border pt-3">
+                        <div>
+                            <p class="text-muted mb-0.5">Hb registrada</p>
+                            <p class="font-semibold text-navy">12.1 g/dL</p>
+                        </div>
+                        <div class="text-muted self-end mb-0.5">→</div>
+                        <div>
+                            <p class="text-muted mb-0.5">Hb corregida (2,761 m.s.n.m.)</p>
+                            <p class="font-bold text-ink">10.8 g/dL</p>
+                        </div>
+                    </div>
+
+                    <!-- Barra de riesgo visual -->
+                    <div>
+                        <p class="text-[10px] font-bold text-muted uppercase tracking-widest mb-2">Predicción de riesgo — Score: 0.81</p>
+                        <!-- Barra tricolor -->
+                        <div class="relative h-3 rounded-full overflow-hidden flex">
+                            <div class="h-full" style="width:35%;background:#68D391"></div>
+                            <div class="h-full" style="width:30%;background:#F6AD55"></div>
+                            <div class="h-full" style="width:35%;background:#FC8181"></div>
+                        </div>
+                        <!-- Marker en 81% -->
+                        <div class="relative h-2" style="margin-top:-8px">
+                            <div class="absolute w-3 h-3 bg-white border-2 border-orange-500 rounded-full shadow" style="left:calc(81% - 6px);top:0"></div>
+                        </div>
+                        <!-- Etiquetas -->
+                        <div class="flex justify-between text-[9px] text-muted mt-2 font-medium">
+                            <span class="text-green-600">BAJO &lt;0.35</span>
+                            <span class="text-orange-500">MODERADO 0.35–0.65</span>
+                            <span class="text-red-500">ALTO &gt;0.65</span>
+                        </div>
+                    </div>
+
+                    <!-- Alert resultado -->
+                    <div class="bg-orange-50 border border-orange-200 rounded p-3 flex items-start gap-2.5">
+                        <svg class="mt-0.5 shrink-0" width="15" height="15" viewBox="0 0 18 18" fill="none">
+                            <path d="M9 2L1.5 15.5h15L9 2z" stroke="#EA580C" stroke-width="1.5" stroke-linejoin="round"/>
+                            <path d="M9 7v4M9 12.5v.5" stroke="#EA580C" stroke-width="1.5" stroke-linecap="round"/>
                         </svg>
                         <div>
-                            <p class="text-sm font-bold text-orange-700">Riesgo MODERADO-ALTO · Score: 0.81</p>
-                            <p class="text-xs text-orange-600 mt-0.5">Sin corrección, este caso habría sido clasificado
-                                como normal por los umbrales OMS.</p>
+                            <p class="text-xs font-bold text-orange-700">ALTO riesgo de anemia · Score: 0.81</p>
+                            <p class="text-[11px] text-orange-600 mt-0.5">Sin corrección altimétrica, este caso habría salido como <em>normal</em> por los umbrales OMS.</p>
                         </div>
                     </div>
 
-                    <p class="text-[11px] text-muted italic leading-snug">
-                        * Caso representativo del dataset de validación. No corresponde a paciente real identificable.
-                    </p>
+                    <p class="text-[10px] text-muted italic">* Caso representativo. No corresponde a paciente real identificable.</p>
                 </div>
             </div>
         </section>
