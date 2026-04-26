@@ -1,22 +1,37 @@
 <!DOCTYPE html>
 <html lang="es" class="scroll-smooth">
-
 <head>
+    <!-- SEO & GEO -->
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Liryal AI — Diagnóstico clínico para los Andes</title>
-    <meta name="description"
-        content="Modelos de IA entrenados con +300,000 registros reales de Ayacucho. En validación activa con DIRESA. Detectamos TB y anemia con calibración andina.">
-    <meta name="keywords"
-        content="IA médica Perú, detección tuberculosis IA, anemia altitud andina, DIRESA Ayacucho, healthtech perú, Liryal AI">
+    <title>Liryal AI — Sistema de Gestión Clínica SaaS impulsado por IA</title>
+    <meta name="description" content="Liryal AI es una startup peruana de HealthTech SaaS. Proveemos sistemas de gestión para laboratorios y clínicas impulsados por nuestra IA: Liryal Vision (Radiología), Andean Models (Anemia) y Liryal Scope (Microscopía).">
+    <meta name="keywords" content="SaaS salud, IA clínica, LIS, HIS, radiología IA, predictor anemia, Liryal Scope, Ayacucho, DIRESA">
     <meta name="author" content="Liryal AI">
+
+    <link rel="canonical" href="https://boss-one.github.io/LIRYAL-AI/">
+
+    <!-- Schema.org Organization -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Liryal AI",
+      "url": "https://boss-one.github.io/LIRYAL-AI/",
+      "description": "Startup HealthTech B2B SaaS. Sistemas de gestión de clínicas y laboratorios impulsados por inteligencia artificial propietaria validada con datos andinos reales.",
+      "founder": {
+        "@type": "Person",
+        "name": "Royer De La Cruz"
+      },
+      "foundingLocation": "Ayacucho, Perú",
+      "areaServed": "LATAM"
+    }
+    </script>
 
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=DM+Serif+Display:ital@0;1&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
     <script>
         tailwind.config = {
@@ -24,16 +39,26 @@
                 extend: {
                     fontFamily: {
                         sans: ['"Inter"', 'system-ui', 'sans-serif'],
-                        serif: ['"DM Serif Display"', 'Georgia', 'serif'],
+                        heading: ['"Outfit"', 'system-ui', 'sans-serif'],
                     },
                     colors: {
-                        navy: '#0F2744',
-                        ink: '#1D3557',
-                        muted: '#64748B',
-                        border: '#E2E8F0',
-                        surface: '#F8FAFC',
-                        blue: '#2563EB',
-                        teal: '#0D9488',
+                        brand: {
+                            900: '#0A192F', // Deep Navy
+                            800: '#112240', // Navy Light
+                            700: '#233554', // Slate Navy
+                            DEFAULT: '#2563EB', // Vibrant Blue
+                            400: '#60A5FA', // Light Blue
+                            accent: '#14B8A6', // Teal
+                        }
+                    },
+                    animation: {
+                        'fade-in-up': 'fadeInUp 0.8s ease-out forwards',
+                    },
+                    keyframes: {
+                        fadeInUp: {
+                            '0%': { opacity: '0', transform: 'translateY(20px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        }
                     }
                 }
             }
@@ -41,92 +66,32 @@
     </script>
 
     <style>
-        .rule-accent::before {
-            content: '';
-            display: inline-block;
-            width: 24px;
-            height: 2px;
-            background: #2563EB;
-            vertical-align: middle;
-            margin-right: 10px;
+        body { background-color: #F8FAFC; }
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-bottom: 1px solid rgba(226, 232, 240, 0.6);
         }
-
-        .big-number {
-            font-family: 'DM Serif Display', Georgia, serif;
-            font-size: 5rem;
-            line-height: 1;
-            color: #E2E8F0;
-            position: absolute;
-            top: -12px;
-            left: -4px;
-            z-index: 0;
-            user-select: none;
+        .gradient-text {
+            background: linear-gradient(135deg, #2563EB 0%, #14B8A6 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
-
-        @media (max-width: 640px) {
-            .big-number {
-                font-size: 3.5rem;
-                top: -8px;
-                left: -2px;
-            }
-        }
-
-        .underline-hand {
-            position: relative;
-            display: inline;
-        }
-
-        .underline-hand::after {
-            content: '';
-            position: absolute;
-            bottom: 1px;
-            left: 0;
-            width: 100%;
-            height: 3px;
-            background: #0D9488;
-            border-radius: 2px;
-        }
-
-        .inst-tag {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            background: #EFF6FF;
-            border: 1px solid #BFDBFE;
-            color: #1E40AF;
-            font-size: 12px;
-            font-weight: 600;
-            padding: 5px 12px;
-            border-radius: 4px;
-        }
-
-        /* Mobile menu */
-        #mobile-menu {
-            display: none;
-        }
-
-        #mobile-menu.open {
-            display: block;
-        }
-
-        /* Smooth focus for inputs on mobile */
-        input,
-        select,
-        textarea {
-            font-size: 16px !important;
+        .bg-pattern {
+            background-image: radial-gradient(#CBD5E1 1px, transparent 1px);
+            background-size: 24px 24px;
         }
     </style>
 </head>
 
-<body class="bg-white text-ink antialiased">
-
+<body id="inicio" class="text-slate-800 antialiased selection:bg-brand-400 selection:text-white font-sans">
+    
     <!-- NAVBAR -->
-    <header class="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur border-b border-border">
-        <div class="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
-
-            <!-- Logo -->
-            <a href="#" class="flex items-center shrink-0 gap-2.5">
-                <svg width="46" height="46" viewBox="0 0 110 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <header class="fixed top-0 left-0 right-0 z-50 glass-nav transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <a href="#inicio" class="flex items-center gap-3 group">
+                <svg width="46" height="46" viewBox="0 0 110 100" fill="none" xmlns="http://www.w3.org/2000/svg" class="group-hover:scale-105 transition-transform">
                     <defs>
                         <radialGradient id="lg" cx="36%" cy="30%" r="68%">
                             <stop offset="0%" stop-color="#93C5FD" />
@@ -138,7 +103,7 @@
                             <circle cx="61" cy="50" r="35" fill="black" />
                         </mask>
                     </defs>
-                    <circle cx="44" cy="50" r="44" fill="#1A365D" mask="url(#cm)" />
+                    <circle cx="44" cy="50" r="44" fill="#0A192F" mask="url(#cm)" />
                     <circle cx="68" cy="50" r="29" fill="url(#lg)" />
                     <g stroke="white" stroke-width="0.75" opacity="0.85">
                         <polyline points="55,36 69,28 84,36 88,52 80,67 63,71 52,61" />
@@ -185,54 +150,37 @@
                         <circle cx="71" cy="70" r="1.5" />
                         <circle cx="57" cy="67" r="1.5" />
                     </g>
-                    <ellipse cx="67" cy="50" rx="38" ry="11" transform="rotate(-22 67 50)" stroke="#1A365D"
-                        stroke-width="2.2" fill="none" opacity="0.3" />
-                    <ellipse cx="67" cy="50" rx="38" ry="11" transform="rotate(-22 67 50)" stroke="#1A365D"
-                        stroke-width="2.2" fill="none" stroke-dasharray="62 58" />
+                    <ellipse cx="67" cy="50" rx="38" ry="11" transform="rotate(-22 67 50)" stroke="#0A192F" stroke-width="2.2" fill="none" opacity="0.3" />
+                    <ellipse cx="67" cy="50" rx="38" ry="11" transform="rotate(-22 67 50)" stroke="#0A192F" stroke-width="2.2" fill="none" stroke-dasharray="62 58" />
                 </svg>
-                <span class="text-xl font-bold tracking-tight leading-none select-none">
-                    <span class="text-navy">Liryal</span><span class="text-blue"> AI</span>
-                </span>
+                <span class="font-heading font-extrabold text-2xl tracking-tight text-brand-900">Liryal <span class="text-brand">AI</span></span>
             </a>
-
-            <!-- Desktop nav -->
-            <nav class="hidden md:flex items-center gap-6 text-sm font-medium text-muted">
-                <a href="#problema" class="hover:text-navy transition-colors">El Problema</a>
-                <a href="#modelos" class="hover:text-navy transition-colors">Modelos</a>
-                <a href="#validacion" class="hover:text-navy transition-colors">Validación</a>
-                <a href="#contacto" class="hover:text-navy transition-colors">Contacto</a>
+            <nav class="hidden md:flex items-center gap-8 font-medium text-sm text-slate-600">
+                <a href="#inicio" class="hover:text-brand transition-colors">SaaS Clínico</a>
+                <a href="#ia" class="hover:text-brand transition-colors">Módulos de IA</a>
+                <a href="#traccion" class="hover:text-brand transition-colors">Validación</a>
             </nav>
-
-            <!-- Desktop CTA -->
-            <a href="#contacto"
-                class="hidden md:block bg-blue text-white text-sm font-semibold px-5 py-2.5 rounded hover:bg-blue-700 transition-colors">
-                Postular al Piloto →
+            <a href="#contacto" class="hidden md:inline-flex items-center justify-center px-6 py-2.5 text-sm font-bold rounded-full text-white bg-brand hover:bg-blue-700 shadow-md transition-all">
+                Postular al Piloto
             </a>
 
             <!-- Mobile hamburger -->
             <button id="hamburger" aria-label="Menú" class="md:hidden flex flex-col gap-1.5 p-2 rounded">
-                <span class="w-6 h-0.5 bg-navy block transition-all" id="hb1"></span>
-                <span class="w-6 h-0.5 bg-navy block transition-all" id="hb2"></span>
-                <span class="w-6 h-0.5 bg-navy block transition-all" id="hb3"></span>
+                <span class="w-6 h-0.5 bg-brand-900 block transition-all" id="hb1"></span>
+                <span class="w-6 h-0.5 bg-brand-900 block transition-all" id="hb2"></span>
+                <span class="w-6 h-0.5 bg-brand-900 block transition-all" id="hb3"></span>
             </button>
         </div>
-
+        
         <!-- Mobile menu dropdown -->
-        <div id="mobile-menu" class="md:hidden bg-white border-t border-border">
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-slate-200 absolute w-full left-0 top-full shadow-lg">
             <nav class="flex flex-col px-4 py-3 gap-1">
-                <a href="#problema" onclick="closeMobileMenu()"
-                    class="py-3 text-sm font-medium text-ink border-b border-border hover:text-blue transition-colors">El
-                    Problema</a>
-                <a href="#modelos" onclick="closeMobileMenu()"
-                    class="py-3 text-sm font-medium text-ink border-b border-border hover:text-blue transition-colors">Nuestros
-                    Modelos</a>
-                <a href="#validacion" onclick="closeMobileMenu()"
-                    class="py-3 text-sm font-medium text-ink border-b border-border hover:text-blue transition-colors">Validación</a>
-                <a href="#contacto" onclick="closeMobileMenu()"
-                    class="py-3 text-sm font-medium text-ink border-b border-border hover:text-blue transition-colors">Contacto</a>
-                <a href="#contacto" onclick="closeMobileMenu()"
-                    class="mt-3 mb-1 bg-blue text-white font-semibold py-3 rounded text-center text-sm hover:bg-blue-700 transition-colors">
-                    Postular al Piloto →
+                <a href="#inicio" onclick="closeMobileMenu()" class="py-3 text-sm font-medium text-slate-800 border-b border-slate-100 hover:text-brand transition-colors">SaaS Clínico</a>
+                <a href="#ia" onclick="closeMobileMenu()" class="py-3 text-sm font-medium text-slate-800 border-b border-slate-100 hover:text-brand transition-colors">Módulos de IA</a>
+                <a href="#traccion" onclick="closeMobileMenu()" class="py-3 text-sm font-medium text-slate-800 border-b border-slate-100 hover:text-brand transition-colors">Validación</a>
+                <a href="#contacto" onclick="closeMobileMenu()" class="py-3 text-sm font-medium text-slate-800 border-b border-slate-100 hover:text-brand transition-colors">Contacto</a>
+                <a href="#contacto" onclick="closeMobileMenu()" class="mt-4 mb-2 bg-brand text-white font-bold py-3 rounded-xl text-center text-sm shadow-md">
+                    Postular al Piloto &rarr;
                 </a>
             </nav>
         </div>
@@ -242,463 +190,386 @@
         const hamburger = document.getElementById('hamburger');
         const mobileMenu = document.getElementById('mobile-menu');
         hamburger.addEventListener('click', () => {
-            mobileMenu.classList.toggle('open');
+            mobileMenu.classList.toggle('hidden');
         });
         function closeMobileMenu() {
-            mobileMenu.classList.remove('open');
+            mobileMenu.classList.add('hidden');
         }
     </script>
 
-    <!-- ═══ HERO ═══ -->
-    <main>
-        <section class="pt-24 pb-12 px-4 sm:pt-28 sm:pb-16 md:pt-36 md:pb-24 max-w-6xl mx-auto">
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+    <!-- HERO SECTION -->
+    <section class="relative pt-28 pb-12 lg:pt-36 lg:pb-20 overflow-hidden bg-white">
+        <div class="absolute inset-0 bg-pattern opacity-40"></div>
+        <div class="absolute top-0 right-0 -translate-y-12 translate-x-1/3 w-[600px] h-[600px] bg-blue-50 rounded-full blur-3xl opacity-60 pointer-events-none"></div>
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center max-w-4xl mx-auto opacity-0 animate-fade-in-up">
+                
+                <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-slate-100 border border-slate-200 text-brand-900 font-semibold text-xs sm:text-sm mb-8 shadow-sm">
+                    <span class="relative flex h-2.5 w-2.5">
+                      <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand opacity-75"></span>
+                      <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-brand"></span>
+                    </span>
+                    B2B HealthTech SaaS · Validado con DIRESA Ayacucho
+                </div>
+                
+                <h1 class="font-heading text-4xl sm:text-5xl lg:text-7xl font-extrabold tracking-tight text-brand-900 mb-6 leading-tight">
+                    El Sistema de Gestión Clínica <br/>
+                    <span class="gradient-text">Impulsado por IA Nativa</span>
+                </h1>
+                
+                <p class="text-lg sm:text-xl text-slate-600 mb-10 leading-relaxed max-w-3xl mx-auto font-medium">
+                    Software como Servicio (SaaS) integral para laboratorios y clínicas en LATAM. Integramos historiales, flujos de trabajo y <strong class="text-brand-900 font-bold">motores de IA propietarios</strong> para radiología, pediatría y microscopía.
+                </p>
+                
+                <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                    <a href="#ia" class="w-full sm:w-auto px-8 py-4 text-base font-bold rounded-full text-white bg-brand-900 hover:bg-brand shadow-lg transition-all">
+                        Ver Módulos de IA
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
 
-                <!-- Texto -->
-                <div>
-                    <div class="inst-tag mb-6">
-                        <svg width="13" height="13" viewBox="0 0 14 14" fill="none">
-                            <circle cx="7" cy="7" r="7" fill="#2563EB" />
-                            <path d="M4 7l2 2 4-4" stroke="white" stroke-width="1.5" stroke-linecap="round"
-                                stroke-linejoin="round" />
-                        </svg>
-                        Validación activa con DIRESA Ayacucho
+    <!-- MAIN MODULES (ALREADY VALIDATED) -->
+    <section id="ia" class="py-16 bg-slate-50 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-blue-100 text-brand text-xs font-bold uppercase tracking-wider mb-4 border border-blue-200">
+                    Productos Validados
+                </div>
+                <h3 class="font-heading text-3xl sm:text-4xl font-extrabold text-brand-900 mb-6">Módulos Clínicos Actuales</h3>
+                <p class="text-slate-600 text-lg font-medium">Algoritmos de visión computarizada y machine learning entrenados con datos reales, listos para integrarse en flujos de trabajo médicos.</p>
+            </div>
+
+            <div class="grid grid-cols-1 gap-12 lg:gap-16">
+                <!-- Liryal Vision -->
+                <div class="bg-white rounded-3xl p-8 sm:p-10 border border-slate-200 shadow-sm hover:shadow-xl transition-shadow grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
+                    <div class="order-2 lg:order-1 rounded-xl overflow-hidden shadow-lg border border-slate-200 bg-slate-900 flex items-center justify-center group relative">
+                        <!-- El usuario debe guardar la imagen como liryal_vision_tuberculosis.jpeg -->
+                        <img src="liryal_vision_tuberculosis.jpeg" alt="Detección de Tuberculosis en Radiografía por Liryal Vision" class="w-full h-auto object-cover transition-transform duration-500 group-hover:scale-[1.02] opacity-90 group-hover:opacity-100 mix-blend-screen">
                     </div>
-
-                    <h1
-                        class="font-serif text-3xl sm:text-4xl md:text-5xl xl:text-[3.2rem] text-navy leading-[1.15] mb-5">
-                        Diagnóstico clínico de TB y anemia,
-                        <span class="underline-hand">calibrado para los Andes.</span>
-                    </h1>
-
-                    <p class="text-base sm:text-lg text-muted leading-relaxed mb-4">
-                        Los modelos de la OMS fueron diseñados a nivel del mar. Los fluoroscopistas leen 300 frotis al
-                        día sin asistencia. <strong class="text-ink">Construimos Liryal AI para resolver exactamente
-                            eso</strong>, con datos reales de Ayacucho.
-                    </p>
-
-                    <p class="text-sm text-muted mb-8">
-                        Hoy estamos en plena validación retrospectiva sobre +300,000 registros clínicos. Buscamos los
-                        primeros 5 hospitales y laboratorios para la fase beta.
-                    </p>
-
-                    <div class="flex flex-col sm:flex-row gap-3">
-                        <a href="#contacto"
-                            class="bg-navy text-white font-semibold px-6 py-3.5 rounded text-center hover:bg-ink transition-colors text-sm sm:text-base">
-                            Postular al Piloto Clínico
-                        </a>
-                        <a href="#modelos"
-                            class="border border-border text-ink font-medium px-6 py-3.5 rounded text-center hover:border-blue hover:text-blue transition-colors text-sm sm:text-base">
-                            Ver los modelos
-                        </a>
+                    <div class="order-1 lg:order-2">
+                        <div class="w-16 h-16 bg-blue-100 rounded-2xl flex items-center justify-center mb-6">
+                            <svg class="w-8 h-8 text-brand" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                        </div>
+                        <h4 class="font-heading text-2xl sm:text-3xl font-bold text-brand-900 mb-2">Liryal Vision</h4>
+                        <p class="text-brand font-semibold mb-4">Módulo de Radiología Asistida</p>
+                        <p class="text-slate-600 text-lg leading-relaxed mb-4">
+                            Analiza radiografías en milisegundos para detectar automáticamente patrones patológicos con alta precisión, incluyendo <strong>tumores pulmonares</strong> y <strong>tuberculosis</strong>. 
+                        </p>
+                        <ul class="space-y-2 text-slate-600 font-medium">
+                            <li class="flex items-center gap-2">
+                                <svg class="w-5 h-5 text-brand shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                                Reduce drásticamente la fatiga visual del radiólogo.
+                            </li>
+                            <li class="flex items-center gap-2">
+                                <svg class="w-5 h-5 text-brand shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                                Minimiza los falsos negativos en el triaje inicial.
+                            </li>
+                        </ul>
                     </div>
                 </div>
 
-                <!-- Panel: Modelo de predicción de riesgo -->
-                <div class="bg-surface border border-border rounded-lg p-5 sm:p-6 space-y-4">
-
-                    <!-- Header -->
-                    <div class="text-xs font-bold text-muted uppercase tracking-widest rule-accent">
-                        Reporte de predicción de riesgo
-                    </div>
-
-                    <!-- Datos del paciente -->
-                    <div class="flex justify-between text-xs text-muted border-b border-border pb-3">
-                        <span>Masculino · 36 meses · C.S. Carmen Alto, Huamanga</span>
-                        <span class="font-medium text-navy">2,761 m.s.n.m.</span>
-                    </div>
-
-                    <!-- Variables de entrada -->
+                <!-- Andean Models -->
+                <div class="bg-white rounded-3xl p-8 sm:p-10 border border-slate-200 shadow-sm hover:shadow-xl transition-shadow grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
                     <div>
-                        <p class="text-[10px] font-bold text-muted uppercase tracking-widest mb-2">Variables de entrada (8 features)</p>
-                        <div class="flex flex-wrap gap-1.5">
-                            <!-- Teal: variables continuas antr. -->
-                            <span class="text-[10px] font-medium px-2 py-1 rounded border" style="background:#E6FFFA;border-color:#81E6D9;color:#234E52">Z-score talla/edad: −1.8</span>
-                            <span class="text-[10px] font-medium px-2 py-1 rounded border" style="background:#E6FFFA;border-color:#81E6D9;color:#234E52">Z-score peso/edad: −2.1</span>
-                            <span class="text-[10px] font-medium px-2 py-1 rounded border" style="background:#E6FFFA;border-color:#81E6D9;color:#234E52">Z-score IMC/edad: −1.2</span>
-                            <span class="text-[10px] font-medium px-2 py-1 rounded border" style="background:#E6FFFA;border-color:#81E6D9;color:#234E52">Edad: 36 meses</span>
-                            <!-- Verde: variables binarias -->
-                            <span class="text-[10px] font-medium px-2 py-1 rounded border" style="background:#F0FFF4;border-color:#9AE6B4;color:#1C4532">Sexo: Masculino</span>
-                            <!-- Gris: variables categóricas -->
-                            <span class="text-[10px] font-medium px-2 py-1 rounded border" style="background:#F7FAFC;border-color:#CBD5E0;color:#4A5568">Distrito: Huamanga</span>
-                            <span class="text-[10px] font-medium px-2 py-1 rounded border" style="background:#F7FAFC;border-color:#CBD5E0;color:#4A5568">Estab.: C.S. Carmen Alto</span>
-                            <!-- Amarillo: estacionalidad -->
-                            <span class="text-[10px] font-medium px-2 py-1 rounded border" style="background:#FFFFF0;border-color:#F6E05E;color:#744210">Estacionalidad: Q1</span>
+                        <div class="w-16 h-16 bg-teal-100 rounded-2xl flex items-center justify-center mb-6">
+                            <svg class="w-8 h-8 text-brand-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path></svg>
                         </div>
+                        <h4 class="font-heading text-2xl sm:text-3xl font-bold text-brand-900 mb-2">Andean Models</h4>
+                        <p class="text-brand-accent font-semibold mb-4">Predictor de Anemia Infantil sin Tamizaje</p>
+                        <p class="text-slate-600 text-lg leading-relaxed mb-6">
+                            Predicción de riesgo de anemia en pediatría (6 meses a 11 años) utilizando <strong>corrección altimétrica en tiempo real</strong>. Supera los sesgos de los umbrales estándar de la OMS en altitudes mayores a 2,000 m.s.n.m. sin requerir pruebas invasivas de tamizaje constante.
+                        </p>
                     </div>
-
-                    <!-- Correción Hb -->
-                    <div class="flex gap-4 text-xs border-t border-border pt-3">
-                        <div>
-                            <p class="text-muted mb-0.5">Hb registrada</p>
-                            <p class="font-semibold text-navy">12.1 g/dL</p>
+                    <div class="rounded-xl overflow-hidden shadow-sm border border-slate-200 bg-white p-6 sm:p-8 group relative hover:shadow-md transition-shadow">
+                        <!-- Dashboard UI Recreated in Tailwind -->
+                        <div class="flex items-center gap-3 mb-6">
+                            <div class="w-8 h-0.5 bg-blue-600 rounded-full"></div>
+                            <h5 class="font-bold text-[#627a94] tracking-wider text-sm uppercase">Reporte de Predicción de Riesgo</h5>
                         </div>
-                        <div class="text-muted self-end mb-0.5">→</div>
-                        <div>
-                            <p class="text-muted mb-0.5">Hb corregida (2,761 m.s.n.m.)</p>
-                            <p class="font-bold text-ink">10.8 g/dL</p>
+                        
+                        <div class="flex flex-col sm:flex-row sm:items-center justify-between text-[#7e8e9f] text-[15px] mb-6 pb-5 border-b border-slate-200/60">
+                            <p>Masculino · 36 meses · C.S. Carmen Alto, Huamanga</p>
+                            <p class="font-bold text-[#1e293b] mt-1 sm:mt-0">2,761 m.s.n.m.</p>
                         </div>
-                    </div>
 
-                    <!-- Barra de riesgo visual -->
-                    <div>
-                        <p class="text-[10px] font-bold text-muted uppercase tracking-widest mb-2">Predicción de riesgo — Score: 0.81</p>
-                        <!-- Barra tricolor -->
-                        <div class="relative h-3 rounded-full overflow-hidden flex">
-                            <div class="h-full" style="width:35%;background:#68D391"></div>
-                            <div class="h-full" style="width:30%;background:#F6AD55"></div>
-                            <div class="h-full" style="width:35%;background:#FC8181"></div>
+                        <div class="mb-8">
+                            <p class="text-[11px] font-bold text-[#7e8e9f] uppercase tracking-wider mb-3">Variables de entrada (8 features)</p>
+                            <div class="flex flex-wrap gap-2.5">
+                                <span class="px-2.5 py-1 rounded bg-transparent text-[#138068] border border-[#a4e2cc] text-sm font-medium">Z-score talla/edad: −1.8</span>
+                                <span class="px-2.5 py-1 rounded bg-transparent text-[#138068] border border-[#a4e2cc] text-sm font-medium">Z-score peso/edad: −2.1</span>
+                                <span class="px-2.5 py-1 rounded bg-transparent text-[#138068] border border-[#a4e2cc] text-sm font-medium">Z-score IMC/edad: −1.2</span>
+                                <span class="px-2.5 py-1 rounded bg-transparent text-[#138068] border border-[#a4e2cc] text-sm font-medium">Edad: 36 meses</span>
+                                <span class="px-2.5 py-1 rounded bg-transparent text-[#138068] border border-[#a4e2cc] text-sm font-medium">Sexo: Masculino</span>
+                                <span class="px-2.5 py-1 rounded bg-transparent text-[#64748b] border border-[#cbd5e1] text-sm font-medium">Distrito: Huamanga</span>
+                                <span class="px-2.5 py-1 rounded bg-transparent text-[#64748b] border border-[#cbd5e1] text-sm font-medium">Estab.: C.S. Carmen Alto</span>
+                                <span class="px-2.5 py-1 rounded bg-transparent text-[#a16207] border border-[#fde047] text-sm font-medium">Estacionalidad: Q1</span>
+                            </div>
                         </div>
-                        <!-- Marker en 81% -->
-                        <div class="relative h-2" style="margin-top:-8px">
-                            <div class="absolute w-3 h-3 bg-white border-2 border-orange-500 rounded-full shadow" style="left:calc(81% - 6px);top:0"></div>
+
+                        <div class="flex items-center gap-4 mb-8">
+                            <div>
+                                <p class="text-sm text-[#7e8e9f] font-medium mb-1">Hb registrada</p>
+                                <p class="text-lg font-bold text-[#1e293b]">12.1 <span class="font-normal text-[#1e293b]">g/dL</span></p>
+                            </div>
+                            <div class="text-[#cbd5e1] mt-5 mx-2">
+                                <span>→</span>
+                            </div>
+                            <div>
+                                <p class="text-sm text-[#7e8e9f] font-medium mb-1">Hb corregida (2,761 m.s.n.m.)</p>
+                                <p class="text-lg font-bold text-[#1e293b]">10.8 <span class="font-normal text-[#1e293b]">g/dL</span></p>
+                            </div>
                         </div>
-                        <!-- Etiquetas -->
-                        <div class="flex justify-between text-[9px] text-muted mt-2 font-medium">
-                            <span class="text-green-600">BAJO &lt;0.35</span>
-                            <span class="text-orange-500">MODERADO 0.35–0.65</span>
-                            <span class="text-red-500">ALTO &gt;0.65</span>
+
+                        <div class="mb-8">
+                            <p class="text-[11px] font-bold text-[#7e8e9f] uppercase tracking-wider mb-3">Predicción de riesgo — Score: 0.81</p>
+                            <div class="relative w-full h-3.5 rounded-full flex overflow-visible mb-2">
+                                <div class="w-[35%] h-full bg-[#6cd891] rounded-l-full"></div>
+                                <div class="w-[30%] h-full bg-[#fba861]"></div>
+                                <div class="w-[35%] h-full bg-[#f77f80] rounded-r-full"></div>
+                                <div class="absolute top-1/2 w-4 h-4 rounded-full bg-white border-4 border-[#f97316] shadow-sm" style="left: 81%; transform: translate(-50%, -50%);"></div>
+                            </div>
+                            <div class="flex justify-between text-[10px] font-bold uppercase mt-3">
+                                <span class="text-[#22c55e]">Bajo <0.35</span>
+                                <span class="text-[#f97316]">Moderado 0.35–0.65</span>
+                                <span class="text-[#ef4444]">Alto >0.65</span>
+                            </div>
                         </div>
-                    </div>
 
-                    <!-- Alert resultado -->
-                    <div class="bg-orange-50 border border-orange-200 rounded p-3 flex items-start gap-2.5">
-                        <svg class="mt-0.5 shrink-0" width="15" height="15" viewBox="0 0 18 18" fill="none">
-                            <path d="M9 2L1.5 15.5h15L9 2z" stroke="#EA580C" stroke-width="1.5" stroke-linejoin="round"/>
-                            <path d="M9 7v4M9 12.5v.5" stroke="#EA580C" stroke-width="1.5" stroke-linecap="round"/>
-                        </svg>
-                        <div>
-                            <p class="text-xs font-bold text-orange-700">ALTO riesgo de anemia · Score: 0.81</p>
-                            <p class="text-[11px] text-orange-600 mt-0.5">Sin corrección altimétrica, este caso habría salido como <em>normal</em> por los umbrales OMS.</p>
+                        <div class="bg-[#fff8f0] border border-[#fed7aa] rounded-lg p-5">
+                            <div class="flex gap-3">
+                                <svg class="w-5 h-5 text-[#ea580c] shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg>
+                                <div>
+                                    <p class="text-[#c2410c] font-bold text-[15px] mb-1">ALTO riesgo de anemia · Score: 0.81</p>
+                                    <p class="text-[#ea580c] text-sm">Sin corrección altimétrica, este caso habría salido como normal por los umbrales OMS.</p>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-
-                    <p class="text-[10px] text-muted italic">* Caso representativo. No corresponde a paciente real identificable.</p>
-                </div>
-            </div>
-        </section>
-
-
-        <!-- ═══ EL PROBLEMA ═══ -->
-        <section id="problema" class="py-14 sm:py-20 px-4 border-t border-border">
-            <div class="max-w-6xl mx-auto">
-                <div class="mb-10 sm:mb-14">
-                    <p class="text-xs font-bold text-blue uppercase tracking-widest rule-accent mb-3">Por qué lo
-                        construimos</p>
-                    <h2 class="font-serif text-2xl sm:text-3xl md:text-4xl text-navy leading-snug max-w-2xl">
-                        Dos problemas estructurales que el sistema de salud periférico no puede resolver solo.
-                    </h2>
-                </div>
-
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-px sm:bg-border">
-                    <!-- Problema 1: TB -->
-                    <div class="bg-white p-6 sm:p-10 relative">
-                        <span class="big-number">01</span>
-                        <div class="relative z-10">
-                            <p class="text-xs font-bold text-teal uppercase tracking-widest mb-3 mt-6 sm:mt-0">Liryal
-                                Vision — Tuberculosis</p>
-                            <h3 class="text-xl sm:text-2xl font-bold text-navy mb-4 leading-snug">
-                                Un laboratorista examina hasta 300 frotis por jornada.
-                                <em class="font-normal text-muted not-italic block mt-1">El ojo humano no está diseñado
-                                    para eso.</em>
-                            </h3>
-                            <p class="text-muted leading-relaxed text-sm sm:text-base">
-                                La fatiga visual acumulada genera falsos negativos. Un paciente con TB que sale sin
-                                diagnóstico contagia a su entorno durante semanas. Nuestra visión computarizada asiste
-                                en el análisis microscópico con precisión constante, sin degradarse con el tiempo de
-                                exposición.
-                            </p>
-                        </div>
-                    </div>
-
-                    <!-- Problema 2: Anemia -->
-                    <div class="bg-white p-6 sm:p-10 relative">
-                        <span class="big-number">02</span>
-                        <div class="relative z-10">
-                            <p class="text-xs font-bold text-teal uppercase tracking-widest mb-3 mt-6 sm:mt-0">Andean
-                                Models — Anemia</p>
-                            <h3 class="text-xl sm:text-2xl font-bold text-navy mb-4 leading-snug">
-                                Los umbrales OMS fueron calibrados
-                                <em class="font-normal text-muted not-italic block mt-1">para poblaciones a nivel del
-                                    mar.</em>
-                            </h3>
-                            <p class="text-muted leading-relaxed text-sm sm:text-base">
-                                En regiones sobre los 2,000 m.s.n.m., estos umbrales generan sobrediagnóstico y
-                                subdiagnóstico sistemático. Nuestro modelo aplica corrección por altitud exacta usando
-                                la distribución real de hemoglobina de los propios establecimientos de Ayacucho.
-                            </p>
-                        </div>
+                        
+                        <p class="mt-6 text-xs italic text-[#94a3b8]">* Caso representativo. No corresponde a paciente real identificable.</p>
                     </div>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-
-        <!-- ═══ MODELOS ═══ -->
-        <section id="modelos" class="py-14 sm:py-20 px-4 bg-surface border-t border-border">
-            <div class="max-w-6xl mx-auto">
-                <div class="mb-10 sm:mb-14">
-                    <p class="text-xs font-bold text-blue uppercase tracking-widest rule-accent mb-3">Diseño técnico</p>
-                    <h2 class="font-serif text-2xl sm:text-3xl md:text-4xl text-navy max-w-2xl leading-snug">
-                        No es IA genérica adaptada a salud. Es IA construida desde datos clínicos andinos.
-                    </h2>
-                </div>
-
-                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
-                    <div class="bg-white border border-border p-6 rounded-lg">
-                        <div
-                            class="w-10 h-10 bg-blue-50 border border-blue-100 rounded flex items-center justify-center mb-4">
-                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-                                <rect x="3" y="3" width="14" height="14" rx="2" stroke="#2563EB" stroke-width="1.5" />
-                                <path d="M7 10h6M10 7v6" stroke="#2563EB" stroke-width="1.5" stroke-linecap="round" />
-                            </svg>
-                        </div>
-                        <h4 class="font-bold text-navy mb-2 text-base">Corrección Altimétrica</h4>
-                        <p class="text-sm text-muted leading-relaxed">
-                            Cada predicción ajusta el umbral de hemoglobina en función de la altitud exacta del
-                            establecimiento, no de un promedio regional.
-                        </p>
-                    </div>
-
-                    <div class="bg-white border border-border p-6 rounded-lg">
-                        <div
-                            class="w-10 h-10 bg-blue-50 border border-blue-100 rounded flex items-center justify-center mb-4">
-                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-                                <circle cx="10" cy="10" r="7" stroke="#2563EB" stroke-width="1.5" />
-                                <path d="M7 10l2 2 4-4" stroke="#2563EB" stroke-width="1.5" stroke-linecap="round"
-                                    stroke-linejoin="round" />
-                            </svg>
-                        </div>
-                        <h4 class="font-bold text-navy mb-2 text-base">IA Explicable (Caja Blanca)</h4>
-                        <p class="text-sm text-muted leading-relaxed">
-                            El médico ve qué variables elevaron el score de riesgo: edad, peso, CIE-10, altitud. No hay
-                            caja negra. Cada resultado es auditable.
-                        </p>
-                    </div>
-
-                    <div class="bg-white border border-border p-6 rounded-lg sm:col-span-2 lg:col-span-1">
-                        <div
-                            class="w-10 h-10 bg-blue-50 border border-blue-100 rounded flex items-center justify-center mb-4">
-                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-                                <path d="M10 3v14M3 10h14" stroke="#2563EB" stroke-width="1.5" stroke-linecap="round" />
-                            </svg>
-                        </div>
-                        <h4 class="font-bold text-navy mb-2 text-base">Integración sin fricción</h4>
-                        <p class="text-sm text-muted leading-relaxed">
-                            Funciona sobre datos que los establecimientos ya tienen. Sin inversión en hardware. Sin
-                            cambiar el flujo de trabajo del personal.
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-
-        <!-- ═══ VALIDACIÓN ═══ -->
-        <section id="validacion" class="py-14 sm:py-20 px-4 border-t border-border">
-            <div class="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-start">
-
+    <!-- UPCOMING FLAGSHIP PRODUCT: LIRYAL SCOPE -->
+    <section class="py-24 bg-brand-900 text-white relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
                 <div>
-                    <p class="text-xs font-bold text-blue uppercase tracking-widest rule-accent mb-3">Estado actual</p>
-                    <h2 class="font-serif text-2xl sm:text-3xl md:text-4xl text-navy leading-snug mb-5">
-                        Validación retrospectiva en curso.<br>No prometemos. Medimos.
-                    </h2>
-                    <p class="text-muted leading-relaxed mb-4 text-sm sm:text-base">
-                        Estamos en la fase de validación retrospectiva con registros históricos anonimizados de
-                        establecimientos de salud de Ayacucho, en coordinación activa con la Dirección Regional de Salud
-                        (DIRESA).
-                    </p>
-                    <p class="text-muted leading-relaxed mb-7 text-sm sm:text-base">
-                        Los resultados preliminares del modelo de anemia muestran corrección significativa en casos que
-                        el umbral OMS clasifica incorrectamente en poblaciones sobre los 2,500 m.s.n.m.
+                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-brand-800 text-brand-400 text-xs font-bold uppercase tracking-wider mb-6 border border-brand-700">
+                        En Fase de Desarrollo Activo (Alpha)
+                    </div>
+                    <h2 class="font-heading text-4xl sm:text-5xl font-extrabold mb-6">Liryal Scope</h2>
+                    <p class="text-brand-accent text-xl font-bold mb-6">Visión Computarizada en Microscopio en Tiempo Real</p>
+                    
+                    <p class="text-slate-300 text-lg mb-6 leading-relaxed">
+                        Nuestro próximo módulo core para el sistema de gestión de laboratorios. Analiza la señal de video del microscopio en tiempo real, detectando patógenos y asistiendo al biólogo de forma automática.
                     </p>
 
-                    <div class="grid grid-cols-2 gap-3 sm:gap-4">
-                        <div class="border border-border rounded p-4 sm:p-5">
-                            <p class="text-2xl sm:text-3xl font-serif font-bold text-navy mb-1">+100k</p>
-                            <p class="text-xs text-muted">Registros clínicos en validación retrospectiva</p>
-                        </div>
-                        <div class="border border-border rounded p-4 sm:p-5">
-                            <p class="text-2xl sm:text-3xl font-serif font-bold text-navy mb-1">2,100–4,100</p>
-                            <p class="text-xs text-muted">Metros s.n.m. cubiertos por el modelo</p>
+                    <div class="bg-brand-800/50 rounded-lg p-5 border-l-4 border-brand-accent mb-8">
+                        <p class="text-slate-200 font-medium italic text-sm sm:text-base">
+                            "Un laboratorista examina hasta 300 frotis por jornada. El ojo humano no está diseñado para eso. La fatiga visual acumulada genera falsos negativos."
+                        </p>
+                    </div>
+                    
+                    <ul class="space-y-4 mb-8">
+                        <li class="flex items-center gap-4">
+                            <div class="w-8 h-8 rounded-full bg-brand-800 flex items-center justify-center shrink-0">
+                                <svg class="w-4 h-4 text-brand-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
+                            </div>
+                            <span class="font-medium text-slate-200">Detección de Enteroparasitosis</span>
+                        </li>
+                        <li class="flex items-center gap-4">
+                            <div class="w-8 h-8 rounded-full bg-brand-800 flex items-center justify-center shrink-0">
+                                <svg class="w-4 h-4 text-brand-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
+                            </div>
+                            <span class="font-medium text-slate-200">Identificación de Leishmaniasis</span>
+                        </li>
+                        <li class="flex items-center gap-4">
+                            <div class="w-8 h-8 rounded-full bg-brand-800 flex items-center justify-center shrink-0">
+                                <svg class="w-4 h-4 text-brand-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
+                            </div>
+                            <span class="font-medium text-slate-200">Integración directa al historial clínico del paciente</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="relative">
+                    <div class="absolute inset-0 bg-brand-400 blur-[80px] opacity-20 rounded-full"></div>
+                    <div class="relative z-10 rounded-xl overflow-hidden shadow-2xl border border-brand-700 group">
+                        <img src="liryal_scope_mockup.png" alt="Liryal Scope UI Mockup" class="w-full h-auto opacity-80 group-hover:opacity-100 transition-opacity duration-300">
+                        <div class="absolute inset-0 flex items-center justify-center bg-brand-900/40 opacity-100 group-hover:opacity-0 transition-opacity duration-300 pointer-events-none">
+                            <span class="px-4 py-2 bg-brand-900/80 backdrop-blur-sm rounded-lg text-white font-bold text-sm tracking-widest border border-brand-700">PROTOTIPO VISUAL</span>
                         </div>
                     </div>
                 </div>
-
-                <!-- Timeline -->
-                <div>
-                    <p class="text-xs font-bold text-muted uppercase tracking-widest mb-6">Hoja de ruta</p>
-
-                    <!-- Etapa 1: ACTUAL -->
-                    <div class="relative pl-7 pb-7 border-l-2 border-blue">
-                        <div class="absolute left-[-9px] top-1 w-4 h-4 rounded-full bg-blue border-2 border-white ring-2 ring-blue"></div>
-                        <p class="text-xs font-bold text-blue uppercase mb-1">Ahora — Q1/Q2 2026</p>
-                        <h4 class="font-bold text-navy mb-1 text-sm sm:text-base">Validación Retrospectiva con DIRESA</h4>
-                        <p class="text-sm text-muted">Entrenamiento y evaluación sobre +300k registros históricos anonimizados. Reclutamiento de los primeros 5 establecimientos piloto.</p>
-                    </div>
-
-                    <!-- Etapa 2 -->
-                    <div class="relative pl-7 pb-7 border-l-2 border-border">
-                        <div class="absolute left-[-9px] top-1 w-4 h-4 rounded-full bg-surface border-2 border-border"></div>
-                        <p class="text-xs font-bold text-muted uppercase mb-1">Q3 2026</p>
-                        <h4 class="font-bold text-navy mb-1 text-sm sm:text-base">Piloto Clínico con Early Adopters</h4>
-                        <p class="text-sm text-muted">Primeros 5 establecimientos en entorno real. Recolección prospectiva de datos bajo protocolo de co-validación.</p>
-                    </div>
-
-                    <!-- Etapa 3 -->
-                    <div class="relative pl-7 pb-7 border-l-2 border-border">
-                        <div class="absolute left-[-9px] top-1 w-4 h-4 rounded-full bg-surface border-2 border-border"></div>
-                        <p class="text-xs font-bold text-muted uppercase mb-1">Q4 2026</p>
-                        <h4 class="font-bold text-navy mb-1 text-sm sm:text-base">Publicación académica + Ronda de inversión</h4>
-                        <p class="text-sm text-muted">Presentación de resultados de sensibilidad/especificidad. Cierre de Cartas de Intención (LOIs) y ronda seed.</p>
-                    </div>
-
-                    <!-- Etapa 4: futuro -->
-                    <div class="relative pl-7 border-l-2 border-dashed border-border">
-                        <div class="absolute left-[-9px] top-1 w-4 h-4 rounded-full bg-surface border-2 border-dashed border-border"></div>
-                        <p class="text-xs font-bold text-muted uppercase mb-1">2027</p>
-                        <h4 class="font-bold text-navy mb-1 text-sm sm:text-base">Despliegue Regional</h4>
-                        <p class="text-sm text-muted">Expansión a redes de salud de Puno, Cusco y Junín. Integración con sistemas HIS regionales.</p>
-                    </div>
-                </div>
-
             </div>
-        </section>
 
+        </div>
+    </section>
 
-        <!-- ═══ CONTACTO ═══ -->
-        <section id="contacto" class="py-14 sm:py-20 px-4 bg-navy border-t border-navy">
-            <div class="max-w-2xl mx-auto">
-
-                <div class="text-center mb-8 sm:mb-12">
-                    <h2 class="font-serif text-2xl sm:text-3xl md:text-4xl text-white mb-4">
-                        ¿Dirige un hospital, laboratorio o fondo de salud?
-                    </h2>
-                    <p class="text-slate-300 leading-relaxed text-sm sm:text-base mb-6">
-                        Las primeras 5 instituciones en unirse al piloto recibirán acceso gratuito en la fase beta, un
-                        informe de validación sobre sus propios datos, y co-autoría en la publicación académica.
+    <!-- TRACTION / DIRESA -->
+    <section id="traccion" class="py-16 bg-white border-y border-slate-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-10">
+                <div class="md:w-1/2">
+                    <h3 class="font-heading text-3xl font-extrabold text-brand-900 mb-4">Validación Clínica Activa</h3>
+                    <p class="text-lg text-slate-600 mb-6">
+                        Nuestra tecnología no es un concepto en papel. Trabajamos en colaboración directa con investigadores biólogos y personal médico de la <strong>DIRESA Ayacucho</strong>.
                     </p>
-
-                    <!-- Canales de contacto directo -->
-                    <div class="flex flex-col sm:flex-row items-center justify-center gap-3">
-                        <!-- WhatsApp -->
-                        <a href="https://wa.me/51900999312?text=Hola%2C%20me%20interesa%20el%20piloto%20clínico%20de%20Liryal%20AI"
-                            target="_blank" rel="noopener"
-                            class="inline-flex items-center gap-2.5 bg-[#25D366] text-white font-semibold px-5 py-2.5 rounded-full text-sm hover:bg-[#1ebe59] transition-colors">
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="white">
-                                <path
-                                    d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z" />
-                                <path
-                                    d="M12 0C5.373 0 0 5.373 0 12c0 2.115.549 4.099 1.507 5.827L.057 23.997l6.304-1.635A11.954 11.954 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.794 9.794 0 01-5.003-1.369l-.36-.214-3.732.968.999-3.627-.235-.374A9.78 9.78 0 012.182 12C2.182 6.57 6.57 2.182 12 2.182c5.43 0 9.818 4.388 9.818 9.818 0 5.43-4.388 9.818-9.818 9.818z" />
-                            </svg>
-                            WhatsApp · +51 900 999 312
-                        </a>
-                        <!-- Email directo -->
-                        <a href="mailto:royerdelacruz13@gmail.com?subject=Inter%C3%A9s%20en%20piloto%20Liryal%20AI"
-                            class="inline-flex items-center gap-2.5 bg-white/10 text-white font-medium px-5 py-2.5 rounded-full text-sm hover:bg-white/20 transition-colors border border-white/20">
-                            <svg width="16" height="16" viewBox="0 0 20 20" fill="none">
-                                <rect x="2" y="4" width="16" height="12" rx="2" stroke="white" stroke-width="1.5" />
-                                <path d="M2 7l8 5 8-5" stroke="white" stroke-width="1.5" stroke-linecap="round" />
-                            </svg>
-                            royerdelacruz13@gmail.com
-                        </a>
-                    </div>
-                </div>
-
-                <form action="https://formsubmit.co/royerdelacruz13@gmail.com" method="POST"
-                    class="bg-white rounded-xl p-5 sm:p-8 space-y-4">
-
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div class="flex gap-8">
                         <div>
-                            <label class="block text-xs font-bold text-muted uppercase tracking-widest mb-2">Nombre
-                                completo</label>
-                            <input type="text" name="nombre" placeholder="Dr. Ana Torres"
-                                class="w-full border border-border rounded px-3 py-3 text-navy focus:outline-none focus:ring-2 focus:ring-blue focus:border-transparent transition"
-                                required>
+                            <p class="text-3xl font-bold text-brand">+300k</p>
+                            <p class="text-sm font-semibold text-slate-500 uppercase">Registros Procesados</p>
                         </div>
                         <div>
-                            <label
-                                class="block text-xs font-bold text-muted uppercase tracking-widest mb-2">Cargo</label>
-                            <select name="cargo"
-                                class="w-full border border-border rounded px-3 py-3 text-navy focus:outline-none focus:ring-2 focus:ring-blue focus:border-transparent transition bg-white"
-                                required>
+                            <p class="text-3xl font-bold text-brand-accent">SaaS</p>
+                            <p class="text-sm font-semibold text-slate-500 uppercase">Modelo de Negocio</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="md:w-1/2 bg-slate-100 rounded-2xl p-8 border border-slate-200 text-center">
+                    <p class="text-slate-500 font-medium mb-2">Partner Institucional</p>
+                    <h4 class="text-2xl font-bold text-brand-900">Dirección Regional de Salud</h4>
+                    <p class="text-brand text-lg font-semibold">Ayacucho, Perú</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ROADMAP -->
+    <section id="roadmap" class="py-16 bg-slate-50 relative border-b border-slate-200">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h3 class="text-xs font-bold text-slate-500 tracking-widest uppercase mb-12">Hoja de Ruta</h3>
+            
+            <div class="relative border-l-2 border-slate-200 ml-3 md:ml-6 space-y-12">
+                <!-- Point 1 (Current) -->
+                <div class="relative pl-8 md:pl-12 group">
+                    <div class="absolute -left-[9px] top-1 w-4 h-4 rounded-full bg-brand ring-4 ring-blue-100 group-hover:scale-110 transition-transform"></div>
+                    <!-- Solid blue line connecting to next -->
+                    <div class="absolute -left-[2px] top-5 bottom-[-48px] w-[2px] bg-brand"></div>
+                    <p class="text-sm font-bold text-brand uppercase tracking-wider mb-2 flex items-center gap-2">
+                        AHORA — Q1/Q2 2026
+                    </p>
+                    <h4 class="text-xl md:text-2xl font-bold text-brand-900 mb-2">Validación Retrospectiva con DIRESA</h4>
+                    <p class="text-slate-600 leading-relaxed">Entrenamiento y evaluación sobre +300k registros históricos anonimizados. Reclutamiento de los primeros 5 establecimientos piloto.</p>
+                </div>
+
+                <!-- Point 2 -->
+                <div class="relative pl-8 md:pl-12 group">
+                    <div class="absolute -left-[9px] top-1 w-4 h-4 rounded-full bg-white border-2 border-slate-300 ring-4 ring-slate-50 group-hover:border-brand-400 transition-colors"></div>
+                    <p class="text-sm font-bold text-slate-500 uppercase tracking-wider mb-2">Q3 2026</p>
+                    <h4 class="text-xl md:text-2xl font-bold text-brand-900 mb-2">Piloto Clínico con Early Adopters</h4>
+                    <p class="text-slate-600 leading-relaxed">Primeros 5 establecimientos en entorno real. Recolección prospectiva de datos bajo protocolo de co-validación.</p>
+                </div>
+
+                <!-- Point 3 -->
+                <div class="relative pl-8 md:pl-12 group">
+                    <div class="absolute -left-[9px] top-1 w-4 h-4 rounded-full bg-white border-2 border-slate-300 ring-4 ring-slate-50 group-hover:border-brand-400 transition-colors"></div>
+                    <p class="text-sm font-bold text-slate-500 uppercase tracking-wider mb-2">Q4 2026</p>
+                    <h4 class="text-xl md:text-2xl font-bold text-brand-900 mb-2">Publicación académica + Ronda de inversión</h4>
+                    <p class="text-slate-600 leading-relaxed">Presentación de resultados de sensibilidad/especificidad. Cierre de Cartas de Intención (LOIs) y ronda seed.</p>
+                </div>
+
+                <!-- Point 4 -->
+                <div class="relative pl-8 md:pl-12 group">
+                    <!-- Dashed line connecting from previous (cover the solid line for this segment) -->
+                    <div class="absolute -left-[2px] -top-12 bottom-full w-[2px] bg-slate-50"></div>
+                    <div class="absolute -left-[2px] -top-12 bottom-0 w-[2px] border-l-2 border-dashed border-slate-300"></div>
+                    
+                    <div class="absolute -left-[9px] top-1 w-4 h-4 rounded-full bg-white border-2 border-slate-300 ring-4 ring-slate-50 group-hover:border-brand-400 transition-colors"></div>
+                    
+                    <p class="text-sm font-bold text-slate-500 uppercase tracking-wider mb-2">2027</p>
+                    <h4 class="text-xl md:text-2xl font-bold text-brand-900 mb-2">Despliegue Regional</h4>
+                    <p class="text-slate-600 leading-relaxed">Expansión a redes de salud de Puno, Cusco y Junín. Integración con sistemas HIS regionales.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CLINICAL PILOT CONTACT -->
+    <section id="contacto" class="py-16 bg-brand-900 text-white relative">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="font-heading text-4xl sm:text-5xl font-extrabold mb-6">¿Dirige un hospital, laboratorio o fondo de salud?</h2>
+            <p class="text-xl text-slate-300 mb-8 max-w-3xl mx-auto">
+                Las primeras 5 instituciones en unirse al piloto recibirán acceso gratuito en la fase beta, un informe de validación sobre sus propios datos, y co-autoría en la publicación académica.
+            </p>
+            
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12">
+                <a href="https://wa.me/51900999312" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 bg-[#25D366] hover:bg-[#22c35e] text-white font-bold py-3 px-6 rounded-full transition-colors w-full sm:w-auto justify-center">
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+                    WhatsApp · +51 900 999 312
+                </a>
+                <a href="mailto:royerdelacruz13@gmail.com" class="flex items-center gap-2 bg-[#1A2C4D] hover:bg-[#20365D] border border-brand-700 text-white font-bold py-3 px-6 rounded-full transition-colors w-full sm:w-auto justify-center">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                    royerdelacruz13@gmail.com
+                </a>
+            </div>
+            
+            <div class="bg-white rounded-[2rem] p-8 sm:p-10 shadow-2xl text-left border border-slate-200 text-slate-800">
+                <form action="https://formsubmit.co/royerdelacruz13@gmail.com" method="POST" class="space-y-6">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-xs font-bold text-slate-500 uppercase tracking-widest mb-2">Nombre Completo</label>
+                            <input type="text" name="nombre" placeholder="Dr. Ana Torres" class="w-full bg-white border border-slate-200 rounded-xl px-5 py-3 text-slate-800 focus:ring-2 focus:ring-brand focus:border-brand transition-all outline-none" required>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold text-slate-500 uppercase tracking-widest mb-2">Cargo</label>
+                            <select name="cargo" class="w-full bg-white border border-slate-200 rounded-xl px-5 py-3 text-slate-800 focus:ring-2 focus:ring-brand focus:border-brand transition-all outline-none" required>
                                 <option value="" disabled selected>Seleccione su rol</option>
-                                <option>Director / CMO de Hospital</option>
-                                <option>Jefe de Laboratorio / Patólogo</option>
-                                <option>Director Regional de Salud</option>
-                                <option>Inversor / Fondo HealthTech</option>
-                                <option>Investigador Clínico / Académico</option>
-                                <option>Otro</option>
+                                <option value="Director Medico">Director(a) Médico</option>
+                                <option value="Jefe de Laboratorio">Jefe(a) de Laboratorio</option>
+                                <option value="Investigador">Investigador(a) Principal</option>
+                                <option value="Representante VC">Representante de Fondo VC</option>
+                                <option value="Otro">Otro</option>
                             </select>
                         </div>
+                        <div>
+                            <label class="block text-xs font-bold text-slate-500 uppercase tracking-widest mb-2">Institución / Laboratorio</label>
+                            <input type="text" name="institucion" placeholder="Hospital Regional de Ayacucho" class="w-full bg-white border border-slate-200 rounded-xl px-5 py-3 text-slate-800 focus:ring-2 focus:ring-brand focus:border-brand transition-all outline-none" required>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold text-slate-500 uppercase tracking-widest mb-2">Email Corporativo</label>
+                            <input type="email" name="email" placeholder="ana@hospital.gob.pe" class="w-full bg-white border border-slate-200 rounded-xl px-5 py-3 text-slate-800 focus:ring-2 focus:ring-brand focus:border-brand transition-all outline-none" required>
+                        </div>
                     </div>
-
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                        <div>
-                            <label class="block text-xs font-bold text-muted uppercase tracking-widest mb-2">Institución
-                                / Laboratorio</label>
-                            <input type="text" name="institucion" placeholder="Hospital Regional de Ayacucho"
-                                class="w-full border border-border rounded px-3 py-3 text-navy focus:outline-none focus:ring-2 focus:ring-blue focus:border-transparent transition"
-                                required>
-                        </div>
-                        <div>
-                            <label class="block text-xs font-bold text-muted uppercase tracking-widest mb-2">Email
-                                corporativo</label>
-                            <input type="email" name="email" placeholder="ana@hospital.gob.pe"
-                                class="w-full border border-border rounded px-3 py-3 text-navy focus:outline-none focus:ring-2 focus:ring-blue focus:border-transparent transition"
-                                required>
-                        </div>
+                    
+                    <div>
+                        <label class="block text-xs font-bold text-slate-500 uppercase tracking-widest mb-2">Celular / WhatsApp</label>
+                        <input type="tel" name="telefono" placeholder="+51 987 654 321" class="w-full bg-white border border-slate-200 rounded-xl px-5 py-3 text-slate-800 focus:ring-2 focus:ring-brand focus:border-brand transition-all outline-none" required>
                     </div>
 
                     <div>
-                        <label class="block text-xs font-bold text-muted uppercase tracking-widest mb-2">Celular /
-                            WhatsApp</label>
-                        <input type="tel" name="celular" placeholder="+51 987 654 321"
-                            class="w-full border border-border rounded px-3 py-3 text-navy focus:outline-none focus:ring-2 focus:ring-blue focus:border-transparent transition"
-                            required>
+                        <label class="block text-xs font-bold text-slate-500 uppercase tracking-widest mb-2">¿Qué tipo de alianza le interesa?</label>
+                        <textarea name="mensaje" rows="3" placeholder="Ej: Me interesa evaluar el modelo sobre nuestros datos históricos de la red Huamanga..." class="w-full bg-white border border-slate-200 rounded-xl px-5 py-3 text-slate-800 focus:ring-2 focus:ring-brand focus:border-brand transition-all outline-none resize-none" required></textarea>
                     </div>
 
-                    <div>
-                        <label class="block text-xs font-bold text-muted uppercase tracking-widest mb-2">¿Qué tipo de
-                            alianza le interesa?</label>
-                        <textarea name="mensaje" rows="3"
-                            placeholder="Ej: Me interesa evaluar el modelo sobre nuestros datos históricos de la red Huamanga..."
-                            class="w-full border border-border rounded px-3 py-3 text-navy focus:outline-none focus:ring-2 focus:ring-blue focus:border-transparent transition resize-none"></textarea>
-                    </div>
-
-                    <!-- FormSubmit configuración -->
                     <input type="hidden" name="_next" value="https://boss-one.github.io/LIRYAL-AI/">
-                    <input type="hidden" name="_captcha" value="false">
-                    <input type="hidden" name="_subject" value="[Liryal AI] Nueva postulación al Piloto Clínico">
-                    <input type="hidden" name="_replyto" value="royerdelacruz13@gmail.com">
-                    <input type="hidden" name="_template" value="table">
-                    <!-- Honeypot anti-spam (campo oculto que los bots llenan) -->
-                    <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
-
-                    <button type="submit"
-                        class="w-full bg-blue text-white font-semibold py-4 rounded hover:bg-blue-700 transition-colors text-base mt-2">
-                        Postular al Piloto Clínico →
+                    <input type="hidden" name="_subject" value="[Liryal AI] Postulación a Piloto Clínico">
+                    <input type="text" name="_honey" style="display:none">
+                    
+                    <button type="submit" class="w-full bg-brand hover:bg-blue-600 text-white font-extrabold text-lg py-4 rounded-xl transition-all shadow-lg mt-2">
+                        Postular al Piloto Clínico &rarr;
                     </button>
-
-                    <p class="text-center text-xs text-muted flex items-center justify-center gap-2">
-                        <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
-                            <rect x="1" y="5" width="10" height="7" rx="1.5" stroke="#94A3B8" stroke-width="1.2" />
-                            <path d="M3 5V3.5a3 3 0 016 0V5" stroke="#94A3B8" stroke-width="1.2" />
-                        </svg>
+                    
+                    <p class="text-center text-xs text-slate-500 mt-4 flex items-center justify-center gap-2">
+                        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg>
                         Información confidencial. Ley 29733 Perú.
                     </p>
                 </form>
             </div>
-        </section>
-    </main>
+        </div>
+    </section>
 
-
-    <!-- ═══ FOOTER ═══ -->
-    <footer class="bg-white border-t border-border py-8 px-4">
-        <div
-            class="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-muted text-center sm:text-left">
-            <div class="flex items-center gap-2.5">
-                <svg width="26" height="26" viewBox="0 0 110 100" fill="none">
+    <footer class="bg-brand-900 border-t border-brand-800 py-12 px-4">
+        <div class="max-w-7xl mx-auto flex flex-col items-center gap-6 text-slate-400 text-sm">
+            <div class="flex items-center gap-2">
+                <svg width="28" height="28" viewBox="0 0 110 100" fill="none">
                     <defs>
                         <radialGradient id="fg2" cx="36%" cy="30%" r="68%">
                             <stop offset="0%" stop-color="#93C5FD" />
@@ -710,50 +581,22 @@
                             <circle cx="61" cy="50" r="35" fill="black" />
                         </mask>
                     </defs>
-                    <circle cx="44" cy="50" r="44" fill="#1A365D" mask="url(#fcm2)" />
+                    <circle cx="44" cy="50" r="44" fill="#ffffff" mask="url(#fcm2)" opacity="0.9" />
                     <circle cx="68" cy="50" r="29" fill="url(#fg2)" />
-                    <ellipse cx="67" cy="50" rx="38" ry="11" transform="rotate(-22 67 50)" stroke="#1A365D"
-                        stroke-width="2" fill="none" />
+                    <ellipse cx="67" cy="50" rx="38" ry="11" transform="rotate(-22 67 50)" stroke="#ffffff" stroke-width="2" fill="none" opacity="0.3" />
                 </svg>
-                <span class="font-semibold text-navy text-sm">Liryal <span class="text-blue">AI</span></span>
+                <span class="font-heading font-extrabold text-xl tracking-tight text-white">Liryal<span class="text-brand">AI</span></span>
             </div>
-            <p>© 2026 Liryal AI Investigaciones · Ayacucho, Perú</p>
-            <div class="flex gap-4">
-                <a href="#" class="hover:text-navy transition-colors">Privacidad</a>
-                <a href="#" class="hover:text-navy transition-colors">Términos</a>
-                <a href="mailto:royerdelacruz13@gmail.com" class="hover:text-navy transition-colors">Contacto</a>
+            
+            <p>© 2026 Liryal AI. B2B HealthTech SaaS. Ayacucho, Perú.</p>
+            
+            <div class="flex items-center gap-6 font-medium">
+                <a href="#" class="hover:text-white transition-colors">Privacidad</a>
+                <a href="#" class="hover:text-white transition-colors">Términos</a>
+                <a href="mailto:royerdelacruz13@gmail.com" class="hover:text-white transition-colors">Contacto</a>
             </div>
         </div>
     </footer>
 
-    <!-- MOBILE STICKY CTA (visible solo en móvil cuando el hero ya no está visible) -->
-    <div id="sticky-cta"
-        class="fixed bottom-0 left-0 right-0 z-40 md:hidden bg-white border-t border-border px-4 py-3 shadow-lg"
-        style="display:none!important;">
-        <a href="#contacto"
-            class="block w-full bg-blue text-white font-semibold py-3.5 rounded text-center text-sm hover:bg-blue-700 transition-colors">
-            Postular al Piloto Clínico →
-        </a>
-    </div>
-
-    <script>
-        // Show sticky CTA on mobile when hero scrolls past
-        const stickyCta = document.getElementById('sticky-cta');
-        window.addEventListener('scroll', () => {
-            if (window.innerWidth < 768 && window.scrollY > 400) {
-                stickyCta.style.cssText = 'display:block!important;';
-            } else {
-                stickyCta.style.cssText = 'display:none!important;';
-            }
-        });
-        // Hide sticky CTA when contact section is visible
-        const contactSection = document.getElementById('contacto');
-        const observer = new IntersectionObserver((entries) => {
-            if (entries[0].isIntersecting) stickyCta.style.cssText = 'display:none!important;';
-        }, { threshold: 0.1 });
-        if (contactSection) observer.observe(contactSection);
-    </script>
-
 </body>
-
 </html>
