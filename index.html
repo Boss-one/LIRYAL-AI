@@ -359,28 +359,48 @@
     <!-- TRACTION / DIRESA -->
     <section id="traccion" class="py-20 bg-[#F8FAFC] border-y border-slate-200/60">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="bg-white rounded-3xl p-8 lg:p-12 shadow-sm border border-slate-200/60">
-                <div class="text-center mb-10">
-                    <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-md bg-emerald-50 text-emerald-600 text-xs font-bold uppercase tracking-widest mb-5 border border-emerald-100 shadow-sm">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center bg-white rounded-3xl p-8 lg:p-14 shadow-sm border border-slate-200/60">
+                
+                <!-- Left: text -->
+                <div>
+                    <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-md bg-emerald-50 text-emerald-600 text-xs font-bold uppercase tracking-widest mb-6 border border-emerald-100 shadow-sm">
                         Validación en Curso
                     </div>
-                    <h3 class="font-heading text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 mb-4">Validación Clínica Activa</h3>
-                    <p class="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed">
-                        Nuestra tecnología no es un concepto en papel. Trabajamos en colaboración directa con investigadores biólogos y personal médico de la <strong>DIRESA Ayacucho</strong>.
+                    <h3 class="font-heading text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 mb-5 leading-tight">Validación Clínica <span class="text-blue-600">Activa</span></h3>
+                    <p class="text-lg text-slate-600 leading-relaxed mb-6">
+                        Nuestra tecnología no es un concepto en papel. Trabajamos en colaboración directa con investigadores biólogos y personal médico de la <strong class="text-slate-800">DIRESA Ayacucho</strong>.
                     </p>
+                    <div class="flex items-center gap-3 text-sm text-emerald-600 font-semibold">
+                        <svg class="w-5 h-5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
+                        Datos reales, validación retrospectiva en curso
+                    </div>
+                    <div class="flex items-center gap-3 text-sm text-emerald-600 font-semibold mt-3">
+                        <svg class="w-5 h-5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
+                        5 establecimientos piloto en proceso de reclutamiento
+                    </div>
                 </div>
 
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-8 max-w-lg mx-auto">
-                    <div class="bg-[#F8FAFC] rounded-2xl p-6 text-center border border-slate-100 shadow-sm hover:shadow-md transition-shadow">
-                        <p class="text-4xl lg:text-5xl font-black text-blue-600 mb-2">+300k</p>
+                <!-- Right: stats -->
+                <div class="grid grid-cols-2 gap-5">
+                    <div class="bg-gradient-to-br from-blue-50 to-white rounded-2xl p-7 text-center border border-blue-100 shadow-sm hover:shadow-md transition-shadow">
+                        <p class="text-5xl font-black text-blue-600 mb-2">+300k</p>
                         <p class="text-xs font-bold text-slate-400 uppercase tracking-widest">Registros Procesados</p>
                     </div>
-                    <div class="bg-[#F8FAFC] rounded-2xl p-6 text-center border border-slate-100 shadow-sm hover:shadow-md transition-shadow">
-                        <p class="text-4xl lg:text-5xl font-black text-teal-500 mb-2">SaaS</p>
+                    <div class="bg-gradient-to-br from-teal-50 to-white rounded-2xl p-7 text-center border border-teal-100 shadow-sm hover:shadow-md transition-shadow">
+                        <p class="text-5xl font-black text-teal-500 mb-2">SaaS</p>
                         <p class="text-xs font-bold text-slate-400 uppercase tracking-widest">Modelo de Negocio</p>
                     </div>
-
+                    <div class="col-span-2 bg-gradient-to-r from-slate-900 to-slate-700 rounded-2xl p-6 flex items-center gap-5 shadow-md">
+                        <div class="w-12 h-12 bg-white/10 rounded-xl flex items-center justify-center shrink-0">
+                            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>
+                        </div>
+                        <div>
+                            <p class="text-white font-bold text-lg leading-tight">DIRESA Ayacucho</p>
+                            <p class="text-slate-400 text-sm font-medium">Partner Institucional · Ayacucho, Perú</p>
+                        </div>
+                    </div>
                 </div>
+
             </div>
         </div>
     </section>
