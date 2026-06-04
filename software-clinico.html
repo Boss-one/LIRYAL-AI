@@ -1,0 +1,1950 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <!-- SEO & GEO -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Liryal AI — Software de Gestión Clínica SaaS, Agenda y Receta Digital</title>
+    <meta name="description" content="Software de gestión clínica para médicos y consultorios en LATAM. Agenda inteligente con recordatorios por WhatsApp, Historia Clínica Electrónica y Finanzas.">
+    <meta name="keywords" content="Software médico, historia clínica electrónica, agenda médica, receta digital WhatsApp, gestión de consultorios, Liryal AI, CIE-10">
+    <meta name="author" content="Liryal AI">
+
+    <link rel="canonical" href="https://boss-one.github.io/LIRYAL-AI/software-clinico.html">
+
+    <!-- Schema.org SoftwareApplication -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "Liryal AI - Software Clínico",
+      "operatingSystem": "All",
+      "applicationCategory": "MedicalBusinessApplication",
+      "description": "Plataforma integral de gestión clínica con historia clínica electrónica, agenda automatizada por WhatsApp y control de finanzas para médicos independientes y clínicas en LATAM.",
+      "provider": {
+        "@type": "Organization",
+        "name": "Liryal AI"
+      }
+    }
+    </script>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Custom Tailwind Configuration -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Inter"', 'system-ui', 'sans-serif'],
+                        heading: ['"Outfit"', 'system-ui', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            900: '#0A192F', // Deep Navy
+                            800: '#112240', // Navy Light
+                            700: '#233554', // Slate Navy
+                            DEFAULT: '#2563EB', // Vibrant Blue
+                            400: '#60A5FA', // Light Blue
+                            accent: '#14B8A6', // Teal
+                        }
+                    },
+                    animation: {
+                        'fade-in-up': 'fadeInUp 0.8s ease-out forwards',
+                        'pulse-subtle': 'pulseSubtle 2s infinite ease-in-out',
+                        'bounce-slow': 'bounce 3s infinite',
+                    },
+                    keyframes: {
+                        fadeInUp: {
+                            '0%': { opacity: '0', transform: 'translateY(25px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        },
+                        pulseSubtle: {
+                            '0%, 100%': { opacity: '1', transform: 'scale(1)' },
+                            '50%': { opacity: '0.85', transform: 'scale(1.02)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body { background-color: #F8FAFC; }
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-bottom: 1px solid rgba(226, 232, 240, 0.6);
+        }
+        .gradient-text {
+            background: linear-gradient(135deg, #2563EB 0%, #14B8A6 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .bg-pattern {
+            background-image: radial-gradient(#CBD5E1 1px, transparent 1px);
+            background-size: 24px 24px;
+        }
+        .reveal-element {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .reveal-element.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+
+<body id="inicio" class="text-slate-800 antialiased selection:bg-brand-400 selection:text-white font-sans">
+
+    <!-- HEADER / NAVBAR -->
+    <header class="fixed top-0 left-0 right-0 z-50 glass-nav transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <a href="index.html" class="flex items-center gap-3 group">
+                <svg width="46" height="46" viewBox="0 0 110 100" fill="none" xmlns="http://www.w3.org/2000/svg" class="group-hover:scale-105 transition-transform">
+                    <defs>
+                        <radialGradient id="lg" cx="36%" cy="30%" r="68%">
+                            <stop offset="0%" stop-color="#93C5FD" />
+                            <stop offset="38%" stop-color="#3B82F6" />
+                            <stop offset="100%" stop-color="#1E3A8A" />
+                        </radialGradient>
+                        <mask id="cm">
+                            <circle cx="44" cy="50" r="44" fill="white" />
+                            <circle cx="61" cy="50" r="35" fill="black" />
+                        </mask>
+                    </defs>
+                    <circle cx="44" cy="50" r="44" fill="#0A192F" mask="url(#cm)" />
+                    <circle cx="68" cy="50" r="29" fill="url(#lg)" />
+                    <g stroke="white" stroke-width="0.75" opacity="0.85">
+                        <polyline points="55,36 69,28 84,36 88,52 80,67 63,71 52,61" />
+                        <line x1="52" y1="61" x2="55" y2="36" />
+                        <line x1="55" y1="36" x2="69" y2="50" />
+                        <line x1="69" y1="28" x2="69" y2="50" />
+                        <line x1="84" y1="36" x2="69" y2="50" />
+                        <line x1="88" y1="52" x2="69" y2="50" />
+                        <line x1="80" y1="67" x2="69" y2="50" />
+                        <line x1="63" y1="71" x2="69" y2="50" />
+                        <line x1="52" y1="61" x2="69" y2="50" />
+                        <line x1="62" y1="32" x2="55" y2="36" />
+                        <line x1="62" y1="32" x2="69" y2="28" />
+                        <line x1="62" y1="32" x2="69" y2="50" />
+                        <line x1="77" y1="33" x2="69" y2="28" />
+                        <line x1="77" y1="33" x2="84" y2="36" />
+                        <line x1="77" y1="33" x2="69" y2="50" />
+                        <line x1="87" y1="44" x2="84" y2="36" />
+                        <line x1="87" y1="44" x2="88" y2="52" />
+                        <line x1="87" y1="44" x2="69" y2="50" />
+                        <line x1="82" y1="61" x2="88" y2="52" />
+                        <line x1="82" y1="61" x2="80" y2="67" />
+                        <line x1="82" y1="61" x2="69" y2="50" />
+                        <line x1="71" y1="70" x2="80" y2="67" />
+                        <line x1="71" y1="70" x2="63" y2="71" />
+                        <line x1="71" y1="70" x2="69" y2="50" />
+                        <line x1="57" y1="67" x2="63" y2="71" />
+                        <line x1="57" y1="67" x2="52" y2="61" />
+                        <line x1="57" y1="67" x2="69" y2="50" />
+                    </g>
+                    <g fill="white">
+                        <circle cx="55" cy="36" r="2" />
+                        <circle cx="69" cy="28" r="2" />
+                        <circle cx="84" cy="36" r="2" />
+                        <circle cx="88" cy="52" r="2" />
+                        <circle cx="80" cy="67" r="2" />
+                        <circle cx="63" cy="71" r="2" />
+                        <circle cx="52" cy="61" r="2" />
+                        <circle cx="69" cy="50" r="3" />
+                        <circle cx="62" cy="32" r="1.5" />
+                        <circle cx="77" cy="33" r="1.5" />
+                        <circle cx="87" cy="44" r="1.5" />
+                        <circle cx="82" cy="61" r="1.5" />
+                        <circle cx="71" cy="70" r="1.5" />
+                        <circle cx="57" cy="67" r="1.5" />
+                    </g>
+                    <ellipse cx="67" cy="50" rx="38" ry="11" transform="rotate(-22 67 50)" stroke="#0A192F" stroke-width="2.2" fill="none" opacity="0.3" />
+                    <ellipse cx="67" cy="50" rx="38" ry="11" transform="rotate(-22 67 50)" stroke="#0A192F" stroke-width="2.2" fill="none" stroke-dasharray="62 58" />
+                </svg>
+                <span class="font-heading font-extrabold text-2xl tracking-tight text-brand-900">Liryal <span class="text-brand">AI</span></span>
+            </a>
+            <nav class="hidden md:flex items-center gap-8 font-medium text-sm text-slate-600">
+                <a href="index.html" class="hover:text-brand transition-colors">Inicio</a>
+                <a href="#modulos" class="hover:text-brand transition-colors">Módulos</a>
+                <a href="#beneficios" class="hover:text-brand transition-colors">Beneficios</a>
+                <a href="#sobre-nosotros" class="hover:text-brand transition-colors">Sobre Nosotros</a>
+                <a href="#faq" class="hover:text-brand transition-colors">Preguntas Frecuentes</a>
+            </nav>
+            <a href="#contacto" class="hidden md:inline-flex items-center justify-center px-6 py-2.5 text-sm font-bold rounded-full text-white bg-brand hover:bg-blue-700 shadow-md transition-all">
+                Solicitar demo
+            </a>
+
+            <!-- Mobile hamburger -->
+            <button id="hamburger" aria-label="Menú" class="md:hidden flex flex-col gap-1.5 p-2 rounded">
+                <span class="w-6 h-0.5 bg-brand-900 block transition-all" id="hb1"></span>
+                <span class="w-6 h-0.5 bg-brand-900 block transition-all" id="hb2"></span>
+                <span class="w-6 h-0.5 bg-brand-900 block transition-all" id="hb3"></span>
+            </button>
+        </div>
+        
+        <!-- Mobile menu dropdown -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-slate-200 absolute w-full left-0 top-full shadow-lg">
+            <nav class="flex flex-col px-4 py-3 gap-1">
+                <a href="index.html" class="py-3 text-sm font-medium text-slate-800 border-b border-slate-100 hover:text-brand transition-colors">Inicio</a>
+                <a href="#modulos" onclick="closeMobileMenu()" class="py-3 text-sm font-medium text-slate-800 border-b border-slate-100 hover:text-brand transition-colors">Módulos</a>
+                <a href="#beneficios" onclick="closeMobileMenu()" class="py-3 text-sm font-medium text-slate-800 border-b border-slate-100 hover:text-brand transition-colors">Beneficios</a>
+                <a href="#sobre-nosotros" onclick="closeMobileMenu()" class="py-3 text-sm font-medium text-slate-800 border-b border-slate-100 hover:text-brand transition-colors">Sobre Nosotros</a>
+                <a href="#faq" onclick="closeMobileMenu()" class="py-3 text-sm font-medium text-slate-800 border-b border-slate-100 hover:text-brand transition-colors">Preguntas Frecuentes</a>
+                <a href="#contacto" onclick="closeMobileMenu()" class="mt-4 mb-2 bg-brand text-white font-bold py-3 rounded-xl text-center text-sm shadow-md">
+                    Solicitar demo &rarr;
+                </a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="relative pt-28 pb-16 lg:pt-36 lg:pb-24 overflow-hidden bg-[#F8FAFC]">
+        <div class="absolute inset-0 bg-pattern opacity-50"></div>
+        <div class="absolute top-0 right-0 -translate-y-12 translate-x-1/3 w-[600px] h-[600px] bg-gradient-to-br from-blue-100 to-teal-50 rounded-full blur-3xl opacity-50 pointer-events-none"></div>
+        <div class="absolute bottom-0 left-0 translate-y-1/3 -translate-x-1/3 w-[500px] h-[500px] bg-gradient-to-tr from-blue-50 to-indigo-100 rounded-full blur-3xl opacity-40 pointer-events-none"></div>
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+                <!-- Left Content -->
+                <div class="lg:col-span-6 text-left opacity-0 animate-fade-in-up">
+                    <div class="inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-blue-50 text-blue-700 border border-blue-200/60 font-semibold text-xs sm:text-sm mb-6 shadow-sm">
+                        <span class="relative flex h-2 w-2">
+                          <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
+                          <span class="relative inline-flex rounded-full h-2 w-2 bg-blue-600"></span>
+                        </span>
+                        Nuevo: SaaS de Gestión Clínica Integral
+                    </div>
+                    
+                    <h1 class="font-heading text-4xl sm:text-5xl lg:text-[4rem] font-extrabold tracking-tight text-slate-900 mb-6 leading-[1.1]">
+                        Deja el papel.<br/>
+                        <span class="gradient-text">Atiende a tus pacientes.</span>
+                    </h1>
+                    
+                    <p class="text-lg text-slate-600 mb-8 leading-relaxed max-w-xl font-medium">
+                        Historia clínica electrónica, agenda médica inteligente y control de finanzas en un solo lugar. Diseñado para el médico independiente y centros de salud que no tienen tiempo que perder.
+                    </p>
+                    
+                    <div class="flex flex-col sm:flex-row items-center gap-4">
+                        <a href="#contacto" class="w-full sm:w-auto text-center px-8 py-4 text-base font-bold rounded-full text-white bg-[#0A192F] hover:bg-[#112240] shadow-xl shadow-blue-900/10 ring-1 ring-slate-900/5 transition-all transform hover:-translate-y-0.5">
+                            Solicitar demo
+                        </a>
+                        <a href="#modulos" class="w-full sm:w-auto text-center px-8 py-4 text-base font-bold rounded-full text-slate-700 bg-white hover:bg-slate-50 border border-slate-200 shadow-sm transition-all transform hover:-translate-y-0.5">
+                            Ver funciones
+                        </a>
+                    </div>
+
+                    <!-- Value Propositions Pills -->
+                    <div class="mt-10 pt-8 border-t border-slate-200/80 grid grid-cols-3 gap-4 text-center sm:text-left">
+                        <div>
+                            <p class="text-2xl font-bold text-slate-900 font-heading">100%</p>
+                            <p class="text-xs font-semibold text-slate-400 uppercase tracking-wider">En la Nube</p>
+                        </div>
+                        <div>
+                            <p class="text-2xl font-bold text-slate-900 font-heading">1 Click</p>
+                            <p class="text-xs font-semibold text-slate-400 uppercase tracking-wider">Receta Digital</p>
+                        </div>
+                        <div>
+                            <p class="text-2xl font-bold text-slate-900 font-heading">En Segundos</p>
+                            <p class="text-xs font-semibold text-slate-400 uppercase tracking-wider">CIE-10 & Historial</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Visual: Simulated Clinical Dashboard Mockup -->
+                <div class="lg:col-span-6 relative mt-6 lg:mt-0">
+                    <div class="absolute inset-0 bg-gradient-to-tr from-blue-300 to-teal-300 rounded-3xl blur-2xl opacity-30 -rotate-6 scale-95 pointer-events-none"></div>
+                    <div class="bg-white border border-slate-200 shadow-2xl rounded-2xl overflow-hidden text-left max-w-full lg:max-w-[580px] mx-auto transition-transform hover:scale-[1.01] duration-500">
+                        <!-- Dashboard Topbar -->
+                        <div class="bg-slate-900 px-5 py-4 flex items-center justify-between text-white border-b border-slate-800">
+                            <div class="flex items-center gap-2">
+                                <div class="w-3.5 h-3.5 bg-brand rounded-full flex items-center justify-center">
+                                    <div class="w-1.5 h-1.5 bg-white rounded-full"></div>
+                                </div>
+                                <span class="font-heading font-semibold text-sm tracking-tight text-white">Liryal SaaS Clínico</span>
+                                <span class="bg-emerald-500/20 text-emerald-400 text-[10px] font-bold px-2 py-0.5 rounded-full uppercase tracking-widest ml-2">En Línea</span>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <div class="w-2.5 h-2.5 rounded-full bg-red-500"></div>
+                                <div class="w-2.5 h-2.5 rounded-full bg-yellow-500"></div>
+                                <div class="w-2.5 h-2.5 rounded-full bg-green-500"></div>
+                            </div>
+                        </div>
+
+                        <!-- Dashboard Grid Layout -->
+                        <div class="grid grid-cols-12 h-[340px] text-xs">
+                            <!-- Sidebar -->
+                            <div class="col-span-3 bg-slate-50 border-r border-slate-200 p-3.5 flex flex-col gap-2">
+                                <div class="p-2 bg-blue-50 text-blue-600 rounded-lg font-semibold flex items-center gap-2">
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg>
+                                    <span>Pacientes</span>
+                                </div>
+                                <div class="p-2 hover:bg-slate-100 text-slate-500 rounded-lg flex items-center gap-2 transition-colors cursor-pointer">
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                                    <span>Agenda</span>
+                                </div>
+                                <div class="p-2 hover:bg-slate-100 text-slate-500 rounded-lg flex items-center gap-2 transition-colors cursor-pointer">
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                                    <span>Cobros</span>
+                                </div>
+                                <div class="mt-auto p-2 bg-slate-900 text-white rounded-lg text-center font-bold shadow-sm">
+                                    Demo 
+                                </div>
+                            </div>
+
+                            <!-- Main Workspace -->
+                            <div class="col-span-9 p-4 flex flex-col gap-4 overflow-y-auto">
+                                <!-- Active Patient Bar -->
+                                <div class="flex items-center justify-between pb-3 border-b border-slate-100">
+                                    <div>
+                                        <h4 class="font-bold text-sm text-slate-800">Carlos Mendoza Rivas</h4>
+                                        <p class="text-[10px] text-slate-400">ID: 8092-2026 · HCE Activo</p>
+                                    </div>
+                                    <span class="px-2.5 py-0.5 bg-blue-100 text-blue-700 text-[10px] font-bold rounded-md uppercase">Cardiología</span>
+                                </div>
+
+                                <!-- Patient Summary Cards -->
+                                <div class="grid grid-cols-2 gap-3">
+                                    <div class="border border-slate-100 bg-slate-50 p-2.5 rounded-xl">
+                                        <p class="text-[9px] font-semibold text-slate-400 uppercase tracking-wider mb-1">Alergias</p>
+                                        <p class="font-bold text-red-600">Penicilina, Sulfas</p>
+                                    </div>
+                                    <div class="border border-slate-100 bg-slate-50 p-2.5 rounded-xl">
+                                        <p class="text-[9px] font-semibold text-slate-400 uppercase tracking-wider mb-1">Diagnóstico (CIE-10)</p>
+                                        <p class="font-bold text-slate-700">I10 - Hipertensión esencial</p>
+                                    </div>
+                                </div>
+
+                                <!-- Prescription Builder View -->
+                                <div class="border border-blue-100 bg-blue-50/40 p-3.5 rounded-xl flex-1 flex flex-col justify-between">
+                                    <div class="flex justify-between items-start">
+                                        <div>
+                                            <p class="text-[10px] font-bold text-blue-800 mb-0.5">Receta Digital Activa</p>
+                                            <p class="text-[10px] text-slate-500 font-medium">Losartan 50mg — 1 tab c/12h x 30 días</p>
+                                        </div>
+                                        <span class="text-[10px] text-blue-600 font-bold bg-white px-2 py-0.5 rounded shadow-sm">Recetado</span>
+                                    </div>
+                                    <div class="flex items-center justify-between pt-2 border-t border-blue-100/60 mt-2">
+                                        <p class="text-[9px] text-slate-400 italic">Vía: WhatsApp / Email en un clic</p>
+                                        <button class="bg-[#25D366] text-white font-bold py-1 px-3 rounded flex items-center gap-1 hover:bg-[#22c35e] transition-colors shadow-sm text-[9px]">
+                                            <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+                                            Enviar
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROPUESTA DE VALOR CENTRAL -->
+    <section class="py-12 bg-blue-600 text-white relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+            <h2 class="font-heading text-xl sm:text-2xl lg:text-3xl font-extrabold tracking-tight">
+                "Deja de trabajar con papel. Atiende a tus pacientes, no a tus cuadernos."
+            </h2>
+        </div>
+    </section>
+
+    <!-- INTERACTIVE TABS & MODULES SECTION -->
+    <section id="modulos" class="py-20 lg:py-28 bg-white relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-md bg-blue-50 text-blue-600 text-xs font-bold uppercase tracking-wider mb-5 border border-blue-100 shadow-sm">
+                    Módulos Principales
+                </div>
+                <h3 class="font-heading text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 mb-6">
+                    Todo lo que necesitas en una sola plataforma
+                </h3>
+                <p class="text-slate-500 text-lg font-medium">
+                    Explora de forma interactiva las herramientas diseñadas para simplificar y automatizar el día a día de tu consultorio médico.
+                </p>
+            </div>
+
+            <!-- Tab Switcher Navigation with Autoplay progress lines -->
+            <div class="flex justify-center mb-12">
+                <div class="inline-flex p-1.5 bg-slate-100 rounded-3xl shadow-sm border border-slate-200/80 w-full max-w-2xl">
+                    <div class="grid grid-cols-3 gap-2 w-full">
+                        <!-- Tab 1 -->
+                        <button id="tab-btn-hce" onclick="userSwitchTab('hce')" class="relative flex flex-col items-center justify-center gap-1 py-3 px-2 sm:px-4 rounded-2xl font-heading text-[11px] sm:text-sm font-bold transition-all text-blue-600 bg-white shadow-sm overflow-hidden select-none">
+                            <span class="flex items-center gap-1.5 sm:gap-2">
+                                <svg class="w-4 h-4 sm:w-5 sm:h-5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+                                <span>Historia Clínica</span>
+                            </span>
+                            <span class="absolute bottom-0 left-0 h-0.5 bg-blue-600 w-0" id="tab-progress-hce"></span>
+                        </button>
+                        <!-- Tab 2 -->
+                        <button id="tab-btn-agenda" onclick="userSwitchTab('agenda')" class="relative flex flex-col items-center justify-center gap-1 py-3 px-2 sm:px-4 rounded-2xl font-heading text-[11px] sm:text-sm font-bold transition-all text-slate-500 hover:text-slate-800 overflow-hidden select-none">
+                            <span class="flex items-center gap-1.5 sm:gap-2">
+                                <svg class="w-4 h-4 sm:w-5 sm:h-5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                                <span>Agenda Inteligente</span>
+                            </span>
+                            <span class="absolute bottom-0 left-0 h-0.5 bg-blue-600 w-0" id="tab-progress-agenda"></span>
+                        </button>
+                        <!-- Tab 3 -->
+                        <button id="tab-btn-finanzas" onclick="userSwitchTab('finanzas')" class="relative flex flex-col items-center justify-center gap-1 py-3 px-2 sm:px-4 rounded-2xl font-heading text-[11px] sm:text-sm font-bold transition-all text-slate-500 hover:text-slate-800 overflow-hidden select-none">
+                            <span class="flex items-center gap-1.5 sm:gap-2">
+                                <svg class="w-4 h-4 sm:w-5 sm:h-5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                                <span>Finanzas y Cobros</span>
+                            </span>
+                            <span class="absolute bottom-0 left-0 h-0.5 bg-blue-600 w-0" id="tab-progress-finanzas"></span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TAB CONTENT 1: HISTORIA CLINICA -->
+            <div id="tab-content-hce" class="tab-pane grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                <!-- Text Features -->
+                <div class="lg:col-span-6 space-y-6">
+                    <h4 class="font-heading text-2xl sm:text-3xl font-bold text-slate-900">
+                        Todo el historial de tu paciente, <span class="gradient-text">en segundos</span>.
+                    </h4>
+                    <p class="text-slate-600 leading-relaxed">
+                        Navega y accede a la historia clínica de un paciente en un instante. Una visión completa y centralizada de antecedentes, alergias, plantillas médicas especializadas y vademécum.
+                    </p>
+                    
+                    <ul class="space-y-4">
+                        <li class="flex items-start gap-3">
+                            <div class="w-6 h-6 rounded-full bg-blue-100 flex items-center justify-center shrink-0 mt-0.5 text-blue-600">✓</div>
+                            <p class="text-slate-600 font-medium"><strong class="text-slate-800">Ficha clínica completa</strong>: Antecedentes médicos, alergias críticas, antecedentes familiares y archivo fotográfico.</p>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <div class="w-6 h-6 rounded-full bg-blue-100 flex items-center justify-center shrink-0 mt-0.5 text-blue-600">✓</div>
+                            <p class="text-slate-600 font-medium"><strong class="text-slate-800">Plantillas personalizadas</strong>: Adapta el formulario clínico según tu especialidad (Pediatría, Ginecología, etc.).</p>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <div class="w-6 h-6 rounded-full bg-blue-100 flex items-center justify-center shrink-0 mt-0.5 text-blue-600">✓</div>
+                            <p class="text-slate-600 font-medium"><strong class="text-slate-800">CIE-10 Integrado</strong>: Búsqueda predictiva e inteligente de códigos internacionales de diagnóstico.</p>
+                        </li>
+                    </ul>
+
+                    <div class="bg-slate-50 border border-slate-200/60 p-4.5 rounded-2xl flex items-center gap-3">
+                        <span class="bg-blue-100 text-blue-600 text-xs font-bold px-2 py-1 rounded shrink-0">Ley 29733</span>
+                        <p class="text-xs text-slate-500 font-medium">Cumplimiento total con la Ley de Protección de Datos Personales en el Perú y estándares HIPAA.</p>
+                    </div>
+                </div>
+
+                <!-- Interactive Visual: HCE Mockup -->
+                <div class="lg:col-span-6 bg-slate-50 border border-slate-200/60 rounded-3xl p-6 sm:p-8 shadow-sm flex flex-col gap-6 relative w-full overflow-hidden">
+                    <!-- Tab-like header for sub-navigation in HCE -->
+                    <div class="flex items-center justify-between pb-4 border-b border-slate-200/60">
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 bg-blue-100 text-blue-600 rounded-xl flex items-center justify-center font-bold">EM</div>
+                            <div>
+                                <h5 class="font-bold text-slate-800 text-sm">Elena Mendoza</h5>
+                                <p class="text-[10px] text-slate-400">29 años · Lima, Perú</p>
+                            </div>
+                        </div>
+                        <span class="bg-red-50 text-red-600 border border-red-100 px-2 py-0.5 rounded text-[10px] font-bold">Alergia: Sulfas</span>
+                    </div>
+
+                    <!-- Inner Mockup View Selector -->
+                    <div class="flex gap-2 bg-slate-200/60 p-1 rounded-xl text-[10px] font-bold text-slate-600 self-start">
+                        <button id="inner-hce-btn-general" onclick="switchInnerHce('general')" class="px-3 py-1 bg-white rounded-lg shadow-xs text-blue-600">General</button>
+                        <button id="inner-hce-btn-plantilla" onclick="switchInnerHce('plantilla')" class="px-3 py-1 rounded-lg">Plantillas</button>
+                        <button id="inner-hce-btn-receta" onclick="switchInnerHce('receta')" class="px-3 py-1 rounded-lg">Receta</button>
+                    </div>
+
+                    <!-- GENERAL VIEW CONTENT -->
+                    <div id="inner-hce-general" class="space-y-4">
+                        <div>
+                            <label class="block text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-1.5">Diagnóstico Principal (Buscador CIE-10)</label>
+                            <div class="bg-white border border-slate-200 rounded-xl px-3.5 py-2.5 text-slate-800 font-semibold text-xs flex items-center justify-between shadow-sm">
+                                <span id="hce-diag-text">J06.9 - Infección de vías respiratorias</span>
+                                <span class="text-[9px] bg-slate-100 text-slate-500 font-bold px-1.5 py-0.5 rounded">CIE-10</span>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-white border border-slate-200 rounded-xl p-3.5 shadow-sm text-xs">
+                            <p class="text-[9px] font-bold text-slate-400 uppercase tracking-wider mb-2">Antecedentes Recientes</p>
+                            <div class="flex flex-wrap gap-1.5">
+                                <span class="px-2 py-1 bg-blue-50 text-blue-700 font-medium rounded border border-blue-100">Hipertensión</span>
+                                <span class="px-2 py-1 bg-blue-50 text-blue-700 font-medium rounded border border-blue-100">Hipotiroidismo</span>
+                                <span class="px-2 py-1 bg-slate-100 text-slate-500 font-medium rounded border border-slate-200/60">+ Agregar</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- PLANTILLA VIEW CONTENT -->
+                    <div id="inner-hce-plantilla" class="space-y-4 hidden">
+                        <div>
+                            <label class="block text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-1.5">Plantilla Médica Activa</label>
+                            <select id="hce-plantilla-selector" onchange="changeHcePlantillaFields()" class="bg-white border border-slate-200 rounded-xl px-3.5 py-2.5 text-xs text-slate-700 font-bold outline-none w-full shadow-sm">
+                                <option value="pediatria">Control de Crecimiento (Pediatría)</option>
+                                <option value="gineco">Control Prenatal (Ginecología)</option>
+                            </select>
+                        </div>
+                        <div id="hce-plantilla-fields" class="bg-white border border-slate-200 rounded-xl p-3.5 shadow-sm text-xs space-y-3.5">
+                            <!-- Pediatric fields default -->
+                            <div class="grid grid-cols-2 gap-3">
+                                <div>
+                                    <label class="text-[9px] font-semibold text-slate-400 uppercase">Z-score Talla/Edad</label>
+                                    <input type="text" value="-1.8 (Normal)" class="w-full bg-slate-50 border border-slate-200 rounded px-2.5 py-1.5 font-bold text-slate-700 outline-none" readonly>
+                                </div>
+                                <div>
+                                    <label class="text-[9px] font-semibold text-slate-400 uppercase">Hito de Desarrollo</label>
+                                    <input type="text" value="Sujeta la cabeza solo" class="w-full bg-slate-50 border border-slate-200 rounded px-2.5 py-1.5 font-bold text-slate-700 outline-none" readonly>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- RECETA VIEW CONTENT -->
+                    <div id="inner-hce-receta" class="space-y-4 hidden">
+                        <div class="bg-white border border-slate-200 rounded-2xl p-4 flex flex-col gap-3 relative overflow-hidden shadow-sm">
+                            <p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Receta Digital Automatizada</p>
+                            <div class="text-xs text-slate-700 font-semibold space-y-1.5">
+                                <p id="hce-pres-item-1" class="transition-all duration-500">1. Paracetamol 500mg (1 tableta cada 8 horas por 3 días)</p>
+                                <p id="hce-pres-item-2" class="transition-all duration-500">2. Cetirizina 10mg (1 tableta en la noche por 5 días)</p>
+                            </div>
+                            
+                            <!-- Interactive Button to simulated send -->
+                            <div class="pt-3 border-t border-slate-100 flex items-center justify-between">
+                                <span class="text-[10px] text-slate-400 font-medium">Firma digital registrada</span>
+                                <button id="send-pres-btn" onclick="simulateSendPrescription()" class="bg-[#25D366] hover:bg-[#22c35e] text-white font-bold py-2 px-4 rounded-xl transition-all shadow-md text-xs flex items-center gap-1.5 active:scale-95">
+                                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+                                    <span id="send-pres-text">Enviar Receta</span>
+                                </button>
+                            </div>
+
+                            <!-- Success message overlay -->
+                            <div id="pres-success" class="absolute inset-0 bg-[#25D366] text-white flex flex-col items-center justify-center gap-2 p-4 text-center opacity-0 pointer-events-none transition-opacity duration-300">
+                                <span class="text-3xl animate-bounce">🚀</span>
+                                <p class="font-bold text-sm">¡Receta enviada por WhatsApp!</p>
+                                <p class="text-[11px] opacity-90">Elena Mendoza recibió el PDF con firma digital al instante.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TAB CONTENT 2: AGENDA (HIDDEN BY DEFAULT) -->
+            <div id="tab-content-agenda" class="tab-pane hidden grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                <!-- Text Features -->
+                <div class="lg:col-span-6 space-y-6">
+                    <h4 class="font-heading text-2xl sm:text-3xl font-bold text-slate-900">
+                        Sin llamadas. Sin cuadernos. <span class="gradient-text">Sin ausentismo</span>.
+                    </h4>
+                    <p class="text-slate-600 leading-relaxed">
+                        Controla el calendario de tu consultorio de forma inteligente. Configura tus horarios, tipos de atención y ofrece a tus pacientes un portal automatizado para agendar sus citas de forma autónoma.
+                    </p>
+                    
+                    <ul class="space-y-4">
+                        <li class="flex items-start gap-3">
+                            <div class="w-6 h-6 rounded-full bg-blue-100 flex items-center justify-center shrink-0 mt-0.5 text-blue-600">✓</div>
+                            <p class="text-slate-600 font-medium"><strong class="text-slate-800">Recordatorios por WhatsApp</strong>: Envío de alertas automatizadas 24 horas antes de cada consulta para confirmar o reprogramar.</p>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <div class="w-6 h-6 rounded-full bg-blue-100 flex items-center justify-center shrink-0 mt-0.5 text-blue-600">✓</div>
+                            <p class="text-slate-600 font-medium"><strong class="text-slate-800">Portal de auto-agendamiento</strong>: El paciente agenda de manera autónoma con un enlace único según tu disponibilidad.</p>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <div class="w-6 h-6 rounded-full bg-blue-100 flex items-center justify-center shrink-0 mt-0.5 text-blue-600">✓</div>
+                            <p class="text-slate-600 font-medium"><strong class="text-slate-800">Permisos para secretarias</strong>: Permite que tu asistente agende y gestione tus llamadas con un rol administrativo controlado.</p>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Interactive Visual: WhatsApp and Calendar Mockup -->
+                <div class="lg:col-span-6 bg-slate-50 border border-slate-200/60 rounded-3xl p-6 sm:p-8 shadow-sm flex flex-col gap-6 w-full overflow-hidden">
+                    <div class="flex items-center justify-between pb-3 border-b border-slate-200/60">
+                        <h5 class="font-bold text-slate-800 text-sm">Calendario Clínico</h5>
+                        <span class="text-[10px] bg-blue-100 text-blue-700 font-bold px-2 py-0.5 rounded">Vista de Hoy</span>
+                    </div>
+
+                    <!-- Inner Mockup View Selector -->
+                    <div class="flex gap-2 bg-slate-200/60 p-1 rounded-xl text-[10px] font-bold text-slate-600 self-start">
+                        <button id="inner-age-btn-doctor" onclick="switchInnerAgenda('doctor')" class="px-3 py-1 bg-white rounded-lg shadow-xs text-blue-600">Calendario Doctor</button>
+                        <button id="inner-age-btn-paciente" onclick="switchInnerAgenda('paciente')" class="px-3 py-1 rounded-lg">Portal del Paciente</button>
+                    </div>
+
+                    <!-- CALENDARIO DOCTOR VIEW CONTENT -->
+                    <div id="inner-age-doctor" class="space-y-4">
+                        <div class="space-y-2.5">
+                            <div class="bg-white border border-slate-200 p-3 rounded-xl flex items-center justify-between shadow-sm">
+                                <div class="flex items-center gap-2.5">
+                                    <span class="text-slate-500 font-semibold text-xs shrink-0">10:00 AM</span>
+                                    <div class="w-1 h-8 bg-emerald-500 rounded-full"></div>
+                                    <div>
+                                        <p class="font-bold text-slate-700 text-xs">Elena Mendoza</p>
+                                        <p class="text-[9px] text-slate-400">Consulta General</p>
+                                    </div>
+                                </div>
+                                <span class="bg-emerald-50 text-emerald-600 border border-emerald-100 text-[9px] font-bold px-2 py-0.5 rounded-full">Confirmada</span>
+                            </div>
+
+                            <div class="bg-white border border-slate-200 p-3 rounded-xl flex items-center justify-between shadow-sm">
+                                <div class="flex items-center gap-2.5">
+                                    <span class="text-slate-500 font-semibold text-xs shrink-0">11:30 AM</span>
+                                    <div id="status-indicator-bar" class="w-1 h-8 bg-yellow-500 rounded-full transition-colors duration-500"></div>
+                                    <div>
+                                        <p class="font-bold text-slate-700 text-xs">Carlos Mendoza</p>
+                                        <p class="text-[9px] text-slate-400">Procedimiento</p>
+                                    </div>
+                                </div>
+                                <span id="appointment-status-badge" class="bg-yellow-50 text-yellow-600 border border-yellow-100 text-[9px] font-bold px-2 py-0.5 rounded-full transition-all duration-300">Recordatorio Enviado</span>
+                            </div>
+                        </div>
+
+                        <!-- Interactive WhatsApp Chat Simulator -->
+                        <div class="bg-slate-900 rounded-2xl overflow-hidden border border-slate-800 flex flex-col max-w-sm mx-auto w-full shadow-md">
+                            <!-- Chat Header -->
+                            <div class="bg-slate-850 px-4 py-3 flex items-center gap-2.5 border-b border-slate-800 text-white">
+                                <div class="w-8 h-8 rounded-full bg-[#25D366] flex items-center justify-center font-bold text-sm text-white select-none">L</div>
+                                <div>
+                                    <p class="font-bold text-xs text-white">Liryal Recordatorios</p>
+                                    <p class="text-[9px] text-emerald-400">Cuenta de Empresa</p>
+                                </div>
+                            </div>
+
+                            <!-- Chat body -->
+                            <div id="whatsapp-chat-body" class="p-3.5 space-y-3 bg-[#0B141A] h-[130px] overflow-y-auto text-[11px] flex flex-col scrollbar-thin">
+                                <!-- System message -->
+                                <div class="bg-slate-800 text-slate-300 text-[9px] py-0.5 px-2 rounded-md self-center mb-1">HOY</div>
+                                
+                                <!-- WhatsApp Template bubble -->
+                                <div class="bg-[#1F2C34] text-white p-2.5 rounded-xl rounded-tl-none self-start max-w-[85%] border-l-4 border-blue-500 shadow-sm leading-relaxed">
+                                    Hola Carlos, le recordamos su cita de Cardiología para hoy a las 11:30 AM. Responda <strong class="text-blue-300 font-bold">1</strong> para Confirmar o <strong class="text-blue-300 font-bold">2</strong> para Cancelar.
+                                </div>
+                            </div>
+
+                            <!-- Simulating Input bar -->
+                            <div class="bg-slate-950 p-2.5 border-t border-slate-900 flex justify-between items-center gap-2">
+                                <span class="text-slate-500 text-[9px] px-1 italic">Ejecutando simulación de chat...</span>
+                                <button id="sim-wh-btn" onclick="simulateWhatsAppReply()" class="bg-[#25D366] hover:bg-[#22c35e] text-white font-extrabold px-3 py-1.5 rounded-lg text-[9px] transition-transform active:scale-95 shadow-md uppercase shrink-0">
+                                    Confirmar Manual
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- PORTAL PACIENTE VIEW CONTENT -->
+                    <div id="inner-age-paciente" class="space-y-4 hidden text-xs">
+                        <div class="bg-white border border-slate-200 rounded-xl p-4 shadow-sm space-y-3">
+                            <p class="font-bold text-slate-800 text-sm">Reserva tu Cita en Línea</p>
+                            <p class="text-slate-400 text-[10px]">Dr. Lopez · Cardiología</p>
+                            
+                            <div class="space-y-2">
+                                <label class="block text-[9px] font-bold text-slate-400 uppercase">Seleccione Fecha</label>
+                                <div class="grid grid-cols-2 gap-2">
+                                    <button id="book-date-btn-1" class="border border-blue-600 bg-blue-50 text-blue-600 p-2 rounded-lg font-bold">Mañana, 05 de Jun</button>
+                                    <button id="book-date-btn-2" class="border border-slate-200 p-2 rounded-lg font-bold text-slate-500">Sábado, 06 de Jun</button>
+                                </div>
+                            </div>
+
+                            <div class="space-y-2">
+                                <label class="block text-[9px] font-bold text-slate-400 uppercase">Horarios Disponibles</label>
+                                <div class="grid grid-cols-3 gap-2 text-center font-bold">
+                                    <button id="book-time-btn-1" onclick="selectBookingTime('09:00 AM')" class="border border-slate-200 hover:border-blue-500 hover:text-blue-500 p-2 rounded-lg text-slate-600">09:00 AM</button>
+                                    <button id="book-time-btn-2" onclick="selectBookingTime('10:30 AM')" class="border border-slate-200 hover:border-blue-500 hover:text-blue-500 p-2 rounded-lg text-slate-600">10:30 AM</button>
+                                    <button id="book-time-btn-3" class="border border-slate-100 bg-slate-50 p-2 rounded-lg text-slate-300 cursor-not-allowed">01:00 PM</button>
+                                </div>
+                            </div>
+
+                            <button id="confirm-booking-btn" onclick="confirmPatientBooking()" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-2.5 rounded-xl transition-all shadow-sm flex items-center justify-center gap-1 mt-2.5 active:scale-95 disabled:opacity-50" disabled>
+                                Confirmar Turno
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TAB CONTENT 3: FINANZAS (HIDDEN BY DEFAULT) -->
+            <div id="tab-content-finanzas" class="tab-pane hidden grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                <!-- Text Features -->
+                <div class="lg:col-span-6 space-y-6">
+                    <h4 class="font-heading text-2xl sm:text-3xl font-bold text-slate-900">
+                        Sabe exactamente <span class="gradient-text">cuánto ganas</span> cada mes.
+                    </h4>
+                    <p class="text-slate-600 leading-relaxed">
+                        Maneja tu clínica como un negocio moderno con el módulo de finanzas y deja atrás las horas que pasas sacando cuentas. Controla cobros, presupuestos y egresos.
+                    </p>
+                    
+                    <ul class="space-y-4">
+                        <li class="flex items-start gap-3">
+                            <div class="w-6 h-6 rounded-full bg-blue-100 flex items-center justify-center shrink-0 mt-0.5 text-blue-600">✓</div>
+                            <p class="text-slate-600 font-medium"><strong class="text-slate-800">Catálogo de Procedimientos</strong>: Precios estandarizados para consultas, ecografías, suturas y tratamientos.</p>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <div class="w-6 h-6 rounded-full bg-blue-100 flex items-center justify-center shrink-0 mt-0.5 text-blue-600">✓</div>
+                            <p class="text-slate-600 font-medium"><strong class="text-slate-800">Registro de Pagos</strong>: Monitorea qué pacientes pagaron, quiénes tienen deudas pendientes y por qué método de pago (Yape, transferencia, efectivo).</p>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <div class="w-6 h-6 rounded-full bg-blue-100 flex items-center justify-center shrink-0 mt-0.5 text-blue-600">✓</div>
+                            <p class="text-slate-600 font-medium"><strong class="text-slate-800">Presupuestos Imprimibles</strong>: Diseña y envía proyecciones de costo con validez profesional en formato PDF.</p>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Interactive Visual: Finance Mockup & SVG Chart -->
+                <div class="lg:col-span-6 bg-slate-50 border border-slate-200/60 rounded-3xl p-6 sm:p-8 shadow-sm flex flex-col gap-6 w-full overflow-hidden">
+                    <div class="flex items-center justify-between pb-3 border-b border-slate-200/60">
+                        <h5 class="font-bold text-slate-800 text-sm">Control Financiero</h5>
+                        <select class="bg-white border border-slate-200 rounded px-2 py-0.5 text-[10px] font-bold text-slate-600 outline-none shadow-xs">
+                            <option>Mayo 2026</option>
+                            <option>Junio 2026</option>
+                        </select>
+                    </div>
+
+                    <!-- Inner Mockup View Selector -->
+                    <div class="flex gap-2 bg-slate-200/60 p-1 rounded-xl text-[10px] font-bold text-slate-600 self-start">
+                        <button id="inner-fin-btn-resumen" onclick="switchInnerFinanzas('resumen')" class="px-3 py-1 bg-white rounded-lg shadow-xs text-blue-600">Resumen y Gráfico</button>
+                        <button id="inner-fin-btn-precios" onclick="switchInnerFinanzas('precios')" class="px-3 py-1 rounded-lg">Lista de Precios</button>
+                    </div>
+
+                    <!-- RESUMEN VIEW CONTENT -->
+                    <div id="inner-fin-resumen" class="space-y-4">
+                        <!-- Metrics -->
+                        <div class="grid grid-cols-2 gap-4">
+                            <div class="bg-white border border-slate-200 p-3 rounded-2xl shadow-sm hover:shadow-md transition-shadow relative">
+                                <p class="text-[9px] font-bold text-slate-400 uppercase tracking-widest mb-0.5">Ingreso Total</p>
+                                <p class="text-lg font-black text-slate-850 font-heading">S/. <span id="fin-ingreso-val">12,450</span></p>
+                                <span id="payment-plus-badge" class="absolute right-3 bottom-3 text-[10px] font-black text-emerald-500 opacity-0 transition-all duration-700">+S/. 120</span>
+                            </div>
+                            <div class="bg-white border border-slate-200 p-3 rounded-2xl shadow-sm hover:shadow-md transition-shadow">
+                                <p class="text-[9px] font-bold text-slate-400 uppercase tracking-widest mb-0.5">Pendiente de Cobro</p>
+                                <p class="text-lg font-black text-red-500 font-heading">S/. 840</p>
+                            </div>
+                        </div>
+
+                        <!-- Dynamic SVG Revenue Chart -->
+                        <div class="bg-white border border-slate-200 p-4.5 rounded-2xl shadow-sm relative overflow-hidden flex flex-col justify-end h-[160px]">
+                            <p class="text-[9px] font-bold text-slate-400 uppercase tracking-widest absolute top-3 left-4">Evolución de Ventas Semanales</p>
+                            
+                            <!-- Tooltip element -->
+                            <div id="chart-tooltip" class="absolute bg-slate-900 text-white text-[9px] px-2 py-1 rounded shadow-md pointer-events-none opacity-0 transition-opacity duration-300 z-10 font-bold"></div>
+
+                            <div class="h-[100px] w-full flex items-end relative">
+                                <!-- SVG Chart -->
+                                <svg viewBox="0 0 400 100" class="w-full h-full overflow-visible">
+                                    <defs>
+                                        <linearGradient id="chart-grad" x1="0" y1="0" x2="0" y2="1">
+                                            <stop offset="0%" stop-color="#2563EB" stop-opacity="0.3"></stop>
+                                            <stop offset="100%" stop-color="#2563EB" stop-opacity="0"></stop>
+                                        </linearGradient>
+                                    </defs>
+                                    <!-- Area under path -->
+                                    <path id="finanzas-area-path" d="M 0 90 Q 70 60 100 70 T 200 30 T 300 45 T 400 10 L 400 100 L 0 100 Z" fill="url(#chart-grad)" class="transition-opacity duration-[1000ms] opacity-0"></path>
+                                    <!-- Line path -->
+                                    <path id="finanzas-line-path" d="M 0 90 Q 70 60 100 70 T 200 30 T 300 45 T 400 10" fill="none" stroke="#2563EB" stroke-width="3" stroke-linecap="round" stroke-dasharray="500" stroke-dashoffset="500" class="transition-all duration-[1500ms] ease-out"></path>
+                                    <!-- Interactive Dots -->
+                                    <circle id="chart-dot-1" cx="100" cy="70" r="4.5" fill="#14B8A6" stroke="white" stroke-width="1.5" class="cursor-pointer hover:r-6 transition-all" onmouseover="showTooltip('Semana 1: S/. 2,300', 100, 70)" onmouseout="hideTooltip()"></circle>
+                                    <circle id="chart-dot-2" cx="200" cy="30" r="4.5" fill="#2563EB" stroke="white" stroke-width="1.5" class="cursor-pointer hover:r-6 transition-all" onmouseover="showTooltip('Semana 2: S/. 4,100', 200, 30)" onmouseout="hideTooltip()"></circle>
+                                    <circle id="chart-dot-3" cx="300" cy="45" r="4.5" fill="#2563EB" stroke="white" stroke-width="1.5" class="cursor-pointer hover:r-6 transition-all" onmouseover="showTooltip('Semana 3: S/. 3,450', 300, 45)" onmouseout="hideTooltip()"></circle>
+                                    <circle id="chart-dot-4" cx="400" cy="10" r="5" fill="#2563EB" stroke="white" stroke-width="2" class="cursor-pointer hover:r-6 transition-all" onmouseover="showTooltip('Semana 4: S/. 5,200', 380, 10)" onmouseout="hideTooltip()"></circle>
+                                </svg>
+                            </div>
+                            
+                            <!-- Chart X axis -->
+                            <div class="flex justify-between text-[9px] font-bold text-slate-400 uppercase mt-2.5">
+                                <span>Sem 1</span>
+                                <span>Sem 2</span>
+                                <span>Sem 3</span>
+                                <span>Sem 4</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- LISTA DE PRECIOS VIEW CONTENT -->
+                    <div id="inner-fin-precios" class="space-y-4 hidden text-xs">
+                        <div class="bg-white border border-slate-200 rounded-xl p-3.5 shadow-sm space-y-2.5">
+                            <p class="font-bold text-slate-800">Servicios Registrados</p>
+                            <div class="divide-y divide-slate-100">
+                                <div class="flex justify-between items-center py-2">
+                                    <div>
+                                        <p class="font-bold text-slate-700">Consulta General</p>
+                                        <p class="text-[9px] text-slate-400">Servicio Base</p>
+                                    </div>
+                                    <div class="flex items-center gap-2">
+                                        <span class="font-bold text-slate-800">S/. 120</span>
+                                        <button onclick="registerSimulatedPayment(120)" class="bg-blue-50 text-blue-600 hover:bg-blue-600 hover:text-white px-2.5 py-1 rounded-md font-bold transition-all text-[10px] active:scale-95 border border-blue-100">+ Cobrar</button>
+                                    </div>
+                                </div>
+                                <div class="flex justify-between items-center py-2">
+                                    <div>
+                                        <p class="font-bold text-slate-700">Ecografía Control</p>
+                                        <p class="text-[9px] text-slate-400">Procedimiento</p>
+                                    </div>
+                                    <div class="flex items-center gap-2">
+                                        <span class="font-bold text-slate-800">S/. 150</span>
+                                        <button onclick="registerSimulatedPayment(150)" class="bg-blue-50 text-blue-600 hover:bg-blue-600 hover:text-white px-2.5 py-1 rounded-md font-bold transition-all text-[10px] active:scale-95 border border-blue-100">+ Cobrar</button>
+                                    </div>
+                                </div>
+                                <div class="flex justify-between items-center py-2">
+                                    <div>
+                                        <p class="font-bold text-slate-700">Nebulización</p>
+                                        <p class="text-[9px] text-slate-400">Terapia</p>
+                                    </div>
+                                    <div class="flex items-center gap-2">
+                                        <span class="font-bold text-slate-800">S/. 80</span>
+                                        <button onclick="registerSimulatedPayment(80)" class="bg-blue-50 text-blue-600 hover:bg-blue-600 hover:text-white px-2.5 py-1 rounded-md font-bold transition-all text-[10px] active:scale-95 border border-blue-100">+ Cobrar</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- FEATURES LISTING GRID -->
+    <section id="beneficios" class="py-20 lg:py-28 bg-[#F8FAFC] border-y border-slate-200/60 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-20">
+                <h3 class="font-heading text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 mb-6">
+                    Diseñado para la eficiencia médica
+                </h3>
+                <p class="text-slate-500 text-lg font-medium">
+                    Todas las herramientas que requiere tu consultorio moderno en una única solución optimizada y accesible.
+                </p>
+            </div>
+
+            <!-- Features Cards Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                
+                <!-- Card 1 -->
+                <div class="bg-white border border-slate-200/60 p-8 rounded-3xl shadow-sm hover:shadow-md transition-shadow relative overflow-hidden group">
+                    <div class="w-12 h-12 bg-blue-50 text-blue-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-105 transition-transform">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"></path></svg>
+                    </div>
+                    <h4 class="font-heading text-xl font-bold text-slate-900 mb-3">Multidispositivo</h4>
+                    <p class="text-slate-600 text-sm leading-relaxed">
+                        Accede de forma segura y encriptada desde tu smartphone, tablet o computadora personal. Tu consultorio viaja contigo.
+                    </p>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="bg-white border border-slate-200/60 p-8 rounded-3xl shadow-sm hover:shadow-md transition-shadow relative overflow-hidden group">
+                    <div class="w-12 h-12 bg-teal-50 text-teal-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-105 transition-transform">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path></svg>
+                    </div>
+                    <h4 class="font-heading text-xl font-bold text-slate-900 mb-3">WhatsApp Integrado</h4>
+                    <p class="text-slate-600 text-sm leading-relaxed">
+                        Envía recetas digitales en PDF firmadas y recordatorios de cita automatizados de forma directa al celular del paciente.
+                    </p>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="bg-white border border-slate-200/60 p-8 rounded-3xl shadow-sm hover:shadow-md transition-shadow relative overflow-hidden group">
+                    <div class="w-12 h-12 bg-purple-50 text-purple-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-105 transition-transform">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 00-2 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"></path></svg>
+                    </div>
+                    <h4 class="font-heading text-xl font-bold text-slate-900 mb-3">Plantillas Clínicas</h4>
+                    <p class="text-slate-600 text-sm leading-relaxed">
+                        Configura y utiliza plantillas de examen físico por especialidad (Ginecología, Pediatría, Odontología, Medicina General).
+                    </p>
+                </div>
+
+                <!-- Card 4 -->
+                <div class="bg-white border border-slate-200/60 p-8 rounded-3xl shadow-sm hover:shadow-md transition-shadow relative overflow-hidden group">
+                    <div class="w-12 h-12 bg-amber-50 text-amber-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-105 transition-transform">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+                    </div>
+                    <h4 class="font-heading text-xl font-bold text-slate-900 mb-3">CIE-10 Incorporado</h4>
+                    <p class="text-slate-600 text-sm leading-relaxed">
+                        Buscador y autocompletado rápido de diagnósticos codificados internacionalmente para agilizar el llenado de la ficha.
+                    </p>
+                </div>
+
+                <!-- Card 5 -->
+                <div class="bg-white border border-slate-200/60 p-8 rounded-3xl shadow-sm hover:shadow-md transition-shadow relative overflow-hidden group">
+                    <div class="w-12 h-12 bg-rose-50 text-rose-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-105 transition-transform">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
+                    </div>
+                    <h4 class="font-heading text-xl font-bold text-slate-900 mb-3">Roles y Secretarias</h4>
+                    <p class="text-slate-600 text-sm leading-relaxed">
+                        Define accesos diferenciados para tu secretaria o asistente. Protege la confidencialidad de la historia clínica en todo momento.
+                    </p>
+                </div>
+
+                <!-- Card 6 -->
+                <div class="bg-white border border-slate-200/60 p-8 rounded-3xl shadow-sm hover:shadow-md transition-shadow relative overflow-hidden group">
+                    <div class="w-12 h-12 bg-emerald-50 text-emerald-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-105 transition-transform">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
+                    </div>
+                    <h4 class="font-heading text-xl font-bold text-slate-900 mb-3">Seguridad y Respaldo</h4>
+                    <p class="text-slate-600 text-sm leading-relaxed">
+                        Servidores en la nube seguros con copias de respaldo encriptadas y automáticas. Datos de pacientes a salvo de desastres físicos.
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- CENTRO DE FUNCIONES INTERACTIVO (TODAS LAS HERRAMIENTAS) -->
+    <section id="todas-funciones" class="py-20 lg:py-28 bg-white border-t border-slate-200/60 relative overflow-hidden reveal-element">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="bg-teal-50 text-teal-600 border border-teal-150 text-xs font-bold px-3.5 py-1.5 rounded-full uppercase tracking-wider inline-block mb-4 shadow-xs">Explora el Ecosistema</span>
+                <h3 class="font-heading text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 mb-6">
+                    Todas las funciones para tu consultorio moderno
+                </h3>
+                <p class="text-slate-500 text-lg font-medium">
+                    Una plataforma robusta, diseñada específicamente para optimizar la práctica clínica y administrativa de los médicos en LATAM.
+                </p>
+            </div>
+
+            <!-- Category Tabs Selector -->
+            <div class="flex justify-center mb-12">
+                <div class="inline-flex p-1 bg-slate-100 rounded-2xl shadow-xs border border-slate-200/80 w-full max-w-xl">
+                    <div class="grid grid-cols-3 gap-1.5 w-full text-center">
+                        <button id="func-tab-btn-hce" onclick="switchFuncCategory('hce')" class="py-2.5 px-3 rounded-xl font-heading text-xs sm:text-sm font-bold transition-all text-blue-600 bg-white shadow-xs select-none">
+                            Historias Clínicas
+                        </button>
+                        <button id="func-tab-btn-agenda" onclick="switchFuncCategory('agenda')" class="py-2.5 px-3 rounded-xl font-heading text-xs sm:text-sm font-bold transition-all text-slate-500 hover:text-slate-800 select-none">
+                            Agenda Inteligente
+                        </button>
+                        <button id="func-tab-btn-finanzas" onclick="switchFuncCategory('finanzas')" class="py-2.5 px-3 rounded-xl font-heading text-xs sm:text-sm font-bold transition-all text-slate-500 hover:text-slate-800 select-none">
+                            Finanzas y Cobros
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- FUNCTIONS GRID LISTING -->
+            <div class="relative min-h-[300px]">
+                
+                <!-- Category 1: HCE -->
+                <div id="func-cat-hce" class="func-cat-pane grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 transition-all duration-500">
+                    <!-- Ficha del Paciente -->
+                    <div class="bg-slate-50 border border-slate-200/60 p-6 rounded-2xl shadow-xs hover:shadow-md transition-shadow relative overflow-hidden group">
+                        <div class="w-10 h-10 bg-blue-50 text-blue-600 rounded-xl flex items-center justify-center mb-4 group-hover:scale-105 transition-transform">
+                            <span class="text-lg">👤</span>
+                        </div>
+                        <h4 class="font-heading text-base font-bold text-slate-900 mb-2">Ficha del Paciente</h4>
+                        <p class="text-slate-500 text-xs leading-relaxed">
+                            Historial médico completo, datos de filiación, antecedentes patológicos, hábitos y datos demográficos centralizados en un perfil.
+                        </p>
+                    </div>
+
+                    <!-- Plantillas Clínicas -->
+                    <div class="bg-slate-50 border border-slate-200/60 p-6 rounded-2xl shadow-xs hover:shadow-md transition-shadow relative overflow-hidden group">
+                        <div class="w-10 h-10 bg-teal-50 text-teal-600 rounded-xl flex items-center justify-center mb-4 group-hover:scale-105 transition-transform">
+                            <span class="text-lg">📋</span>
+                        </div>
+                        <h4 class="font-heading text-base font-bold text-slate-900 mb-2">Plantillas Personalizadas</h4>
+                        <p class="text-slate-500 text-xs leading-relaxed">
+                            Formularios de examen físico adaptados a tu especialidad (Pediatría, Ginecología, Medicina General, Odontología).
+                        </p>
+                    </div>
+
+                    <!-- Buscador CIE-10 -->
+                    <div class="bg-slate-50 border border-slate-200/60 p-6 rounded-2xl shadow-xs hover:shadow-md transition-shadow relative overflow-hidden group">
+                        <div class="w-10 h-10 bg-purple-50 text-purple-600 rounded-xl flex items-center justify-center mb-4 group-hover:scale-105 transition-transform">
+                            <span class="text-lg">🔍</span>
+                        </div>
+                        <h4 class="font-heading text-base font-bold text-slate-900 mb-2">Codificación CIE-10</h4>
+                        <p class="text-slate-500 text-xs leading-relaxed">
+                            Buscador predictivo inteligente de diagnósticos médicos según el estándar de la clasificación internacional de enfermedades.
+                        </p>
+                    </div>
+
+                    <!-- Receta Digital -->
+                    <div class="bg-slate-50 border border-slate-200/60 p-6 rounded-2xl shadow-xs hover:shadow-md transition-shadow relative overflow-hidden group">
+                        <div class="w-10 h-10 bg-emerald-50 text-emerald-600 rounded-xl flex items-center justify-center mb-4 group-hover:scale-105 transition-transform">
+                            <span class="text-lg">📄</span>
+                        </div>
+                        <h4 class="font-heading text-base font-bold text-slate-900 mb-2">Recetas Digitales</h4>
+                        <p class="text-slate-500 text-xs leading-relaxed">
+                            Genera y envía recetas médicas profesionales en PDF firmadas digitalmente por correo electrónico o WhatsApp en un clic.
+                        </p>
+                    </div>
+
+                    <!-- Vademécum -->
+                    <div class="bg-slate-50 border border-slate-200/60 p-6 rounded-2xl shadow-xs hover:shadow-md transition-shadow relative overflow-hidden group">
+                        <div class="w-10 h-10 bg-rose-50 text-rose-600 rounded-xl flex items-center justify-center mb-4 group-hover:scale-105 transition-transform">
+                            <span class="text-lg">💊</span>
+                        </div>
+                        <h4 class="font-heading text-base font-bold text-slate-900 mb-2">Vademécum Clínico</h4>
+                        <p class="text-slate-500 text-xs leading-relaxed">
+                            Catálogo completo de fármacos y presentaciones comerciales locales precargados para recetas rápidas y seguras.
+                        </p>
+                    </div>
+
+                    <!-- Imágenes & Archivos -->
+                    <div class="bg-slate-50 border border-slate-200/60 p-6 rounded-2xl shadow-xs hover:shadow-md transition-shadow relative overflow-hidden group">
+                        <div class="w-10 h-10 bg-amber-50 text-amber-600 rounded-xl flex items-center justify-center mb-4 group-hover:scale-105 transition-transform">
+                            <span class="text-lg">📸</span>
+                        </div>
+                        <h4 class="font-heading text-base font-bold text-slate-900 mb-2">Imágenes e Informes</h4>
+                        <p class="text-slate-500 text-xs leading-relaxed">
+                            Sube y almacena de forma segura radiografías, ecografías, análisis de laboratorio y fotos clínicas de evolución.
+                        </p>
+                    </div>
+
+                    <!-- Dibujos Anatómicos -->
+                    <div class="bg-slate-50 border border-slate-200/60 p-6 rounded-2xl shadow-xs hover:shadow-md transition-shadow relative overflow-hidden group">
+                        <div class="w-10 h-10 bg-indigo-50 text-indigo-600 rounded-xl flex items-center justify-center mb-4 group-hover:scale-105 transition-transform">
+                            <span class="text-lg">✏️</span>
+                        </div>
+                        <h4 class="font-heading text-base font-bold text-slate-900 mb-2">Dibujos Anatómicos</h4>
+                        <p class="text-slate-500 text-xs leading-relaxed">
+                            Anota e ilustra de forma visual hallazgos clínicos sobre esquemas anatómicos prediseñados dentro de la consulta.
+                        </p>
+                    </div>
+
+                    <!-- Firma Digital -->
+                    <div class="bg-slate-50 border border-slate-200/60 p-6 rounded-2xl shadow-xs hover:shadow-md transition-shadow relative overflow-hidden group">
+                        <div class="w-10 h-10 bg-violet-50 text-violet-600 rounded-xl flex items-center justify-center mb-4 group-hover:scale-105 transition-transform">
+                            <span class="text-lg">✍️</span>
+                        </div>
+                        <h4 class="font-heading text-base font-bold text-slate-900 mb-2">Firma Digital</h4>
+                        <p class="text-slate-500 text-xs leading-relaxed">
+                            Estampa tu firma médica registrada en todas tus recetas y proformas de forma rápida y con total validez legal.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Category 2: Agenda (Hidden by default) -->
+                <div id="func-cat-agenda" class="func-cat-pane hidden grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 transition-all duration-500">
+                    <!-- Calendario Inteligente -->
+                    <div class="bg-slate-50 border border-slate-200/60 p-6 rounded-2xl shadow-xs hover:shadow-md transition-shadow relative overflow-hidden group">
+                        <div class="w-10 h-10 bg-blue-50 text-blue-600 rounded-xl flex items-center justify-center mb-4 group-hover:scale-105 transition-transform">
+                            <span class="text-lg">📅</span>
+                        </div>
+                        <h4 class="font-heading text-base font-bold text-slate-900 mb-2">Calendario Médico</h4>
+                        <p class="text-slate-500 text-xs leading-relaxed">
+                            Organiza tu tiempo en minutos. Visualiza consultas, bloqueos de agenda y tipos de citas con códigos de color dinámicos.
+                        </p>
+                    </div>
+
+                    <!-- Recordatorios por WhatsApp -->
+                    <div class="bg-slate-50 border border-slate-200/60 p-6 rounded-2xl shadow-xs hover:shadow-md transition-shadow relative overflow-hidden group">
+                        <div class="w-10 h-10 bg-emerald-50 text-emerald-600 rounded-xl flex items-center justify-center mb-4 group-hover:scale-105 transition-transform">
+                            <span class="text-lg">💬</span>
+                        </div>
+                        <h4 class="font-heading text-base font-bold text-slate-900 mb-2">Recordatorios WhatsApp</h4>
+                        <p class="text-slate-500 text-xs leading-relaxed">
+                            Notificaciones automáticas con botones interactivos para confirmación o reprogramación de citas. Reduce el ausentismo (no-shows).
+                        </p>
+                    </div>
+
+                    <!-- Portal de Agenda Online -->
+                    <div class="bg-slate-50 border border-slate-200/60 p-6 rounded-2xl shadow-xs hover:shadow-md transition-shadow relative overflow-hidden group">
+                        <div class="w-10 h-10 bg-teal-50 text-teal-600 rounded-xl flex items-center justify-center mb-4 group-hover:scale-105 transition-transform">
+                            <span class="text-lg">🌐</span>
+                        </div>
+                        <h4 class="font-heading text-base font-bold text-slate-900 mb-2">Portal del Paciente</h4>
+                        <p class="text-slate-500 text-xs leading-relaxed">
+                            Tus pacientes agendan sus citas de forma autónoma a través de un link personalizado según tu disponibilidad en tiempo real.
+                        </p>
+                    </div>
+
+                    <!-- Múltiples Usuarios y Roles -->
+                    <div class="bg-slate-50 border border-slate-200/60 p-6 rounded-2xl shadow-xs hover:shadow-md transition-shadow relative overflow-hidden group">
+                        <div class="w-10 h-10 bg-purple-50 text-purple-600 rounded-xl flex items-center justify-center mb-4 group-hover:scale-105 transition-transform">
+                            <span class="text-lg">👥</span>
+                        </div>
+                        <h4 class="font-heading text-base font-bold text-slate-900 mb-2">Perfil de Asistente</h4>
+                        <p class="text-slate-500 text-xs leading-relaxed">
+                            Colabora eficientemente con tu asistente o secretaria. Define permisos detallados para que gestionen tu agenda sin ver datos de salud confidenciales.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Category 3: Finanzas (Hidden by default) -->
+                <div id="func-cat-finanzas" class="func-cat-pane hidden grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 transition-all duration-500">
+                    <!-- Relación de Precios -->
+                    <div class="bg-slate-50 border border-slate-200/60 p-6 rounded-2xl shadow-xs hover:shadow-md transition-shadow relative overflow-hidden group">
+                        <div class="w-10 h-10 bg-blue-50 text-blue-600 rounded-xl flex items-center justify-center mb-4 group-hover:scale-105 transition-transform">
+                            <span class="text-lg">💰</span>
+                        </div>
+                        <h4 class="font-heading text-base font-bold text-slate-900 mb-2">Catálogo de Servicios</h4>
+                        <p class="text-slate-500 text-xs leading-relaxed">
+                            Define una relación de precios estándar para tus consultas, procedimientos e insumos para que todo tu equipo cobre con los mismos valores.
+                        </p>
+                    </div>
+
+                    <!-- Registro de Pagos -->
+                    <div class="bg-slate-50 border border-slate-200/60 p-6 rounded-2xl shadow-xs hover:shadow-md transition-shadow relative overflow-hidden group">
+                        <div class="w-10 h-10 bg-emerald-50 text-emerald-600 rounded-xl flex items-center justify-center mb-4 group-hover:scale-105 transition-transform">
+                            <span class="text-lg">📈</span>
+                        </div>
+                        <h4 class="font-heading text-base font-bold text-slate-900 mb-2">Manejo de Cobranza</h4>
+                        <p class="text-slate-500 text-xs leading-relaxed">
+                            Controla los pendientes de pago e ingresos totales de tu consultorio. Registra métodos de pago como Yape, Plin, efectivo o transferencias.
+                        </p>
+                    </div>
+
+                    <!-- Presupuestos e Imprimibles -->
+                    <div class="bg-slate-50 border border-slate-200/60 p-6 rounded-2xl shadow-xs hover:shadow-md transition-shadow relative overflow-hidden group">
+                        <div class="w-10 h-10 bg-teal-50 text-teal-600 rounded-xl flex items-center justify-center mb-4 group-hover:scale-105 transition-transform">
+                            <span class="text-lg">📑</span>
+                        </div>
+                        <h4 class="font-heading text-base font-bold text-slate-900 mb-2">Presupuestos y Proformas</h4>
+                        <p class="text-slate-500 text-xs leading-relaxed">
+                            Crea estimaciones de costo formales para tratamientos odontológicos o cirugías menores y envíalas directamente en PDF a tus pacientes.
+                        </p>
+                    </div>
+
+                    <!-- Control de Egresos -->
+                    <div class="bg-slate-50 border border-slate-200/60 p-6 rounded-2xl shadow-xs hover:shadow-md transition-shadow relative overflow-hidden group">
+                        <div class="w-10 h-10 bg-rose-50 text-rose-600 rounded-xl flex items-center justify-center mb-4 group-hover:scale-105 transition-transform">
+                            <span class="text-lg">📉</span>
+                        </div>
+                        <h4 class="font-heading text-base font-bold text-slate-900 mb-2">Registro de Egresos</h4>
+                        <p class="text-slate-500 text-xs leading-relaxed">
+                            Mantén un control claro de los gastos corrientes del consultorio, compras de insumos médicos y egresos administrativos de caja.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- SOBRE NOSOTROS / NUESTRA MISIÓN -->
+    <section id="sobre-nosotros" class="py-20 lg:py-28 bg-[#F8FAFC] border-t border-slate-200/60 relative overflow-hidden">
+        <div class="absolute inset-0 bg-pattern opacity-30"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+                <!-- Left Content -->
+                <div class="lg:col-span-5 text-left space-y-6 reveal-element">
+                    <span class="bg-blue-100 text-blue-700 text-xs font-bold px-3.5 py-1.5 rounded-full uppercase tracking-wider inline-block">Nuestra Misión</span>
+                    <h3 class="font-heading text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 leading-tight">
+                        Tecnología humana para el <span class="gradient-text">futuro médico</span>.
+                    </h3>
+                    <p class="text-slate-600 leading-relaxed text-base">
+                        En Liryal AI nacimos con una convicción clara: la tecnología de vanguardia debe estar al servicio de la salud, comenzando por quienes cuidan de nosotros.
+                    </p>
+                    <p class="text-slate-600 leading-relaxed text-base">
+                        Fundada en el corazón de LATAM, desarrollamos software clínico e inteligencias artificiales optimizadas para responder a las necesidades reales de nuestros establecimientos locales, corrigiendo sesgos geográficos y de altitud.
+                    </p>
+                    <div class="pt-4 flex items-center gap-4">
+                        <div class="w-12 h-12 bg-white rounded-full flex items-center justify-center shadow-sm border border-slate-200 shrink-0">
+                            <span class="text-xl">🩺</span>
+                        </div>
+                        <div>
+                            <p class="text-sm font-bold text-slate-805 leading-none mb-1">Royer De La Cruz</p>
+                            <p class="text-xs text-slate-400 font-semibold uppercase tracking-wider">Fundador, Liryal AI</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Cards: Key Pillars -->
+                <div class="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-6 reveal-element">
+                    <!-- Card 1 -->
+                    <div class="bg-white border border-slate-200/60 p-6 rounded-3xl shadow-sm hover:shadow-md transition-all duration-300">
+                        <div class="w-10 h-10 bg-blue-50 text-blue-600 rounded-xl flex items-center justify-center mb-4">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg>
+                        </div>
+                        <h4 class="font-heading text-lg font-bold text-slate-900 mb-2">Diseño Médico Empático</h4>
+                        <p class="text-slate-500 text-sm leading-relaxed">
+                            Diseñamos cada pantalla junto a médicos en ejercicio para reducir la fatiga cognitiva y el número de clics necesarios para cada tarea.
+                        </p>
+                    </div>
+
+                    <!-- Card 2 -->
+                    <div class="bg-white border border-slate-200/60 p-6 rounded-3xl shadow-sm hover:shadow-md transition-all duration-300">
+                        <div class="w-10 h-10 bg-teal-50 text-teal-600 rounded-xl flex items-center justify-center mb-4">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
+                        </div>
+                        <h4 class="font-heading text-lg font-bold text-slate-900 mb-2">Validación Clínica Activa</h4>
+                        <p class="text-slate-500 text-sm leading-relaxed">
+                            Nuestra IA de radiología y predictores de salud no son teorías; están validados con más de 300k registros reales de la región andina.
+                        </p>
+                    </div>
+
+                    <!-- Card 3 -->
+                    <div class="bg-white border border-slate-200/60 p-6 rounded-3xl shadow-sm hover:shadow-md transition-all duration-300">
+                        <div class="w-10 h-10 bg-indigo-50 text-indigo-600 rounded-xl flex items-center justify-center mb-4">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg>
+                        </div>
+                        <h4 class="font-heading text-lg font-bold text-slate-900 mb-2">Privacidad Ley 29733</h4>
+                        <p class="text-slate-500 text-sm leading-relaxed">
+                            Resguardo riguroso del historial clínico mediante protocolos de seguridad y encriptación de datos según la normativa peruana.
+                        </p>
+                    </div>
+
+                    <!-- Card 4 -->
+                    <div class="bg-white border border-slate-200/60 p-6 rounded-3xl shadow-sm hover:shadow-md transition-all duration-300">
+                        <div class="w-10 h-10 bg-amber-50 text-amber-600 rounded-xl flex items-center justify-center mb-4">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 002 2h2a2.5 2.5 0 002.5-2.5V8a2.5 2.5 0 012.5-2.5h.5m-1.5 8.5a1.5 1.5 0 01-3 0V12a1.5 1.5 0 00-3 0v1.5a1.5 1.5 0 01-3 0v-1a1.5 1.5 0 00-3 0V14"></path></svg>
+                        </div>
+                        <h4 class="font-heading text-lg font-bold text-slate-900 mb-2">Visión de Inclusión Regional</h4>
+                        <p class="text-slate-500 text-sm leading-relaxed">
+                            Adaptamos los rangos clínicos y de diagnóstico (como la anemia) a la altitud y demografía real de cada rincón de los Andes.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ SECTION -->
+    <section id="faq" class="py-20 lg:py-28 bg-white relative border-b border-slate-200/60">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h3 class="font-heading text-3xl sm:text-4xl font-extrabold text-slate-900 mb-6">Preguntas Frecuentes</h3>
+                <p class="text-slate-500 text-lg font-medium">Resolvemos tus dudas sobre el funcionamiento e integración de nuestro software.</p>
+            </div>
+
+            <!-- Accordion Grid -->
+            <div class="space-y-4">
+                
+                <!-- Q1 -->
+                <div class="border border-slate-200 rounded-2xl overflow-hidden transition-all bg-slate-50/50 hover:bg-slate-50">
+                    <button class="w-full text-left px-6 py-5 flex items-center justify-between font-bold text-slate-800 text-base outline-none" onclick="toggleFaq(1)">
+                        <span>¿Mis datos e historias clínicas migran fácilmente?</span>
+                        <svg id="faq-icon-1" class="w-5 h-5 text-slate-500 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </button>
+                    <div id="faq-content-1" class="px-6 pb-5 text-sm text-slate-600 leading-relaxed hidden">
+                        Sí. Nuestro equipo te asiste en el proceso de migración de tus bases de datos actuales en Excel u otros sistemas de forma totalmente gratuita y segura al contratar el software.
+                    </div>
+                </div>
+
+                <!-- Q2 -->
+                <div class="border border-slate-200 rounded-2xl overflow-hidden transition-all bg-slate-50/50 hover:bg-slate-50">
+                    <button class="w-full text-left px-6 py-5 flex items-center justify-between font-bold text-slate-800 text-base outline-none" onclick="toggleFaq(2)">
+                        <span>¿Cómo funciona el envío por WhatsApp? ¿Tengo que pagar un costo extra?</span>
+                        <svg id="faq-icon-2" class="w-5 h-5 text-slate-500 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </button>
+                    <div id="faq-content-2" class="px-6 pb-5 text-sm text-slate-600 leading-relaxed hidden">
+                        No. Los envíos de recordatorios de citas y recetas digitales en PDF por WhatsApp están incluidos dentro del costo de tu suscripción mensual, sin límites ni cobros sorpresa de telefonía.
+                    </div>
+                </div>
+
+                <!-- Q3 -->
+                <div class="border border-slate-200 rounded-2xl overflow-hidden transition-all bg-slate-50/50 hover:bg-slate-50">
+                    <button class="w-full text-left px-6 py-5 flex items-center justify-between font-bold text-slate-800 text-base outline-none" onclick="toggleFaq(3)">
+                        <span>¿Es legal la firma y receta digital en el Perú?</span>
+                        <svg id="faq-icon-3" class="w-5 h-5 text-slate-500 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </button>
+                    <div id="faq-content-3" class="px-6 pb-5 text-sm text-slate-600 leading-relaxed hidden">
+                        Sí, está totalmente regulado y avalado por el MINSA y la ley de firmas y certificados digitales de la República del Perú. Las recetas digitales emitidas por Liryal cumplen con todos los requisitos para ser despachadas en farmacias físicas o delivery.
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT FORM SECTION -->
+    <section id="contacto" class="py-24 bg-[#0A192F] text-white relative">
+        <div class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4IiBoZWlnaHQ9IjgiPgo8cmVjdCB3aWR0aD0iOCIgaGVpZ2h0PSI4IiBmaWxsPSIjMEExOTJGIj48L3JlY3Q+CTxwYXRoIGQ9Ik0wIDBMOCA4Wk04IDBMMCA4WiIgc3Ryb2tlPSIjMTUyNTQyIiBzdHJva2Utd2lkdGg9IjEiPjwvcGF0aD4KPC9zdmc+')] opacity-30"></div>
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+            <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-md bg-blue-900/50 text-blue-400 text-xs font-bold uppercase tracking-widest mb-6 border border-blue-800/50 shadow-sm backdrop-blur-sm">
+                Piloto Cerrado & Demostración
+            </div>
+            <h2 class="font-heading text-4xl sm:text-5xl font-extrabold mb-6 tracking-tight">Comienza a digitalizar tu consultorio hoy</h2>
+            <p class="text-lg text-slate-300 mb-10 max-w-3xl mx-auto font-light leading-relaxed">
+                Agenda una videollamada de 10 minutos con nuestro equipo. Te mostraremos el sistema en vivo adaptado a tu especialidad médica y configuraremos tu cuenta piloto gratuita.
+            </p>
+            
+            <div class="bg-[#F8FAFC] rounded-3xl p-8 sm:p-12 shadow-2xl text-left border border-slate-200 text-slate-800 relative overflow-hidden">
+                <form action="https://formsubmit.co/royerdelacruz13@gmail.com" method="POST" class="space-y-6 relative z-10">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-[11px] font-bold text-slate-500 uppercase tracking-widest mb-2">Nombre Completo</label>
+                            <input type="text" name="nombre" placeholder="Dr. Ana Torres" class="w-full bg-white border border-slate-200 rounded-xl px-5 py-3.5 text-slate-800 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all outline-none shadow-sm" required>
+                        </div>
+                        <div>
+                            <label class="block text-[11px] font-bold text-slate-500 uppercase tracking-widest mb-2">Especialidad</label>
+                            <input type="text" name="especialidad" placeholder="Pediatría, Cardiología, Dental..." class="w-full bg-white border border-slate-200 rounded-xl px-5 py-3.5 text-slate-850 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all outline-none shadow-sm" required>
+                        </div>
+                        <div>
+                            <label class="block text-[11px] font-bold text-slate-500 uppercase tracking-widest mb-2">Celular / WhatsApp</label>
+                            <input type="tel" name="telefono" placeholder="+51 987 654 321" class="w-full bg-white border border-slate-200 rounded-xl px-5 py-3.5 text-slate-850 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all outline-none shadow-sm" required>
+                        </div>
+                        <div>
+                            <label class="block text-[11px] font-bold text-slate-500 uppercase tracking-widest mb-2">Email Corporativo</label>
+                            <input type="email" name="email" placeholder="ana@consultorio.pe" class="w-full bg-white border border-slate-200 rounded-xl px-5 py-3.5 text-slate-850 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all outline-none shadow-sm" required>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <label class="block text-[11px] font-bold text-slate-500 uppercase tracking-widest mb-2">¿Cómo trabajas actualmente?</label>
+                        <select name="estado_actual" class="w-full bg-white border border-slate-200 rounded-xl px-5 py-3.5 text-slate-800 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all outline-none shadow-sm" required>
+                            <option value="" disabled selected>Selecciona tu situación</option>
+                            <option value="Uso papel y cuadernos">Uso papel, cuadernos y agendas físicas</option>
+                            <option value="Uso Word, Excel o Whatsapp">Organizo datos en Word, Excel y chats</option>
+                            <option value="Tengo otro sistema pero busco cambiar">Tengo otro sistema pero busco una mejor alternativa</option>
+                            <option value="Otro">Otro</option>
+                        </select>
+                    </div>
+
+                    <input type="hidden" name="_next" value="https://boss-one.github.io/LIRYAL-AI/software-clinico.html">
+                    <input type="hidden" name="_subject" value="[Liryal AI] Nueva solicitud de Demo SaaS Clínico">
+                    <input type="text" name="_honey" style="display:none">
+                    
+                    <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-extrabold text-lg py-4 rounded-xl transition-all shadow-lg shadow-blue-600/30 mt-4 flex items-center justify-center gap-2 group">
+                        Solicitar Demo & Agenda Piloto
+                        <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                    </button>
+                    
+                    <p class="text-center text-xs text-slate-400 mt-5 flex items-center justify-center gap-1.5 font-medium">
+                        <svg class="w-3.5 h-3.5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg>
+                        Información confidencial cifrada. Conforme a la Ley 29733 (LPDP) del Perú.
+                    </p>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-brand-900 border-t border-brand-800 py-12 px-4">
+        <div class="max-w-7xl mx-auto flex flex-col items-center gap-6 text-slate-400 text-sm">
+            <div class="flex items-center gap-2">
+                <svg width="28" height="28" viewBox="0 0 110 100" fill="none">
+                    <defs>
+                        <radialGradient id="fg2" cx="36%" cy="30%" r="68%">
+                            <stop offset="0%" stop-color="#93C5FD" />
+                            <stop offset="40%" stop-color="#3B82F6" />
+                            <stop offset="100%" stop-color="#1E3A8A" />
+                        </radialGradient>
+                        <mask id="fcm2">
+                            <circle cx="44" cy="50" r="44" fill="white" />
+                            <circle cx="61" cy="50" r="35" fill="black" />
+                        </mask>
+                    </defs>
+                    <circle cx="44" cy="50" r="44" fill="#ffffff" mask="url(#fcm2)" opacity="0.9" />
+                    <circle cx="68" cy="50" r="29" fill="url(#fg2)" />
+                    <ellipse cx="67" cy="50" rx="38" ry="11" transform="rotate(-22 67 50)" stroke="#ffffff" stroke-width="2" fill="none" opacity="0.3" />
+                </svg>
+                <span class="font-heading font-extrabold text-xl tracking-tight text-white">Liryal<span class="text-brand">AI</span></span>
+            </div>
+            
+            <p>© 2026 Liryal AI. B2B HealthTech SaaS. Perú.</p>
+            
+            <div class="flex items-center gap-6 font-medium">
+                <a href="index.html" class="hover:text-white transition-colors">Volver al Inicio</a>
+                <a href="#" class="hover:text-white transition-colors">Políticas de Privacidad</a>
+                <a href="mailto:royerdelacruz13@gmail.com" class="hover:text-white transition-colors">Soporte Técnico</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- INTERACTIVE JAVASCRIPT LOGIC -->
+    <script>
+        // Hamburger Menu toggle
+        const hamburger = document.getElementById('hamburger');
+        const mobileMenu = document.getElementById('mobile-menu');
+        hamburger.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+        function closeMobileMenu() {
+            mobileMenu.classList.add('hidden');
+        }
+
+        // --- AUTOPLAY TABS LOGIC ---
+        let activeTab = 'hce';
+        let tabInterval = null;
+        const TAB_DURATION = 9000; // 9 seconds per tab to allow full demo completion
+
+        function startAutoplay() {
+            resetProgressBars();
+            
+            // Trigger animation on active progress bar
+            const activeProgress = document.getElementById(`tab-progress-${activeTab}`);
+            if (activeProgress) {
+                // Force reflow
+                activeProgress.offsetHeight;
+                activeProgress.style.width = '100%';
+            }
+
+            // Set switcher timeout
+            tabInterval = setTimeout(() => {
+                let nextTab = 'hce';
+                if (activeTab === 'hce') nextTab = 'agenda';
+                else if (activeTab === 'agenda') nextTab = 'finanzas';
+                
+                switchTab(nextTab);
+            }, TAB_DURATION);
+        }
+
+        function stopAutoplay() {
+            if (tabInterval) {
+                clearTimeout(tabInterval);
+                tabInterval = null;
+            }
+        }
+
+        function resetProgressBars() {
+            const tabs = ['hce', 'agenda', 'finanzas'];
+            tabs.forEach(t => {
+                const el = document.getElementById(`tab-progress-${t}`);
+                if (el) {
+                    el.style.transition = 'none';
+                    el.style.width = '0%';
+                    // Force reflow
+                    el.offsetHeight;
+                    el.style.transition = `width ${TAB_DURATION}ms linear`;
+                }
+            });
+        }
+
+        function switchTab(tabId) {
+            activeTab = tabId;
+            
+            // Hide all tab panes
+            document.querySelectorAll('.tab-pane').forEach(pane => {
+                pane.classList.add('hidden');
+            });
+            // Show requested tab pane
+            document.getElementById(`tab-content-${tabId}`).classList.remove('hidden');
+
+            // Deactivate all tab buttons styles
+            const buttons = [
+                document.getElementById('tab-btn-hce'),
+                document.getElementById('tab-btn-agenda'),
+                document.getElementById('tab-btn-finanzas')
+            ];
+            
+            buttons.forEach(btn => {
+                btn.classList.remove('bg-white', 'shadow-sm', 'text-blue-600');
+                btn.classList.add('text-slate-500', 'hover:text-slate-800');
+            });
+
+            // Activate current tab button styles
+            const activeBtn = document.getElementById(`tab-btn-${tabId}`);
+            if (activeBtn) {
+                activeBtn.classList.remove('text-slate-500', 'hover:text-slate-800');
+                activeBtn.classList.add('bg-white', 'shadow-sm', 'text-blue-600');
+            }
+
+            // Run active animations for the current tab's mockup
+            runMockupAnimation(tabId);
+            
+            // Restart autoplay timer
+            stopAutoplay();
+            startAutoplay();
+        }
+
+        function userSwitchTab(tabId) {
+            // User manually clicked, switch and reset progress
+            switchTab(tabId);
+        }
+
+        // --- MOCKUP ANIMATIONS SYSTEM ---
+        let mockupTimeout1 = null;
+        let mockupTimeout2 = null;
+
+        function clearMockupTimeouts() {
+            if (mockupTimeout1) clearTimeout(mockupTimeout1);
+            if (mockupTimeout2) clearTimeout(mockupTimeout2);
+        }
+
+        function runMockupAnimation(tabId) {
+            clearMockupTimeouts();
+            
+            if (tabId === 'hce') {
+                switchInnerHce('general');
+            } else if (tabId === 'agenda') {
+                switchInnerAgenda('doctor');
+            } else if (tabId === 'finanzas') {
+                switchInnerFinanzas('resumen');
+            }
+        }
+
+        // --- SUB-NAVIGATION MOCKUPS LOGIC ---
+
+        // A. HCE Sub-tabs
+        function switchInnerHce(subView) {
+            clearMockupTimeouts();
+            // Hide all sub-sections
+            document.getElementById('inner-hce-general').classList.add('hidden');
+            document.getElementById('inner-hce-plantilla').classList.add('hidden');
+            document.getElementById('inner-hce-receta').classList.add('hidden');
+            
+            // Show requested sub-section
+            document.getElementById(`inner-hce-${subView}`).classList.remove('hidden');
+
+            // Style buttons
+            const btns = ['general', 'plantilla', 'receta'];
+            btns.forEach(b => {
+                const el = document.getElementById(`inner-hce-btn-${b}`);
+                el.className = 'px-3 py-1 rounded-lg';
+            });
+            document.getElementById(`inner-hce-btn-${subView}`).className = 'px-3 py-1 bg-white rounded-lg shadow-xs text-blue-600';
+
+            // Triggers specific subview animation
+            if (subView === 'general') {
+                simulateHCEDemo();
+            } else if (subView === 'plantilla') {
+                // Autoplay switcher between specialties in select
+                let isPediatria = true;
+                const loopSpecialty = () => {
+                    const sel = document.getElementById('hce-plantilla-selector');
+                    if (sel) {
+                        sel.value = isPediatria ? 'gineco' : 'pediatria';
+                        changeHcePlantillaFields();
+                        isPediatria = !isPediatria;
+                        mockupTimeout1 = setTimeout(loopSpecialty, 3500);
+                    }
+                };
+                mockupTimeout1 = setTimeout(loopSpecialty, 3500);
+            } else if (subView === 'receta') {
+                // Draw recipes then send WhatsApp
+                const item1 = document.getElementById('hce-pres-item-1');
+                const item2 = document.getElementById('hce-pres-item-2');
+                const overlay = document.getElementById('pres-success');
+                const btn = document.getElementById('send-pres-btn');
+                const btnText = document.getElementById('send-pres-text');
+                
+                if (item1 && item2 && overlay && btn) {
+                    item1.style.opacity = '0';
+                    item2.style.opacity = '0';
+                    overlay.classList.add('opacity-0');
+                    btn.disabled = false;
+                    btn.classList.remove('opacity-70');
+                    btnText.innerText = 'Enviar Receta';
+                    
+                    mockupTimeout1 = setTimeout(() => {
+                        item1.style.opacity = '1';
+                        mockupTimeout1 = setTimeout(() => {
+                            item2.style.opacity = '1';
+                            mockupTimeout1 = setTimeout(() => {
+                                simulateSendPrescription();
+                            }, 1200);
+                        }, 500);
+                    }, 400);
+                }
+            }
+        }
+
+        // HCE Typing simulation (General View)
+        function simulateHCEDemo() {
+            const diagText = document.getElementById('hce-diag-text');
+            if (diagText) {
+                diagText.innerHTML = '';
+                const phrase = "J06.9 - Infección de vías respiratorias";
+                let idx = 0;
+                
+                function type() {
+                    if (idx < phrase.length) {
+                        diagText.innerHTML = phrase.slice(0, idx + 1) + '<span class="text-blue-500 animate-pulse font-bold">|</span>';
+                        idx++;
+                        mockupTimeout1 = setTimeout(type, 35);
+                    } else {
+                        diagText.innerHTML = phrase;
+                        // Finished typing, trigger switch to Receta subtab automatically
+                        mockupTimeout1 = setTimeout(() => {
+                            if (activeTab === 'hce') {
+                                switchInnerHce('receta');
+                            }
+                        }, 2500);
+                    }
+                }
+                type();
+            }
+        }
+
+        // HCE Plantillas fields changer
+        function changeHcePlantillaFields() {
+            const sel = document.getElementById('hce-plantilla-selector');
+            const container = document.getElementById('hce-plantilla-fields');
+            if (!sel || !container) return;
+
+            if (sel.value === 'pediatria') {
+                container.innerHTML = `
+                    <div class="grid grid-cols-2 gap-3">
+                        <div>
+                            <label class="text-[9px] font-semibold text-slate-400 uppercase">Z-score Talla/Edad</label>
+                            <input type="text" value="-1.8 (Normal)" class="w-full bg-slate-50 border border-slate-200 rounded px-2.5 py-1.5 font-bold text-slate-700 outline-none" readonly>
+                        </div>
+                        <div>
+                            <label class="text-[9px] font-semibold text-slate-400 uppercase">Hito de Desarrollo</label>
+                            <input type="text" value="Sujeta la cabeza solo" class="w-full bg-slate-50 border border-slate-200 rounded px-2.5 py-1.5 font-bold text-slate-700 outline-none" readonly>
+                        </div>
+                    </div>
+                `;
+            } else if (sel.value === 'gineco') {
+                container.innerHTML = `
+                    <div class="grid grid-cols-2 gap-3">
+                        <div>
+                            <label class="text-[9px] font-semibold text-slate-400 uppercase">F.U.M. (Fecha Últ. Menst.)</label>
+                            <input type="text" value="12/03/2026" class="w-full bg-slate-50 border border-slate-200 rounded px-2.5 py-1.5 font-bold text-slate-700 outline-none" readonly>
+                        </div>
+                        <div>
+                            <label class="text-[9px] font-semibold text-slate-400 uppercase">Semanas de Gestación</label>
+                            <input type="text" value="12 Semanas (Eco I ok)" class="w-full bg-slate-50 border border-slate-200 rounded px-2.5 py-1.5 font-bold text-slate-700 outline-none" readonly>
+                        </div>
+                    </div>
+                `;
+            }
+        }
+
+        // HCE Sending prescription PDF simulation
+        function simulateSendPrescription() {
+            const btn = document.getElementById('send-pres-btn');
+            const btnText = document.getElementById('send-pres-text');
+            const successOverlay = document.getElementById('pres-success');
+            
+            if (!btn || !btnText || !successOverlay) return;
+
+            btn.disabled = true;
+            btnText.innerText = 'Enviando...';
+            btn.classList.add('opacity-70');
+
+            mockupTimeout2 = setTimeout(() => {
+                successOverlay.classList.remove('opacity-0');
+                successOverlay.classList.add('opacity-100');
+                
+                // Auto switch to general view after success display
+                mockupTimeout2 = setTimeout(() => {
+                    if (activeTab === 'hce') {
+                        switchInnerHce('general');
+                    }
+                }, 3000);
+            }, 1200);
+        }
+
+
+        // B. Agenda Sub-tabs
+        function switchInnerAgenda(subView) {
+            clearMockupTimeouts();
+            // Hide sections
+            document.getElementById('inner-age-doctor').classList.add('hidden');
+            document.getElementById('inner-age-paciente').classList.add('hidden');
+            
+            // Show section
+            document.getElementById(`inner-age-${subView}`).classList.remove('hidden');
+
+            // Style buttons
+            const btns = ['doctor', 'paciente'];
+            btns.forEach(b => {
+                const el = document.getElementById(`inner-age-btn-${b}`);
+                el.className = 'px-3 py-1 rounded-lg';
+            });
+            document.getElementById(`inner-age-btn-${subView}`).className = 'px-3 py-1 bg-white rounded-lg shadow-xs text-blue-600';
+
+            if (subView === 'doctor') {
+                startWhatsAppLoop();
+            } else if (subView === 'paciente') {
+                // Reset patient portal simulation
+                const confirmBtn = document.getElementById('confirm-booking-btn');
+                const timeBtn1 = document.getElementById('book-time-btn-1');
+                const timeBtn2 = document.getElementById('book-time-btn-2');
+                
+                confirmBtn.disabled = true;
+                confirmBtn.innerText = 'Confirmar Turno';
+                confirmBtn.className = 'w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-2.5 rounded-xl transition-all shadow-sm flex items-center justify-center gap-1 mt-2.5 active:scale-95 disabled:opacity-50';
+                
+                timeBtn1.className = 'border border-slate-200 hover:border-blue-500 hover:text-blue-500 p-2 rounded-lg text-slate-600';
+                timeBtn2.className = 'border border-slate-200 hover:border-blue-500 hover:text-blue-500 p-2 rounded-lg text-slate-600';
+                
+                // Auto choose 10:30 AM after 1.2s
+                mockupTimeout1 = setTimeout(() => {
+                    selectBookingTime('10:30 AM');
+                    // Auto confirm booking after 1.5s
+                    mockupTimeout1 = setTimeout(() => {
+                        confirmPatientBooking();
+                    }, 1500);
+                }, 1200);
+            }
+        }
+
+        // WhatsApp recordator simulator loop (Doctor calendar view)
+        function startWhatsAppLoop() {
+            const chatBody = document.getElementById('whatsapp-chat-body');
+            const badge = document.getElementById('appointment-status-badge');
+            const bar = document.getElementById('status-indicator-bar');
+            
+            if (!chatBody || !badge || !bar) return;
+
+            // Reset chat
+            chatBody.innerHTML = `
+                <div class="bg-slate-800 text-slate-300 text-[9px] py-0.5 px-2 rounded-md self-center mb-1">HOY</div>
+                <div class="bg-[#1F2C34] text-white p-2.5 rounded-xl rounded-tl-none self-start max-w-[85%] border-l-4 border-blue-500 shadow-sm leading-relaxed">
+                    Hola Carlos, le recordamos su cita de Cardiología para hoy a las 11:30 AM. Responda <strong class="text-blue-300 font-bold">1</strong> para Confirmar o <strong class="text-blue-300 font-bold">2</strong> para Cancelar.
+                </div>
+            `;
+            badge.innerText = 'Recordatorio Enviado';
+            badge.className = 'bg-yellow-50 text-yellow-600 border border-yellow-100 text-[9px] font-bold px-2 py-0.5 rounded-full';
+            bar.className = 'w-1 h-8 bg-yellow-500 rounded-full transition-colors duration-500';
+
+            // WhatsApp Flow
+            // 1. Show Typing indicator
+            mockupTimeout1 = setTimeout(() => {
+                const typingMsg = document.createElement('div');
+                typingMsg.id = 'whatsapp-typing';
+                typingMsg.className = 'bg-[#1F2C34] text-slate-400 p-2 rounded-xl rounded-tl-none self-start max-w-[50px] shadow-sm flex items-center gap-1';
+                typingMsg.innerHTML = '<span class="w-1.5 h-1.5 bg-slate-400 rounded-full animate-bounce"></span><span class="w-1.5 h-1.5 bg-slate-400 rounded-full animate-bounce [animation-delay:0.2s]"></span><span class="w-1.5 h-1.5 bg-slate-400 rounded-full animate-bounce [animation-delay:0.4s]"></span>';
+                chatBody.appendChild(typingMsg);
+                chatBody.scrollTop = chatBody.scrollHeight;
+
+                // 2. Remove typing and send reply bubble "1"
+                mockupTimeout1 = setTimeout(() => {
+                    const typingEl = document.getElementById('whatsapp-typing');
+                    if (typingEl) typingEl.remove();
+
+                    const replyBubble = document.createElement('div');
+                    replyBubble.className = 'bg-[#005C4B] text-white p-2 rounded-xl rounded-tr-none self-end max-w-[50%] shadow-sm';
+                    replyBubble.innerText = '1';
+                    chatBody.appendChild(replyBubble);
+                    chatBody.scrollTop = chatBody.scrollHeight;
+
+                    // 3. System confirmation
+                    mockupTimeout1 = setTimeout(() => {
+                        const confirmMsg = document.createElement('div');
+                        confirmMsg.className = 'bg-[#1F2C34] text-white p-2.5 rounded-xl rounded-tl-none self-start max-w-[85%] border-l-4 border-emerald-500 shadow-sm leading-relaxed';
+                        confirmMsg.innerHTML = 'Liryal AI: ✅ ¡Perfecto, Carlos! Tu cita ha sido <strong class="text-emerald-400 font-bold">confirmada en la agenda del doctor</strong>.';
+                        chatBody.appendChild(confirmMsg);
+                        chatBody.scrollTop = chatBody.scrollHeight;
+
+                        // Update calendar indicators
+                        badge.innerText = 'Confirmada por WA';
+                        badge.className = 'bg-emerald-50 text-emerald-600 border border-emerald-100 text-[9px] font-bold px-2 py-0.5 rounded-full';
+                        bar.className = 'w-1 h-8 bg-emerald-500 rounded-full transition-colors duration-500';
+
+                        // Transition to patient portal view after 3 seconds
+                        mockupTimeout1 = setTimeout(() => {
+                            if (activeTab === 'agenda') {
+                                switchInnerAgenda('paciente');
+                            }
+                        }, 3000);
+
+                    }, 1200);
+
+                }, 1500);
+
+            }, 2000);
+        }
+
+        // Manual trigger for WhatsApp confirm
+        function simulateWhatsAppReply() {
+            clearMockupTimeouts();
+            
+            const chatBody = document.getElementById('whatsapp-chat-body');
+            const badge = document.getElementById('appointment-status-badge');
+            const bar = document.getElementById('status-indicator-bar');
+            
+            const typingEl = document.getElementById('whatsapp-typing');
+            if (typingEl) typingEl.remove();
+
+            // Instant reply
+            const replyBubble = document.createElement('div');
+            replyBubble.className = 'bg-[#005C4B] text-white p-2 rounded-xl rounded-tr-none self-end max-w-[50%] shadow-sm mt-1';
+            replyBubble.innerText = '1';
+            chatBody.appendChild(replyBubble);
+            
+            const confirmMsg = document.createElement('div');
+            confirmMsg.className = 'bg-[#1F2C34] text-white p-2.5 rounded-xl rounded-tl-none self-start max-w-[85%] border-l-4 border-emerald-500 shadow-sm leading-relaxed mt-2';
+            confirmMsg.innerHTML = 'Liryal AI: ✅ ¡Perfecto, Carlos! Tu cita ha sido <strong class="text-emerald-400 font-bold">confirmada en la agenda del doctor</strong>.';
+            chatBody.appendChild(confirmMsg);
+            chatBody.scrollTop = chatBody.scrollHeight;
+
+            badge.innerText = 'Confirmada por WA';
+            badge.className = 'bg-emerald-50 text-emerald-600 border border-emerald-100 text-[9px] font-bold px-2 py-0.5 rounded-full';
+            bar.className = 'w-1 h-8 bg-emerald-500 rounded-full transition-colors duration-500';
+        }
+
+        // Patient auto-agendamiento simulation actions
+        let selectedTime = null;
+        function selectBookingTime(timeVal) {
+            selectedTime = timeVal;
+            const timeBtn1 = document.getElementById('book-time-btn-1');
+            const timeBtn2 = document.getElementById('book-time-btn-2');
+            const confirmBtn = document.getElementById('confirm-booking-btn');
+
+            timeBtn1.className = 'border border-slate-200 hover:border-blue-500 hover:text-blue-500 p-2 rounded-lg text-slate-600';
+            timeBtn2.className = 'border border-slate-200 hover:border-blue-500 hover:text-blue-500 p-2 rounded-lg text-slate-600';
+
+            if (timeVal === '09:00 AM') {
+                timeBtn1.className = 'border border-blue-600 bg-blue-50 text-blue-600 p-2 rounded-lg font-bold';
+            } else if (timeVal === '10:30 AM') {
+                timeBtn2.className = 'border border-blue-600 bg-blue-50 text-blue-600 p-2 rounded-lg font-bold';
+            }
+
+            confirmBtn.disabled = false;
+            confirmBtn.innerText = `Confirmar Turno (${timeVal})`;
+        }
+
+        function confirmPatientBooking() {
+            const confirmBtn = document.getElementById('confirm-booking-btn');
+            if (!confirmBtn || confirmBtn.disabled) return;
+
+            confirmBtn.disabled = true;
+            confirmBtn.innerText = 'Reservando...';
+
+            mockupTimeout2 = setTimeout(() => {
+                confirmBtn.innerText = '¡Cita Reservada Exitosamente! 🎉';
+                confirmBtn.className = 'w-full bg-emerald-500 text-white font-bold py-2.5 rounded-xl transition-all shadow-sm flex items-center justify-center gap-1 mt-2.5';
+                
+                // Return to doctor view to show reservation after 2.5s
+                mockupTimeout2 = setTimeout(() => {
+                    if (activeTab === 'agenda') {
+                        switchInnerAgenda('doctor');
+                    }
+                }, 2500);
+            }, 1500);
+        }
+
+
+        // C. Finanzas Sub-tabs
+        function switchInnerFinanzas(subView) {
+            clearMockupTimeouts();
+            // Hide
+            document.getElementById('inner-fin-resumen').classList.add('hidden');
+            document.getElementById('inner-fin-precios').classList.add('hidden');
+
+            // Show
+            document.getElementById(`inner-fin-${subView}`).classList.remove('hidden');
+
+            // Style buttons
+            const btns = ['resumen', 'precios'];
+            btns.forEach(b => {
+                const el = document.getElementById(`inner-fin-btn-${b}`);
+                el.className = 'px-3 py-1 rounded-lg';
+            });
+            document.getElementById(`inner-fin-btn-${subView}`).className = 'px-3 py-1 bg-white rounded-lg shadow-xs text-blue-600';
+
+            if (subView === 'resumen') {
+                animateFinanzasChart();
+            } else if (subView === 'precios') {
+                // Auto click a service in billing list after 2s
+                mockupTimeout1 = setTimeout(() => {
+                    registerSimulatedPayment(120); // click Consulta General S/. 120
+                }, 2500);
+            }
+        }
+
+        // Finance: Animate chart lines
+        function animateFinanzasChart() {
+            const line = document.getElementById('finanzas-line-path');
+            const area = document.getElementById('finanzas-area-path');
+            
+            if (line && area) {
+                line.style.strokeDashoffset = '500';
+                area.classList.remove('opacity-100');
+                area.classList.add('opacity-0');
+
+                mockupTimeout1 = setTimeout(() => {
+                    line.style.strokeDashoffset = '0';
+                    mockupTimeout2 = setTimeout(() => {
+                        area.classList.remove('opacity-0');
+                        area.classList.add('opacity-100');
+                        
+                        // Switch to Precios listing after 3.5s
+                        mockupTimeout2 = setTimeout(() => {
+                            if (activeTab === 'finanzas') {
+                                switchInnerFinanzas('precios');
+                            }
+                        }, 3500);
+                    }, 500);
+                }, 200);
+            }
+        }
+
+        // Live billing registers updates revenue metric
+        let baseRevenue = 12450;
+        function registerSimulatedPayment(amount) {
+            const val = document.getElementById('fin-ingreso-val');
+            const badge = document.getElementById('payment-plus-badge');
+            
+            if (!val || !badge) return;
+
+            // Switch view back to resumen to let the doctor witness the update
+            switchInnerFinanzas('resumen');
+            
+            mockupTimeout2 = setTimeout(() => {
+                baseRevenue += amount;
+                
+                // Animate value count up
+                val.innerText = baseRevenue.toLocaleString('es-PE');
+                
+                // Show floating success green badge
+                badge.innerText = `+S/. ${amount}`;
+                badge.className = 'absolute right-3 bottom-3 text-[10px] font-black text-emerald-500 opacity-100 transform translate-y-[-10px] transition-all duration-700';
+
+                // Reset badge after 2.5s
+                mockupTimeout2 = setTimeout(() => {
+                    badge.className = 'absolute right-3 bottom-3 text-[10px] font-black text-emerald-500 opacity-0 transition-all duration-700';
+                }, 2500);
+            }, 600);
+        }
+
+        // SVG Tooltips triggers
+        function showTooltip(val, x, y) {
+            const tooltip = document.getElementById('chart-tooltip');
+            if (tooltip) {
+                tooltip.innerText = val;
+                tooltip.style.left = `${x - 20}px`;
+                tooltip.style.top = `${y + 10}px`;
+                tooltip.classList.remove('opacity-0');
+                tooltip.classList.add('opacity-100');
+            }
+        }
+
+        function hideTooltip() {
+            const tooltip = document.getElementById('chart-tooltip');
+            if (tooltip) {
+                tooltip.classList.remove('opacity-100');
+                tooltip.classList.add('opacity-0');
+            }
+        }
+        // --- ACCORDION FAQ LOGIC ---
+        function toggleFaq(index) {
+            const content = document.getElementById(`faq-content-${index}`);
+            const icon = document.getElementById(`faq-icon-${index}`);
+            
+            if (content.classList.contains('hidden')) {
+                content.classList.remove('hidden');
+                icon.classList.add('rotate-180');
+            } else {
+                content.classList.add('hidden');
+                icon.classList.remove('rotate-180');
+            }
+        }
+
+        // --- CENTRO DE FUNCIONES CATEGORY SWITCHER ---
+        function switchFuncCategory(catId) {
+            // Hide all category panes
+            document.querySelectorAll('.func-cat-pane').forEach(pane => {
+                pane.classList.add('hidden');
+            });
+            // Show the selected one
+            document.getElementById(`func-cat-${catId}`).classList.remove('hidden');
+
+            // Reset styles for all category tab buttons
+            const categories = ['hce', 'agenda', 'finanzas'];
+            categories.forEach(c => {
+                const btn = document.getElementById(`func-tab-btn-${c}`);
+                if (btn) {
+                    btn.className = 'py-2.5 px-3 rounded-xl font-heading text-xs sm:text-sm font-bold transition-all text-slate-500 hover:text-slate-800 select-none';
+                }
+            });
+
+            // Set active style for current button
+            const activeBtn = document.getElementById(`func-tab-btn-${catId}`);
+            if (activeBtn) {
+                activeBtn.className = 'py-2.5 px-3 rounded-xl font-heading text-xs sm:text-sm font-bold transition-all text-blue-600 bg-white shadow-xs select-none';
+            }
+        }
+
+        // --- INITIALIZATION ---
+        document.addEventListener('DOMContentLoaded', () => {
+            // Start IntersectionObserver for scroll reveals
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                    }
+                });
+            }, {
+                threshold: 0.1
+            });
+
+            document.querySelectorAll('.reveal-element').forEach(el => {
+                observer.observe(el);
+            });
+
+            // Start Tab Autoplay
+            switchTab('hce');
+        });
+    </script>
+</body>
+</html>
