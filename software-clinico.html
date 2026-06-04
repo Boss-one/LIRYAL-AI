@@ -88,6 +88,23 @@
             background-image: radial-gradient(#CBD5E1 1px, transparent 1px);
             background-size: 24px 24px;
         }
+        .bg-grid-pattern {
+            background-size: 40px 40px;
+            background-image: linear-gradient(to right, rgba(148, 163, 184, 0.06) 1px, transparent 1px),
+                              linear-gradient(to bottom, rgba(148, 163, 184, 0.06) 1px, transparent 1px);
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.45);
+        }
+        .glass-card-dark {
+            background: rgba(15, 23, 42, 0.75);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
         .reveal-element {
             opacity: 0;
             transform: translateY(30px);
@@ -96,6 +113,21 @@
         .reveal-element.active {
             opacity: 1;
             transform: translateY(0);
+        }
+        /* Custom scrollbar for mockups */
+        .custom-scroll::-webkit-scrollbar {
+            width: 5px;
+            height: 5px;
+        }
+        .custom-scroll::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .custom-scroll::-webkit-scrollbar-thumb {
+            background: rgba(148, 163, 184, 0.3);
+            border-radius: 10px;
+        }
+        .custom-scroll::-webkit-scrollbar-thumb:hover {
+            background: rgba(148, 163, 184, 0.5);
         }
     </style>
 </head>
@@ -206,9 +238,11 @@
 
     <!-- HERO SECTION -->
     <section class="relative pt-28 pb-16 lg:pt-36 lg:pb-24 overflow-hidden bg-[#F8FAFC]">
-        <div class="absolute inset-0 bg-pattern opacity-50"></div>
-        <div class="absolute top-0 right-0 -translate-y-12 translate-x-1/3 w-[600px] h-[600px] bg-gradient-to-br from-blue-100 to-teal-50 rounded-full blur-3xl opacity-50 pointer-events-none"></div>
-        <div class="absolute bottom-0 left-0 translate-y-1/3 -translate-x-1/3 w-[500px] h-[500px] bg-gradient-to-tr from-blue-50 to-indigo-100 rounded-full blur-3xl opacity-40 pointer-events-none"></div>
+        <!-- Technical grid pattern overlay -->
+        <div class="absolute inset-0 bg-grid-pattern opacity-70"></div>
+        <!-- Glowing gradient blobs for visual depth -->
+        <div class="absolute top-0 right-0 -translate-y-12 translate-x-1/4 w-[600px] h-[600px] bg-gradient-to-br from-blue-200/20 to-teal-200/10 rounded-full blur-[130px] opacity-60 pointer-events-none"></div>
+        <div class="absolute bottom-0 left-0 translate-y-1/4 -translate-x-1/4 w-[500px] h-[500px] bg-gradient-to-tr from-indigo-100/20 to-purple-100/10 rounded-full blur-[110px] opacity-50 pointer-events-none"></div>
         
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
@@ -222,13 +256,13 @@
                         Nuevo: SaaS de Gestión Clínica Integral
                     </div>
                     
-                    <h1 class="font-heading text-4xl sm:text-5xl lg:text-[4rem] font-extrabold tracking-tight text-slate-900 mb-6 leading-[1.1]">
-                        Deja el papel.<br/>
-                        <span class="gradient-text">Atiende a tus pacientes.</span>
+                    <h1 class="font-heading text-4xl sm:text-5xl lg:text-[4rem] font-extrabold tracking-tight text-slate-900 mb-6 leading-[1.08] tracking-tighter">
+                        No has estudiado medicina para<br/>
+                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-teal-500">perder los papeles.</span>
                     </h1>
                     
-                    <p class="text-lg text-slate-600 mb-8 leading-relaxed max-w-xl font-medium">
-                        Historia clínica electrónica, agenda médica inteligente y control de finanzas en un solo lugar. Diseñado para el médico independiente y centros de salud que no tienen tiempo que perder.
+                    <p class="text-base sm:text-lg text-slate-655 mb-8 leading-relaxed max-w-xl font-medium text-slate-600">
+                        Ahorra más de 3 horas al día con la única historia clínica electrónica con Inteligencia Artificial, diseñada por y para médicos. Agenda inteligente y control de finanzas en un solo lugar.
                     </p>
                     
                     <div class="flex flex-col sm:flex-row items-center gap-4">
@@ -257,86 +291,122 @@
                     </div>
                 </div>
 
-                <!-- Right Visual: Simulated Clinical Dashboard Mockup -->
-                <div class="lg:col-span-6 relative mt-6 lg:mt-0">
-                    <div class="absolute inset-0 bg-gradient-to-tr from-blue-300 to-teal-300 rounded-3xl blur-2xl opacity-30 -rotate-6 scale-95 pointer-events-none"></div>
-                    <div class="bg-white border border-slate-200 shadow-2xl rounded-2xl overflow-hidden text-left max-w-full lg:max-w-[580px] mx-auto transition-transform hover:scale-[1.01] duration-500">
-                        <!-- Dashboard Topbar -->
-                        <div class="bg-slate-900 px-5 py-4 flex items-center justify-between text-white border-b border-slate-800">
-                            <div class="flex items-center gap-2">
-                                <div class="w-3.5 h-3.5 bg-brand rounded-full flex items-center justify-center">
-                                    <div class="w-1.5 h-1.5 bg-white rounded-full"></div>
-                                </div>
-                                <span class="font-heading font-semibold text-sm tracking-tight text-white">Liryal SaaS Clínico</span>
-                                <span class="bg-emerald-500/20 text-emerald-400 text-[10px] font-bold px-2 py-0.5 rounded-full uppercase tracking-widest ml-2">En Línea</span>
+                <!-- Right Visual: Simulated Clinical Dashboard Mockup (Premium Redesign) -->
+                <div class="lg:col-span-6 relative mt-12 lg:mt-0 flex justify-center items-center">
+                    <!-- Background Glow Blobs -->
+                    <div class="absolute w-[350px] h-[350px] bg-blue-400/20 rounded-full filter blur-3xl opacity-60 -top-10 -right-10 -z-10 pointer-events-none"></div>
+                    <div class="absolute w-[300px] h-[300px] bg-teal-300/20 rounded-full filter blur-3xl opacity-50 -bottom-10 -left-10 -z-10 pointer-events-none"></div>
+                    
+                    <!-- Floating Widget 1: Citas Hoy -->
+                    <div class="absolute -top-6 -left-6 glass-card rounded-2xl p-4 shadow-[0_15px_35px_rgba(0,0,0,0.06)] flex items-center gap-3.5 z-20 pointer-events-none hover:scale-105 transition-transform duration-300 hidden sm:flex">
+                        <div class="w-10 h-10 rounded-full bg-blue-50 text-blue-600 flex items-center justify-center shadow-inner">
+                            <svg class="w-5 h-5 animate-pulse" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                        </div>
+                        <div>
+                            <p class="text-[10px] font-bold text-slate-400 uppercase tracking-wider">Agenda de Hoy</p>
+                            <p class="text-sm font-black text-slate-800 leading-tight">12 / 14 Citas Confirmadas</p>
+                            <p class="text-[9px] font-semibold text-emerald-500 mt-0.5">✅ 94% de asistencia vía WA</p>
+                        </div>
+                    </div>
+
+                    <!-- Floating Widget 2: Facturación Semanal -->
+                    <div class="absolute -bottom-6 -right-6 glass-card-dark rounded-2xl p-4.5 shadow-[0_20px_40px_rgba(0,0,0,0.12)] flex flex-col gap-1 z-20 pointer-events-none hover:scale-105 transition-transform duration-300 hidden sm:flex text-white max-w-[210px]">
+                        <div class="flex justify-between items-center w-full">
+                            <p class="text-[9px] font-bold text-slate-400 uppercase tracking-wider">Facturación Semanal</p>
+                            <span class="text-[8px] bg-emerald-500/20 text-emerald-400 font-bold px-1.5 py-0.5 rounded">+15.8%</span>
+                        </div>
+                        <p class="text-base font-black font-heading leading-tight">S/. 4,890.00</p>
+                        <!-- Mini sparkline SVG -->
+                        <svg class="h-6 w-full mt-1.5 overflow-visible" viewBox="0 0 100 20">
+                            <path d="M0 15 Q 20 5 40 12 T 80 3 T 100 10" fill="none" stroke="#10B981" stroke-width="2" stroke-linecap="round"></path>
+                            <path d="M0 15 Q 20 5 40 12 T 80 3 T 100 10 L 100 20 L 0 20 Z" fill="rgba(16, 185, 129, 0.15)"></path>
+                            <circle cx="100" cy="10" r="2.5" fill="#10B981"></circle>
+                        </svg>
+                    </div>
+
+                    <!-- Main Dashboard Frame -->
+                    <div class="w-full bg-slate-950 border border-slate-800 rounded-2xl shadow-[0_30px_70px_-15px_rgba(0,0,0,0.35)] overflow-hidden text-left max-w-full lg:max-w-[560px] mx-auto transition-transform hover:scale-[1.01] duration-500 relative">
+                        <!-- Browser Header (Close/Min/Max dots + Mock Address Bar) -->
+                        <div class="bg-slate-900/90 px-4 py-3 flex items-center justify-between text-white border-b border-slate-800/80">
+                            <div class="flex items-center gap-1.5">
+                                <div class="w-2.5 h-2.5 rounded-full bg-red-500/80"></div>
+                                <div class="w-2.5 h-2.5 rounded-full bg-yellow-500/80"></div>
+                                <div class="w-2.5 h-2.5 rounded-full bg-green-500/80"></div>
                             </div>
-                            <div class="flex items-center gap-2">
-                                <div class="w-2.5 h-2.5 rounded-full bg-red-500"></div>
-                                <div class="w-2.5 h-2.5 rounded-full bg-yellow-500"></div>
-                                <div class="w-2.5 h-2.5 rounded-full bg-green-500"></div>
+                            <!-- Mock URL bar -->
+                            <div class="bg-slate-950/80 text-[10px] text-slate-500 font-medium px-4 py-1.5 rounded-lg w-1/2 text-center border border-slate-800/50 shadow-inner select-none truncate">
+                                liryal.ai/clinica/carlos-mendoza
                             </div>
+                            <div class="w-10"></div>
                         </div>
 
                         <!-- Dashboard Grid Layout -->
                         <div class="grid grid-cols-12 h-[340px] text-xs">
                             <!-- Sidebar -->
-                            <div class="col-span-3 bg-slate-50 border-r border-slate-200 p-3.5 flex flex-col gap-2">
-                                <div class="p-2 bg-blue-50 text-blue-600 rounded-lg font-semibold flex items-center gap-2">
-                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg>
+                            <div class="col-span-3 bg-[#0B0F19] border-r border-slate-900 p-3.5 flex flex-col gap-2">
+                                <div class="p-2.5 bg-blue-600/10 text-blue-400 rounded-xl font-bold flex items-center gap-2">
+                                    <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg>
                                     <span>Pacientes</span>
                                 </div>
-                                <div class="p-2 hover:bg-slate-100 text-slate-500 rounded-lg flex items-center gap-2 transition-colors cursor-pointer">
-                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                                <div class="p-2.5 hover:bg-slate-900 text-slate-500 rounded-xl flex items-center gap-2 transition-colors cursor-pointer font-medium">
+                                    <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
                                     <span>Agenda</span>
                                 </div>
-                                <div class="p-2 hover:bg-slate-100 text-slate-500 rounded-lg flex items-center gap-2 transition-colors cursor-pointer">
-                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                                <div class="p-2.5 hover:bg-slate-900 text-slate-500 rounded-xl flex items-center gap-2 transition-colors cursor-pointer font-medium">
+                                    <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
                                     <span>Cobros</span>
                                 </div>
-                                <div class="mt-auto p-2 bg-slate-900 text-white rounded-lg text-center font-bold shadow-sm">
-                                    Demo 
+                                <div class="mt-auto p-2 bg-gradient-to-r from-blue-600 to-teal-500 hover:from-blue-700 hover:to-teal-600 text-white rounded-xl text-center font-bold shadow-md transition-all cursor-pointer select-none">
+                                    Demo Activa
                                 </div>
                             </div>
 
-                            <!-- Main Workspace -->
-                            <div class="col-span-9 p-4 flex flex-col gap-4 overflow-y-auto">
+                            <!-- Main Workspace (Dark EHR Theme) -->
+                            <div class="col-span-9 p-4.5 bg-[#0E1322] flex flex-col gap-4 overflow-y-auto">
                                 <!-- Active Patient Bar -->
-                                <div class="flex items-center justify-between pb-3 border-b border-slate-100">
-                                    <div>
-                                        <h4 class="font-bold text-sm text-slate-800">Carlos Mendoza Rivas</h4>
-                                        <p class="text-[10px] text-slate-400">ID: 8092-2026 · HCE Activo</p>
+                                <div class="flex items-center justify-between pb-3 border-b border-slate-800">
+                                    <div class="flex items-center gap-2.5">
+                                        <div class="w-8 h-8 rounded-full bg-slate-800 border border-slate-700 flex items-center justify-center font-bold text-white shadow-xs">CM</div>
+                                        <div>
+                                            <h4 class="font-bold text-sm text-white">Carlos Mendoza Rivas</h4>
+                                            <p class="text-[9px] text-slate-500 font-medium">62 años · ID: 8092-2026</p>
+                                        </div>
                                     </div>
-                                    <span class="px-2.5 py-0.5 bg-blue-100 text-blue-700 text-[10px] font-bold rounded-md uppercase">Cardiología</span>
+                                    <span class="px-2 py-0.5 bg-blue-500/10 text-blue-400 text-[9px] font-bold rounded border border-blue-500/20 uppercase tracking-wide">Cardiología</span>
                                 </div>
 
-                                <!-- Patient Summary Cards -->
-                                <div class="grid grid-cols-2 gap-3">
-                                    <div class="border border-slate-100 bg-slate-50 p-2.5 rounded-xl">
-                                        <p class="text-[9px] font-semibold text-slate-400 uppercase tracking-wider mb-1">Alergias</p>
-                                        <p class="font-bold text-red-600">Penicilina, Sulfas</p>
+                                <!-- Vitals Signs Row -->
+                                <div class="grid grid-cols-3 gap-2 text-[10px]">
+                                    <div class="border border-slate-800 bg-slate-900/50 p-2 rounded-xl text-center">
+                                        <p class="text-[8px] font-bold text-slate-500 uppercase mb-0.5">P. Arterial</p>
+                                        <p class="font-black text-slate-200">120 / 80 <span class="text-[8px] font-normal text-slate-500">mmHg</span></p>
                                     </div>
-                                    <div class="border border-slate-100 bg-slate-50 p-2.5 rounded-xl">
-                                        <p class="text-[9px] font-semibold text-slate-400 uppercase tracking-wider mb-1">Diagnóstico (CIE-10)</p>
-                                        <p class="font-bold text-slate-700">I10 - Hipertensión esencial</p>
+                                    <div class="border border-slate-800 bg-slate-900/50 p-2 rounded-xl text-center">
+                                        <p class="text-[8px] font-bold text-slate-500 uppercase mb-0.5">F. Cardíaca</p>
+                                        <p class="font-black text-emerald-400">72 <span class="text-[8px] font-normal text-slate-500">bpm</span></p>
+                                    </div>
+                                    <div class="border border-slate-800 bg-slate-900/50 p-2 rounded-xl text-center">
+                                        <p class="text-[8px] font-bold text-slate-500 uppercase mb-0.5">Diagnóstico</p>
+                                        <p class="font-black text-blue-400 truncate">CIE-10: I10</p>
                                     </div>
                                 </div>
 
-                                <!-- Prescription Builder View -->
-                                <div class="border border-blue-100 bg-blue-50/40 p-3.5 rounded-xl flex-1 flex flex-col justify-between">
+                                <!-- Active Prescription Builder -->
+                                <div class="border border-blue-500/20 bg-blue-950/20 p-3.5 rounded-xl flex-1 flex flex-col justify-between">
                                     <div class="flex justify-between items-start">
                                         <div>
-                                            <p class="text-[10px] font-bold text-blue-800 mb-0.5">Receta Digital Activa</p>
-                                            <p class="text-[10px] text-slate-500 font-medium">Losartan 50mg — 1 tab c/12h x 30 días</p>
+                                            <p class="text-[9px] font-bold text-blue-400 uppercase tracking-wider mb-0.5">Receta Digital Emitida</p>
+                                            <p class="text-[11px] text-slate-350 font-bold leading-tight">Losartán 50mg</p>
+                                            <p class="text-[9px] text-slate-500 font-semibold mt-0.5">1 tableta cada 12 horas por 30 días</p>
                                         </div>
-                                        <span class="text-[10px] text-blue-600 font-bold bg-white px-2 py-0.5 rounded shadow-sm">Recetado</span>
+                                        <span class="text-[8px] text-emerald-400 font-bold bg-emerald-500/10 border border-emerald-500/20 px-2 py-0.5 rounded">FIRMADO</span>
                                     </div>
-                                    <div class="flex items-center justify-between pt-2 border-t border-blue-100/60 mt-2">
-                                        <p class="text-[9px] text-slate-400 italic">Vía: WhatsApp / Email en un clic</p>
-                                        <button class="bg-[#25D366] text-white font-bold py-1 px-3 rounded flex items-center gap-1 hover:bg-[#22c35e] transition-colors shadow-sm text-[9px]">
-                                            <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
-                                            Enviar
+                                    <div class="flex items-center justify-between pt-2.5 border-t border-slate-800/80 mt-2">
+                                        <p class="text-[9px] text-slate-500 italic">Historial encriptado SSL</p>
+                                        <button class="bg-[#25D366] text-white font-bold py-1.5 px-3 rounded-lg flex items-center gap-1.5 hover:bg-[#22c35e] transition-colors shadow-lg shadow-[#25D366]/10 text-[9px]">
+                                            <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+                                            Enviado
                                         </button>
-                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -344,14 +414,24 @@
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
     <!-- PROPUESTA DE VALOR CENTRAL -->
-    <section class="py-12 bg-blue-600 text-white relative">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
-            <h2 class="font-heading text-xl sm:text-2xl lg:text-3xl font-extrabold tracking-tight">
-                "Deja de trabajar con papel. Atiende a tus pacientes, no a tus cuadernos."
+    <section class="py-16 bg-[#0A192F] text-white relative overflow-hidden">
+        <!-- Decorative blur blobs -->
+        <div class="absolute w-[300px] h-[300px] bg-blue-500/10 rounded-full filter blur-3xl opacity-50 -top-20 -left-20 pointer-events-none"></div>
+        <div class="absolute w-[300px] h-[300px] bg-teal-400/10 rounded-full filter blur-3xl opacity-50 -bottom-20 -right-20 pointer-events-none"></div>
+        <!-- Tech grid background -->
+        <div class="absolute inset-0 bg-grid-pattern opacity-10"></div>
+        
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+            <h2 class="font-heading text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight mb-4 text-white">
+                No has estudiado medicina para <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-teal-350 font-black">perder los papeles.</span>
             </h2>
+            <p class="text-slate-400 text-sm sm:text-base max-w-2xl mx-auto font-medium leading-relaxed">
+                Diseñado por médicos para médicos. Un sistema inteligente e intuitivo que automatiza el papeleo clínico para que te concentres al 100% en el cuidado de tus pacientes.
+            </p>
         </div>
     </section>
 
@@ -811,73 +891,138 @@
                 </p>
             </div>
 
-            <!-- Features Cards Grid -->
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Bento Grid -->
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
                 
-                <!-- Card 1 -->
-                <div class="bg-white border border-slate-200/60 p-8 rounded-3xl shadow-sm hover:shadow-md transition-shadow relative overflow-hidden group">
-                    <div class="w-12 h-12 bg-blue-50 text-blue-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-105 transition-transform">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"></path></svg>
+                <!-- Card 1: Multidispositivo (Double Width: lg:col-span-2) -->
+                <div class="lg:col-span-2 bg-white border border-slate-200/50 p-8 rounded-3xl shadow-sm hover:shadow-md transition-all duration-300 relative overflow-hidden group flex flex-col justify-between min-h-[320px]">
+                    <div class="absolute inset-0 bg-gradient-to-br from-blue-50/20 to-teal-50/10 pointer-events-none"></div>
+                    <div class="relative z-10 max-w-xl">
+                        <div class="w-12 h-12 bg-blue-50 text-blue-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-105 transition-transform">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"></path></svg>
+                        </div>
+                        <h4 class="font-heading text-xl sm:text-2xl font-bold text-slate-900 mb-3">Multidispositivo y Sincronizado</h4>
+                        <p class="text-slate-500 text-sm leading-relaxed mb-6">
+                            Accede de forma segura y encriptada desde tu smartphone, tablet o computadora personal. Tu consultorio clínico sincronizado en tiempo real en todos tus dispositivos.
+                        </p>
                     </div>
-                    <h4 class="font-heading text-xl font-bold text-slate-900 mb-3">Multidispositivo</h4>
-                    <p class="text-slate-600 text-sm leading-relaxed">
-                        Accede de forma segura y encriptada desde tu smartphone, tablet o computadora personal. Tu consultorio viaja contigo.
-                    </p>
+                    <!-- Mini visual: Phone overlapping tablet mockups -->
+                    <div class="relative h-28 w-full mt-4 overflow-hidden rounded-2xl bg-slate-50 border border-slate-200/60 p-4 flex items-center justify-center gap-6">
+                        <!-- Simulated Laptop Screen -->
+                        <div class="w-48 h-20 bg-slate-900 rounded-lg border border-slate-800 p-1.5 flex flex-col justify-between shrink-0 shadow-xs">
+                            <div class="flex items-center gap-1 pb-1 border-b border-slate-800/80">
+                                <div class="w-1 h-1 rounded-full bg-red-500/80"></div>
+                                <div class="w-1 h-1 rounded-full bg-yellow-500/80"></div>
+                                <div class="w-1 h-1 rounded-full bg-green-500/80"></div>
+                                <div class="bg-slate-950 text-[5px] text-slate-550 px-2 py-0.5 rounded w-24 text-center truncate scale-[0.9]">liryal.ai/dashboard</div>
+                            </div>
+                            <div class="grid grid-cols-3 gap-1 flex-1 mt-1.5">
+                                <div class="bg-blue-500/10 rounded-xs"></div>
+                                <div class="bg-slate-800/50 rounded-xs col-span-2"></div>
+                            </div>
+                        </div>
+                        <!-- Simulated Smartphone overlapping -->
+                        <div class="w-12 h-20 bg-slate-950 rounded-xl border-2 border-slate-800 p-1 flex flex-col gap-1 shrink-0 -ml-10 mt-4 shadow-md relative z-10">
+                            <div class="w-4 h-1 bg-slate-800 rounded-full self-center mb-0.5"></div>
+                            <div class="bg-blue-600/20 rounded-xs flex-1"></div>
+                        </div>
+                    </div>
                 </div>
 
-                <!-- Card 2 -->
-                <div class="bg-white border border-slate-200/60 p-8 rounded-3xl shadow-sm hover:shadow-md transition-shadow relative overflow-hidden group">
-                    <div class="w-12 h-12 bg-teal-50 text-teal-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-105 transition-transform">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path></svg>
+                <!-- Card 2: WhatsApp Integrado (Single Width) -->
+                <div class="bg-white border border-slate-200/50 p-8 rounded-3xl shadow-sm hover:shadow-md transition-all duration-300 relative overflow-hidden group flex flex-col justify-between">
+                    <div class="relative z-10">
+                        <div class="w-12 h-12 bg-teal-50 text-teal-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-105 transition-transform">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path></svg>
+                        </div>
+                        <h4 class="font-heading text-xl font-bold text-slate-900 mb-3">WhatsApp Integrado</h4>
+                        <p class="text-slate-500 text-sm leading-relaxed mb-6">
+                            Envía recetas digitales PDF firmadas y recordatorios de cita automatizados de forma directa al celular del paciente.
+                        </p>
                     </div>
-                    <h4 class="font-heading text-xl font-bold text-slate-900 mb-3">WhatsApp Integrado</h4>
-                    <p class="text-slate-600 text-sm leading-relaxed">
-                        Envía recetas digitales en PDF firmadas y recordatorios de cita automatizados de forma directa al celular del paciente.
-                    </p>
+                    <!-- Live WhatsApp bubble widget -->
+                    <div class="bg-slate-50 border border-slate-100 rounded-2xl p-4 flex flex-col gap-2 shadow-xs">
+                        <div class="bg-[#1F2C34] text-white p-2.5 rounded-xl rounded-tl-none text-[10px] self-start max-w-[95%] border-l-4 border-emerald-500 shadow-sm leading-tight">
+                            💬 Tu receta médica digital está lista. Haz clic aquí para verla: <span class="text-blue-300 underline">liryal.ai/r/802a</span>
+                        </div>
+                        <span class="text-[8px] text-slate-450 self-end font-bold mr-1">Entregado ✓✓</span>
+                    </div>
                 </div>
 
-                <!-- Card 3 -->
-                <div class="bg-white border border-slate-200/60 p-8 rounded-3xl shadow-sm hover:shadow-md transition-shadow relative overflow-hidden group">
-                    <div class="w-12 h-12 bg-purple-50 text-purple-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-105 transition-transform">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 00-2 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"></path></svg>
+                <!-- Card 3: Especialidades / Plantillas (Single Width) -->
+                <div class="bg-white border border-slate-200/50 p-8 rounded-3xl shadow-sm hover:shadow-md transition-all duration-300 relative overflow-hidden group flex flex-col justify-between">
+                    <div class="relative z-10">
+                        <div class="w-12 h-12 bg-purple-50 text-purple-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-105 transition-transform">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 00-2 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"></path></svg>
+                        </div>
+                        <h4 class="font-heading text-xl font-bold text-slate-900 mb-3">Plantillas Clínicas</h4>
+                        <p class="text-slate-500 text-sm leading-relaxed mb-6">
+                            Configura y utiliza formularios clínicos de examen físico personalizados y adaptados a tu especialidad médica.
+                        </p>
                     </div>
-                    <h4 class="font-heading text-xl font-bold text-slate-900 mb-3">Plantillas Clínicas</h4>
-                    <p class="text-slate-600 text-sm leading-relaxed">
-                        Configura y utiliza plantillas de examen físico por especialidad (Ginecología, Pediatría, Odontología, Medicina General).
-                    </p>
+                    <!-- Specialties pills -->
+                    <div class="flex flex-wrap gap-1.5 p-2 bg-slate-50 border border-slate-100 rounded-2xl justify-center">
+                        <span class="px-2.5 py-1 bg-blue-600 text-white font-bold rounded-lg text-[9px] shadow-xs cursor-default">Cardiología</span>
+                        <span class="px-2.5 py-1 bg-white text-slate-500 border border-slate-200 rounded-lg text-[9px] hover:text-slate-800 transition-colors cursor-pointer">Ginecología</span>
+                        <span class="px-2.5 py-1 bg-white text-slate-500 border border-slate-200 rounded-lg text-[9px] hover:text-slate-800 transition-colors cursor-pointer">Pediatría</span>
+                        <span class="px-2.5 py-1 bg-white text-slate-500 border border-slate-200 rounded-lg text-[9px] hover:text-slate-800 transition-colors cursor-pointer">Odontología</span>
+                    </div>
                 </div>
 
-                <!-- Card 4 -->
-                <div class="bg-white border border-slate-200/60 p-8 rounded-3xl shadow-sm hover:shadow-md transition-shadow relative overflow-hidden group">
-                    <div class="w-12 h-12 bg-amber-50 text-amber-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-105 transition-transform">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+                <!-- Card 4: CIE-10 autocomplete simulator (Double Width: lg:col-span-2) -->
+                <div class="lg:col-span-2 bg-white border border-slate-200/50 p-8 rounded-3xl shadow-sm hover:shadow-md transition-all duration-300 relative overflow-hidden group flex flex-col justify-between min-h-[320px]">
+                    <div class="relative z-10 max-w-xl">
+                        <div class="w-12 h-12 bg-amber-50 text-amber-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-105 transition-transform">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+                        </div>
+                        <h4 class="font-heading text-xl sm:text-2xl font-bold text-slate-900 mb-3">Buscador Inteligente CIE-10</h4>
+                        <p class="text-slate-500 text-sm leading-relaxed mb-6">
+                            Agiliza el diagnóstico de tus consultas. Buscador predictivo e inteligente que autocompleta códigos CIE-10 internacionales en milisegundos.
+                        </p>
                     </div>
-                    <h4 class="font-heading text-xl font-bold text-slate-900 mb-3">CIE-10 Incorporado</h4>
-                    <p class="text-slate-600 text-sm leading-relaxed">
-                        Buscador y autocompletado rápido de diagnósticos codificados internacionalmente para agilizar el llenado de la ficha.
-                    </p>
+                    <!-- Live CIE-10 search interactive simulator -->
+                    <div class="w-full bg-slate-50 border border-slate-200/60 rounded-2xl p-4 flex flex-col gap-2 relative">
+                        <div class="flex items-center gap-2 bg-white border border-slate-200 rounded-xl px-3 py-2 text-[10px] text-slate-700 font-bold shadow-xs">
+                            <span class="text-slate-400">🔍</span>
+                            <span id="bento-cie10-input" class="text-slate-800 border-r border-slate-400 pr-1 animate-pulse">Hiper</span>
+                            <span class="text-slate-350 font-normal">tensión esencial...</span>
+                        </div>
+                        <!-- Simulated Autocomplete dropdown -->
+                        <div class="bg-white border border-slate-200 rounded-xl shadow-md p-1.5 flex flex-col gap-1 text-[9px] font-semibold text-slate-600">
+                            <div class="p-1.5 bg-blue-50 text-blue-700 rounded-md font-bold flex justify-between">
+                                <span>I10 - Hipertensión esencial (primaria)</span>
+                                <span class="bg-blue-600 text-white font-bold px-1 rounded text-[7px] flex items-center">ENTER</span>
+                            </div>
+                            <div class="p-1.5 hover:bg-slate-50 rounded-md flex justify-between cursor-pointer">
+                                <span>I11 - Enfermedad cardíaca hipertensiva</span>
+                            </div>
+                            <div class="p-1.5 hover:bg-slate-50 rounded-md flex justify-between cursor-pointer">
+                                <span>I15 - Hipertensión secundaria</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
-                <!-- Card 5 -->
-                <div class="bg-white border border-slate-200/60 p-8 rounded-3xl shadow-sm hover:shadow-md transition-shadow relative overflow-hidden group">
-                    <div class="w-12 h-12 bg-rose-50 text-rose-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-105 transition-transform">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
+                <!-- Card 5: Seguridad HIPAA / Ley 29733 (Single Width) -->
+                <div class="bg-white border border-slate-200/50 p-8 rounded-3xl shadow-sm hover:shadow-md transition-all duration-300 relative overflow-hidden group flex flex-col justify-between">
+                    <div class="relative z-10">
+                        <div class="w-12 h-12 bg-emerald-50 text-emerald-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-105 transition-transform">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
+                        </div>
+                        <h4 class="font-heading text-xl font-bold text-slate-900 mb-3">Seguridad y Respaldo</h4>
+                        <p class="text-slate-500 text-sm leading-relaxed mb-6">
+                            Servidores en la nube seguros con copias de seguridad automáticas encriptadas. Ley 29733 (Perú) e HIPAA compliant.
+                        </p>
                     </div>
-                    <h4 class="font-heading text-xl font-bold text-slate-900 mb-3">Roles y Secretarias</h4>
-                    <p class="text-slate-600 text-sm leading-relaxed">
-                        Define accesos diferenciados para tu secretaria o asistente. Protege la confidencialidad de la historia clínica en todo momento.
-                    </p>
-                </div>
-
-                <!-- Card 6 -->
-                <div class="bg-white border border-slate-200/60 p-8 rounded-3xl shadow-sm hover:shadow-md transition-shadow relative overflow-hidden group">
-                    <div class="w-12 h-12 bg-emerald-50 text-emerald-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-105 transition-transform">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
+                    <!-- Mini encryption visual -->
+                    <div class="bg-slate-900 rounded-2xl p-4 flex items-center justify-between text-white border border-slate-800 shadow-sm relative">
+                        <div class="flex items-center gap-2">
+                            <div class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-ping absolute"></div>
+                            <div class="w-2.5 h-2.5 rounded-full bg-emerald-500 relative"></div>
+                            <span class="text-[9px] font-bold tracking-wider text-slate-300 uppercase">Encriptación SSL</span>
+                        </div>
+                        <span class="text-[8px] bg-slate-850 text-slate-400 font-bold px-2 py-0.5 rounded border border-slate-700">AES-256</span>
                     </div>
-                    <h4 class="font-heading text-xl font-bold text-slate-900 mb-3">Seguridad y Respaldo</h4>
-                    <p class="text-slate-600 text-sm leading-relaxed">
-                        Servidores en la nube seguros con copias de respaldo encriptadas y automáticas. Datos de pacientes a salvo de desastres físicos.
-                    </p>
                 </div>
 
             </div>
@@ -1108,7 +1253,10 @@
 
     <!-- SOBRE NOSOTROS / NUESTRA MISIÓN -->
     <section id="sobre-nosotros" class="py-20 lg:py-28 bg-[#F8FAFC] border-t border-slate-200/60 relative overflow-hidden">
-        <div class="absolute inset-0 bg-pattern opacity-30"></div>
+        <!-- Technical grid pattern overlay -->
+        <div class="absolute inset-0 bg-grid-pattern opacity-60"></div>
+        <!-- Decorative subtle glow orb -->
+        <div class="absolute top-1/2 left-0 -translate-y-1/2 -translate-x-1/3 w-[400px] h-[400px] bg-gradient-to-tr from-blue-100/10 to-purple-100/10 rounded-full blur-[100px] opacity-40 pointer-events-none"></div>
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
                 <!-- Left Content -->
